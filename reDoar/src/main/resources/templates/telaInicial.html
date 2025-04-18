@@ -29,9 +29,22 @@
             margin-bottom: 15px;
         }
 
-        .navbar-menu {
-            display: flex;
-            gap: 30px;
+
+        .navbar-button {
+            background: none;
+            border: none;
+            color: white;
+            font-weight: 600;
+            font-size: 16px;
+            font-family: 'Poppins', sans-serif;
+            padding: 5px 8px;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .navbar-button:hover {
+            background-color: rgba(255, 255, 255, 0.1);
         }
 
         .navbar-item {
@@ -128,7 +141,7 @@
         }
 
         .card button {
-            background-color: #692CAB; /* Roxo atualizado */
+            background-color: #692CAB;
             border: none;
             color: white;
             padding: 10px 20px;
@@ -143,7 +156,7 @@
         }
 
         .card button:hover {
-            background-color: #5A2493; /* Tom mais escuro para hover */
+            background-color: #5A2493; 
         }
 
 
@@ -161,11 +174,11 @@
 
 <nav class="navbar">
     <div class="navbar-menu">
-        <a href="#" class="navbar-item">Doe aqui</a>
-        <a href="#" class="navbar-item">Projetos</a>
-        <a href="#" class="navbar-item">Contatos</a>
-        <a href="#" class="navbar-item">Parcerias</a>
-        <a href="#" class="navbar-item">Login</a>
+        <button onclick="window.location.href='#'" class="navbar-button">Doe aqui</button>
+        <button onclick="window.location.href='#'" class="navbar-button">Projetos</button>
+        <button onclick="window.location.href='#'" class="navbar-button">Contatos</button>
+        <button onclick="window.location.href='#'" class="navbar-button">Parcerias</button>
+        <button onclick="window.location.href='/login'" class="navbar-button" title="Acessar página de login">Login</button>
     </div>
 </nav>
 
