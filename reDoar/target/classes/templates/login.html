@@ -136,9 +136,107 @@
         .forgot-password:hover {
             text-decoration: underline;
         }
+
+        .back-arrow {
+            position: fixed;
+            bottom: 25px;
+            left: 25px;
+            background: linear-gradient(145deg, #7c3aed, #9D71E3);
+            color: white;
+            padding: 14px 16px;
+            border-radius: 50px;
+            font-size: 18px;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 6px 12px rgba(0,0,0,0.25);
+            transition: all 0.3s ease;
+            z-index: 1000;
+        }
+
+        .back-arrow:hover {
+            background: linear-gradient(145deg, #692CAB, #7c3aed);
+            transform: translateY(-2px) scale(1.05);
+        }
+
+        .back-arrow:hover {
+            margin-right: 0;
+        }
+
+        .left-branding {
+          position: absolute;
+          top: 20px;
+          left: 40px;
+          text-align: left;
+        }
+
+        .left-branding img {
+          width: 45px;
+        }
+
+        .left-branding h1 {
+          font-size: 16px;
+          font-weight: 700;
+          margin: 5px 0 0 0;
+          line-height: 1.2;
+        }
+
+        .error-modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.7);
+            z-index: 1000;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .error-content {
+            background-color: #692CAB;
+            padding: 25px;
+            border-radius: 10px;
+            width: 300px;
+            text-align: center;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+            position: relative;
+        }
+
+        .error-message {
+            color: white;
+            font-size: 16px;
+            margin-bottom: 20px;
+        }
+
+        .close-error {
+            background-color: #9D71E3;
+            color: white;
+            border: none;
+            padding: 8px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: background-color 0.3s;
+        }
+
+        .close-error:hover {
+            background-color: #7d4bc2;
+        }
+
     </style>
 </head>
 <body>
+
+<div class="left-branding">
+    <img src="/images/logo.png" alt="Logo reDoar">
+    <h1>
+        Associação <br>
+        Casa de Davi
+    </h1>
+</div>
 
 <nav class="navbar">
     <div class="navbar-menu">
@@ -155,19 +253,28 @@
         <img src="/images/logo.png" alt="Logo reDoar">
     </div>
 
-    <div class="login-field">
-        <i class="fas fa-envelope"></i>
-        <input type="email" placeholder="E-mail" required>
-    </div>
+    <form action="/login" method="post">
+        <div class="login-field">
+            <i class="fas fa-envelope"></i>
+            <input type="email" name="email" placeholder="E-mail" required>
+        </div>
 
-    <div class="login-field">
-        <i class="fas fa-lock"></i>
-        <input type="password" placeholder="Senha" required>
-    </div>
+        <div class="login-field">
+            <i class="fas fa-lock"></i>
+            <input type="password" name="senha" placeholder="Senha" required>
+        </div>
 
-    <button class="login-button">Entrar</button>
+        <button type="submit" class="login-button">Entrar</button>
+    </form>
+
     <a href="#" class="forgot-password">Esqueceu a senha?</a>
 </div>
 
+<a href="telainicial.html" class="back-arrow" title="Voltar para a tela inicial">
+    <i class="fas fa-arrow-left"></i>
+</a>
+
+
 </body>
 </html>
+
