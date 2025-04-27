@@ -7,20 +7,10 @@ O reDoar é um sistema de gestão criado por alunos do IMEPAC, do curso de Anál
 
 💾 Clicar na palavra "Login" (ainda no arquivo telaInicial.html) e ser redirecionado para a tela de Login (no arquivo login.html);
 
-💾 Quando tento logar com e-mail e senha que não existem, a pagina atualiza e limpa os campos (desejo ajustar isso para que seja feito o seguinte: se não tem cadastro/dados informados no banco, então aparece uma mensagem para o usuário informando que e-mail e/ou senha inválidos, e ao invés da tela atualizar e limpar os campos, o usuário poderá fechar a mensagem de alerta de dados inválidos e digitar os dados novamente);
-
-💾 Ao entrar com sucesso, sou direcionada para o arquivo telaLogado.html;
-
-💾 Se clicar na palavra do menu "Logout", o sistema redireciona para a telaInicial.html, mas não limpa o cachê, permitindo que o arquivo telaLogado.html seja acessado pela seta voltar disponível no navegador do Chrome; preciso ajustar isso para que não seja possível acessar a tela logado por meio do cache;
-
-💾 Ao clicar em 'cadastros', aparece a janelinha de selecionar o tipo de cadaatro, preciso ajustar as rotas, pois não está funcionando;
-
-
 ***
 ***NÂO ESTÁ FUNCIONANDO AINDA:***
 
 🔌 Botão voltar nao funcionando;
-
 🔌 Está dando erro no mapeamento de rotas para o funcionário e doador, na caixa de pop-up do botão "Cadastros"; 
 
 
