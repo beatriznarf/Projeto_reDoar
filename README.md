@@ -11,6 +11,7 @@ O reDoar é um sistema de gestão criado por alunos do IMEPAC, do curso de Anál
 ***NÂO ESTÁ FUNCIONANDO AINDA:***
 
 🔌 Botão voltar nao funcionando;
+
 🔌 Está dando erro no mapeamento de rotas para o funcionário e doador, na caixa de pop-up do botão "Cadastros"; 
 
 
