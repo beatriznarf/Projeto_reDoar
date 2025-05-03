@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="pt-br" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>reDoar - Associação Casa de Davi</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            background-color: #000;
+            color: white;
+            font-family: 'Poppins', sans-serif;
+            margin: 0;
+            padding: 0;
+            line-height: 1.6;
+        }
+
+        .navbar {
+            background-color: #692CAB; /* Roxo atualizado */
+            padding: 8px 40px;
+            display: flex;
+            justify-content: flex-end;
+            align-items: center;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+            border-radius: 0px 0px 0px 50px;
+            width: fit-content;
+            margin-left: auto;
+            margin-right: 0;
+            margin-bottom: 15px;
+        }
+
+
+        .navbar-button {
+            background: none;
+            border: none;
+            color: white;
+            font-weight: 600;
+            font-size: 16px;
+            font-family: 'Poppins', sans-serif;
+            padding: 5px 8px;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .navbar-button:hover {
+            background-color: rgba(255, 255, 255, 0.1);
+        }
+
+        .navbar-item {
+            color: white;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 16px;
+            transition: all 0.3s ease;
+            padding: 5px 8px;
+            border-radius: 5px;
+        }
+
+        .navbar-item:hover {
+            background-color: rgba(255, 255, 255, 0.1);
+        }
+
+        .main-section {
+            text-align: center;
+            padding: 50px 20px;
+        }
+
+        .logo-container img {
+            width: 100px;
+        }
+
+        .logo-container h1 {
+            font-size: 48px;
+            margin-top: 10px;
+            color: #692CAB; /* Roxo atualizado */
+            font-weight: 700;
+        }
+
+        .cards {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            margin-top: 40px;
+            gap: 20px;
+            align-items: stretch;
+        }
+
+        .card {
+            background-color: #1a1a1a;
+            border-radius: 10px;
+            padding: 25px 25px 25px 50px; /* Mais espaço à esquerda */
+            width: 300px;
+            box-shadow: 0 4px 10px rgba(255, 255, 255, 0.1);
+            display: flex;
+            flex-direction: column;
+            position: relative;
+        }
+
+        /* Bolinhas decorativas - 3 brancas e 1 roxa */
+        .card::before {
+            content: "•••";
+            color: #FFFFFF;
+            font-size: 24px;
+            position: absolute;
+            top: 0px;
+            left: 80px;
+            letter-spacing: 3px;
+        }
+        .card::after {
+            content: "•";
+            color: #ECBCFF;
+            font-size: 24px;
+            position: absolute;
+            top: 0px;
+            left: 120px;
+        }
+
+        .card-content {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            text-align: left;
+        }
+
+        .card h2 {
+            font-size: 20px;
+            color: #9D71E3;
+            font-weight: 600;
+            margin: 5px 0 15px 0; /* Ajuste de margem */
+            padding-left: 30px; /* Espaço para o bookmark */
+        }
+
+
+        .card p {
+            font-size: 15px;
+            margin: 15px 0;
+            color: white;
+            text-align: center;
+            flex-grow: 1;
+        }
+
+        .card button {
+            background-color: #692CAB;
+            border: none;
+            color: white;
+            padding: 10px 20px;
+            font-weight: 600;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: background 0.3s;
+            font-family: 'Poppins', sans-serif;
+            margin-top: auto;
+            align-self: center;
+            min-width: 160px;
+        }
+
+        .card button:hover {
+            background-color: #5A2493;
+        }
+
+
+        .bookmark-icon {
+            color: #9D71E3;
+            font-size: 70px; /* Tamanho do bookmark */
+            position: absolute;
+            top: -2px;
+            left: 15px;
+            z-index: 2;
+        }
+
+        .left-branding {
+            position: absolute;
+            top: 20px;
+            left: 40px;
+            text-align: left;
+        }
+
+        .left-branding img {
+            width: 45px;
+        }
+
+        .left-branding h1 {
+            font-size: 16px;
+            font-weight: 700;
+            margin: 5px 0 0 0;
+            line-height: 1.2;
+        }
+
+    </style>
+</head>
+<body>
+<div class="left-branding">
+    <img th:src="@{/logo.png}" alt="Logo reDoar">
+    <h1>
+        Associação <br>
+        Casa de Davi
+    </h1>
+</div>
+
+<nav class="navbar">
+    <div class="navbar-menu">
+        <button onclick="window.location.href='#'" class="navbar-button">Projetos</button>
+        <button onclick="window.location.href='#'" class="navbar-button">Contatos</button>
+        <button onclick="window.location.href='#'" class="navbar-button">Parcerias</button>
+        <button onclick="window.location.href='/login'" class="navbar-button" title="Acessar página de login">Login</button>
+    </div>
+</nav>
+
+<section class="main-section">
+    <div class="logo-container">
+        <img th:src="@{/logo.png}" alt="Logo reDoar" style="width: 250px;">
+    </div>
+
+    <div class="cards">
+        <div class="card">
+            <div class="card-content">
+                <h2><i class="fas fa-bookmark bookmark-icon"></i> Projeto "reDoar"</h2>
+                <p>"reDoar" é um sistema de gestão criado por alunos do IMEPAC para apoiar a Associação Casa de Davi, facilitando o controle de doações e auxiliando na organização das atividades da instituição.</p>
+                <button>Saiba mais +</button>
+            </div>
+        </div>
+
+        <div class="card">
+            <div class="card-content">
+                <h2><i class="fas fa-bookmark bookmark-icon"></i> Associação Casa de Davi</h2>
+                <p>A Associação Casa de Davi é uma instituição sem fins lucrativos fundada em 2014, na cidade de Araguari/MG, com foco no acolhimento e reinserção social de pessoas em situação de vulnerabilidade.</p>
+                <button>Sobre a Associação</button>
+            </div>
+        </div>
+
+        <div class="card">
+            <div class="card-content">
+                <h2><i class="fas fa-bookmark bookmark-icon"></i> Doe e faça a diferença!</h2>
+                <p>Sua contribuição fortalece o trabalho da Associação Casa de Davi, permitindo o acolhimento, cuidado e reinserção social de pessoas em situação de vulnerabilidade.</p>
+                <button>Transforme vidas</button>
+            </div>
+        </div>
+    </div>
+</section>
+
+</body>
+</html>
