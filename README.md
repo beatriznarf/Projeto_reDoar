@@ -5,7 +5,7 @@ O reDoar é um sistema de gestão criado por alunos do IMEPAC, do curso de Anál
 ***
 📂 **Funcionalidades disponíveis até o presente momento, o que precisa ser feito e o que precisa ser corrigido:**
 
-💾 Clicar na palavra "Login" (ainda no arquivo telaInicial.html) e ser redirecionado para a tela de Login (no arquivo login.html);
+💾 Projeto sendo reestruturado, não há nenhuma funcionalidade no momento..
 
 ***
 ***NÂO ESTÁ FUNCIONANDO AINDA:***
