@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="pt-br" xmlns:th="http://www.w3.org/1999/xhtml">
+<html lang="pt-br" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <title>Login - reDoar</title>
@@ -104,12 +104,14 @@
         }
 
         .login-field input::placeholder {
-            color: rgba(255, 255, 255, 0.7);
+            color: white;
+            opacity: 1;
         }
 
         .login-button {
             width: 320px;
             padding: 12px;
+            margin: 0 auto 25px auto;
             border: 2px solid #9D71E3;
             border-radius: 30px;
             background-color: transparent;
@@ -118,6 +120,7 @@
             font-weight: bold;
             cursor: pointer;
             transition: background-color 0.3s, color 0.3s;
+            display: block;
         }
 
         .login-button:hover {
@@ -172,14 +175,13 @@
         }
 
         .left-branding img {
-            width: 100px;
+            width: 45px;
         }
 
         .left-branding h1 {
-            font-size: 13px;
+            font-size: 16px;
             font-weight: 700;
-            margin-top: -20px;
-            margin-left: 10px;
+            margin: 5px 0 0 0;
             line-height: 1.2;
         }
 
@@ -250,10 +252,14 @@
 
 <div class="main-section">
     <div class="logo-container">
-        <img th:src="@{/logo.png}" alt="Logo reDoar" style="width: 450px; margin-bottom: -80px">
+        <img th:src="@{/logo.png}" alt="Logo reDoar" style="width: 150px;">
     </div>
 
     <form action="/login" method="post">
+        <div th:if="${param.error}" class="error-message" style="color: red; margin-bottom: 15px;">
+            E-mail ou senha inválidos!
+        </div>
+
         <div class="login-field">
             <i class="fas fa-envelope"></i>
             <input type="email" name="email" placeholder="E-mail" required>
@@ -265,15 +271,13 @@
         </div>
 
         <button type="submit" class="login-button">Entrar</button>
+        <a href="#" class="forgot-password">Esqueceu a senha?</a>
     </form>
-
-    <a href="#" class="forgot-password">Esqueceu a senha?</a>
 </div>
 
-<a href="telaInicial.html" class="back-arrow" title="Voltar para a tela inicial">
+<a th:href="@{/telainicial}" class="back-arrow" title="Voltar para a tela inicial">
     <i class="fas fa-arrow-left"></i>
 </a>
-
 
 </body>
 </html>

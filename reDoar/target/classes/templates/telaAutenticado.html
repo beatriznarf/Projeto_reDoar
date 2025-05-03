@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="pt-br" xmlns:th="http://www.w3.org/1999/xhtml">
+<html lang="pt-br" xmlns:th="http://www.thymeleaf.org">
 <head>
   <meta charset="UTF-8">
   <title> Sistema - reDoar</title>
@@ -181,7 +181,6 @@
 
 <div class="center-logo">
   <img th:src="@{/logo.png}" alt="Logo reDoar" style="width: 250px;">
-  <h2>reDoar</h2>
 </div>
 
 <div class="menu-options">
@@ -230,16 +229,11 @@
 
     if (selectedOption) {
       if (selectedOption.value === 'doador') {
-        window.location.href = 'cadastroDoador';
-        return; // Sai da função após redirecionar
+        window.location.href = '/Doador'; // Maiúsculo e sem prefixo
       } else if (selectedOption.value === 'funcionario') {
-        window.location.href = 'cadastroFuncionario';
-
-        return; // Sai da função após redirecionar
+        window.location.href = '/Funcionario'; // Maiúsculo e sem prefixo
       }
     }
-
-    // Fechar o modal apenas se nenhuma opção foi selecionada
     modal.style.display = 'none';
   });
 

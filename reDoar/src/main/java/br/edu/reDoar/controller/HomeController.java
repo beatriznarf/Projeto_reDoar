@@ -7,19 +7,23 @@ import org.springframework.web.bind.annotation.GetMapping;
 public class HomeController {
 
     @GetMapping({"/", "/telainicial"})
-    public String telaInicial() { return "telainicial"; // Retorna o template telainicial.html
+    public String telaInicial() {
+        return "telainicial";
     }
 
     @GetMapping("/SaibaMais")
-    public String telaSaibaMais() { return "telaSaibaMais";
+    public String telaSaibaMais() {
+        return "telaSaibaMais";
     }
 
     @GetMapping("/SobreAssociacao")
-    public String telaSobreAssociacao() { return "telaSobreAssociacao";
+    public String telaSobreAssociacao() {
+        return "telaSobreAssociacao";
     }
 
     @GetMapping("/TransformeVidas")
-    public String telaTransformeVidas() { return "telaTransformeVidas";
+    public String telaTransformeVidas() {
+        return "telaTransformeVidas";
     }
 
 }
