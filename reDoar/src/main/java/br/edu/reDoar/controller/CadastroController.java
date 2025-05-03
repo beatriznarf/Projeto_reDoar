@@ -1,5 +1,6 @@
 package br.edu.reDoar.controller;
 
+import ch.qos.logback.core.model.Model;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 
@@ -9,7 +10,7 @@ public class CadastroController {
 
     @GetMapping("/Doador")
     public String cadastroDoador() {
-        return "cadastroDoador"; // Retorna apenas o HTML estático
+        return "cadastroDoadorPF";
     }
 
     @GetMapping("/Funcionario")

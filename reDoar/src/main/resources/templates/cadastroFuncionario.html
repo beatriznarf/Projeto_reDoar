@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="pt-br" xmlns:th="http://www.w3.org/1999/xhtml">
+<html lang="pt-br">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -61,17 +61,15 @@
         }
 
         .left-branding img {
-            width: 45px;
-            display: block;
-            margin-bottom: 5px;
+            width: 100px;
         }
 
         .left-branding h1 {
-            font-size: 16px;
+            font-size: 13px;
             font-weight: 700;
-            margin: 0;
+            margin-top: -20px;
+            margin-left: 10px;
             line-height: 1.2;
-            text-align: left;
         }
 
         .left-panel {
@@ -176,18 +174,38 @@
 
         .right-panel img {
             width: 80px;
-            margin-bottom: 20px;
         }
 
-        .right-panel h2 {
-            font-size: 32px;
-            margin-bottom: 10px;
-        }
 
         .right-panel p {
             font-size: 14px;
             line-height: 1.6;
             max-width: 400px;
+            margin-top: -10px;
+        }
+
+        /* Estilo da seta de voltar (adicionado) */
+        .back-arrow {
+            position: fixed;
+            bottom: 25px;
+            left: 25px;
+            background: linear-gradient(145deg, #7c3aed, #9D71E3);
+            color: white;
+            padding: 14px 16px;
+            border-radius: 50px;
+            font-size: 18px;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 6px 12px rgba(0,0,0,0.25);
+            transition: all 0.3s ease;
+            z-index: 1000;
+        }
+
+        .back-arrow:hover {
+            background: linear-gradient(145deg, #692CAB, #7c3aed);
+            transform: translateY(-2px) scale(1.05);
         }
     </style>
 </head>
@@ -203,39 +221,37 @@
 <div class="container-principal">
     <div class="left-panel">
         <div class="left-branding">
-            <img th:src="@{/logo-02.png}" alt="Logo reDoar" style="width: 150px;">
+            <img src="/logo-02.png" alt="Logo reDoar">
             <h1>Associação<br>Casa de Davi</h1>
         </div>
 
         <h2>Cadastro de Funcionários</h2>
-        <form th:action="@{/funcionarios/salvar}" th:object="${funcionario}" method="post">
+        <form>
             <div class="form-group">
                 <i class="fas fa-user"></i>
-                <input type="text" th:field="*{nome}" placeholder="Nome completo" required>
+                <input type="text" placeholder="Nome completo" required>
             </div>
             <div class="form-group">
                 <i class="fas fa-id-card"></i>
-                <input type="text" th:field="*{cpf}" placeholder="CPF" required>
+                <input type="text" placeholder="CPF" required>
             </div>
             <div class="form-group">
                 <i class="fas fa-envelope"></i>
-                <input type="email" th:field="*{email}" placeholder="E-mail" required>
+                <input type="email" placeholder="E-mail" required>
             </div>
             <div class="form-group">
                 <i class="fas fa-lock"></i>
-                <input type="password" th:field="*{senha}" placeholder="Senha" required>
+                <input type="password" placeholder="Senha" required>
             </div>
             <div class="form-group">
                 <i class="fas fa-briefcase"></i>
-                <select th:field="*{cargo}" required>
+                <select required>
                     <option value="" disabled selected>Selecione o cargo</option>
                     <option value="Administrador">Administrador</option>
-                    <option value="Coordenador">Coordenador</option>
-                    <option value="Assistente">Assistente</option>
-                    <option value="Voluntário">Voluntário</option>
+                    <option value="Coordenador">Funcionário</option>
                 </select>
             </div>
-            <button type="submit" class="submit-btn">Cadastrar</button>
+            <button type="button" class="submit-btn">Cadastrar</button>
         </form>
 
         <div class="dots">
@@ -244,13 +260,17 @@
     </div>
 
     <div class="right-panel">
-        <img th:src="@{/logo.png}" alt="Logo reDoar" style="width: 150px;">
-        <h2>reDoar</h2>
+        <img src="/logo.png" alt="Logo reDoar" style="width: 450px; margin-bottom: -50px">
         <p>
             Os dados cadastrais são de uso restrito e <strong>confidencial</strong>. Como funcionário autorizado, você é responsável pela <strong>segurança</strong> das informações acessadas neste sistema.
         </p>
     </div>
 </div>
+
+
+<a href="/telaAutenticado" class="back-arrow" title="Voltar">
+    <i class="fas fa-arrow-left"></i>
+</a>
 
 </body>
 </html>

@@ -53,13 +53,14 @@
     }
 
     .left-branding img {
-      width: 45px;
+      width: 100px;
     }
 
     .left-branding h1 {
-      font-size: 16px;
+      font-size: 13px;
       font-weight: 700;
-      margin: 5px 0 0 0;
+      margin-top: -20px;
+      margin-left: 10px;
       line-height: 1.2;
     }
 
@@ -165,7 +166,7 @@
 <body>
 
 <div class="left-branding">
-  <img src="/images/logo.png" alt="Logo reDoar">
+  <img src="/logo.png" alt="Logo reDoar">
   <h1>
     Associação <br>
     Casa de Davi
@@ -180,7 +181,7 @@
 </nav>
 
 <div class="center-logo">
-  <img th:src="@{/logo.png}" alt="Logo reDoar" style="width: 250px;">
+  <img th:src="@{/logo.png}" alt="Logo reDoar" style="width: 450px; margin-bottom: -80px">
 </div>
 
 <div class="menu-options">
@@ -212,32 +213,30 @@
 </div>
 
 <script>
-  // Obter elementos do DOM
   const cadastrosBtn = document.getElementById('cadastrosBtn');
   const modal = document.getElementById('cadastroModal');
   const okBtn = document.getElementById('okBtn');
 
-  // Quando clicar no botão Cadastros, mostrar o modal
   cadastrosBtn.addEventListener('click', function(e) {
-    e.preventDefault(); // Previne comportamento padrão de link
+    e.preventDefault();
     modal.style.display = 'block';
   });
 
-  // Quando clicar no botão OK do modal
+
   okBtn.addEventListener('click', function() {
     const selectedOption = document.querySelector('input[name="tipoCadastro"]:checked');
 
     if (selectedOption) {
       if (selectedOption.value === 'doador') {
-        window.location.href = '/Doador'; // Maiúsculo e sem prefixo
+        window.location.href = '/Doador';
       } else if (selectedOption.value === 'funcionario') {
-        window.location.href = '/Funcionario'; // Maiúsculo e sem prefixo
+        window.location.href = '/Funcionario';
       }
     }
     modal.style.display = 'none';
   });
 
-  // Fechar o modal se clicar fora dele
+
   window.addEventListener('click', function(event) {
     if (event.target === modal) {
       modal.style.display = 'none';
