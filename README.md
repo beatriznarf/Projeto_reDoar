@@ -2,6 +2,13 @@
 
 O reDoar é um sistema de gestão criado por alunos do IMEPAC, do curso de Análise e Desenvolvimento de sistemas, para apoiar a Associação Casa de Davi, facilitando o controle de doações e auxiliando na organização das atividades da instituição.
 
+🐘 Banco de dados: postgresql;
+
+🐘 Usuário: postgres;
+
+🐘 Senha: 1234;
+
+
 ***
 📂 **Funcionalidades disponíveis até o presente momento, o que precisa ser feito e o que precisa ser corrigido:**
 
