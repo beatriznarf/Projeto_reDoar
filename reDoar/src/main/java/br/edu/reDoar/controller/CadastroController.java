@@ -8,13 +8,18 @@ import org.springframework.web.bind.annotation.GetMapping;
 public class CadastroController {
 
 
-    @GetMapping("/Doador")
-    public String cadastroDoador() {
-        return "cadastroDoadorPF";
-    }
-
     @GetMapping("/Funcionario")
     public String cadastroFuncionario() {
         return "cadastroFuncionario";
     }
+    @GetMapping("/DoadorPF")
+    public String cadastroDoadorPF() {
+        return "cadastroDoadorPF";
+    }
+
+    @GetMapping("/DoadorPJ")
+    public String cadastroDoadorPJ() {
+        return "cadastroDoadorCNPJ";
+    }
+
 }

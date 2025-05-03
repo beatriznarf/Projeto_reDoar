@@ -407,6 +407,29 @@
                 top: 15px;
             }
         }
+
+        .back-arrow {
+            position: fixed;
+            bottom: 25px;
+            left: 25px;
+            background: linear-gradient(145deg, #7c3aed, #9D71E3);
+            color: white;
+            padding: 14px 16px;
+            border-radius: 50px;
+            font-size: 18px;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 6px 12px rgba(0,0,0,0.25);
+            transition: all 0.3s ease;
+            z-index: 1000;
+        }
+
+        .back-arrow:hover {
+            background: linear-gradient(145deg, #692CAB, #7c3aed);
+            transform: translateY(-2px) scale(1.05);
+        }
     </style>
 </head>
 <body>
@@ -526,13 +549,17 @@
     <div class="right-panel">
         <div class="right-panel-content">
             <img th:src="@{/logo.png}" alt="Logo reDoar" style="width: 150px;">
-            <h2>reDoar</h2>
             <p>
                 Os dados fornecidos são confidenciais e serão utilizados exclusivamente para fins de gestão das doações e contato pela Associação Casa de Davi. Comprometemo-nos a proteger suas informações de acordo com a Lei Geral de Proteção de Dados (LGPD).
             </p>
         </div>
     </div>
+
 </div>
+
+<a href="/telaAutenticado" class="back-arrow" title="Voltar">
+    <i class="fas fa-arrow-left"></i>
+</a>
 
 </body>
 </html>

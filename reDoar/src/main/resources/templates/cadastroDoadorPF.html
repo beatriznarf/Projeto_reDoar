@@ -321,8 +321,8 @@
 
         .back-arrow {
             position: fixed;
-            bottom: 30px;
-            left: 30px;
+            bottom: 25px;
+            left: 25px;
             background: linear-gradient(145deg, #7c3aed, #9D71E3);
             color: white;
             padding: 14px 16px;
@@ -335,15 +335,13 @@
             box-shadow: 0 6px 12px rgba(0,0,0,0.25);
             transition: all 0.3s ease;
             z-index: 1000;
-            cursor: pointer;
-            border: none;
-            outline: none;
         }
 
         .back-arrow:hover {
             background: linear-gradient(145deg, #692CAB, #7c3aed);
             transform: translateY(-2px) scale(1.05);
         }
+
     </style>
 </head>
 <body>
@@ -458,10 +456,10 @@
         </div>
     </div>
 
-    <button onclick="window.location.href='/telaAutenticado'" class="back-arrow" title="Voltar">
-        <i class="fas fa-arrow-left"></i>
-    </button>
 </div>
 
+<a href="/telaAutenticado" class="back-arrow" title="Voltar">
+    <i class="fas fa-arrow-left"></i>
+</a>
 </body>
 </html>

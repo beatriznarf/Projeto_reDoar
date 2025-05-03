@@ -187,7 +187,7 @@
 <div class="menu-options">
   <a id="cadastrosBtn">Cadastros</a>
   <a href="#">Doações</a>
-  <a href="#">Consultas</a>
+  <a href="#" id="consultasBtn">Consultas</a>
   <a href="#">Relatórios</a>
 </div>
 
@@ -202,17 +202,27 @@
     </div>
 
     <div class="radio-option">
-      <input type="radio" id="doador" name="tipoCadastro" value="doador">
-      <label for="doador">Doador | Doação</label>
+      <input type="radio" id="doadorPF" name="tipoCadastro" value="doadorPF">
+      <label for="doadorPF">Doador Pessoa Física</label>
     </div>
 
-
+    <div class="radio-option">
+      <input type="radio" id="doadorPJ" name="tipoCadastro" value="doadorPJ">
+      <label for="doadorPJ">Doador Pessoa Jurídica</label>
+    </div>
 
     <button class="modal-button" id="okBtn">OK</button>
   </div>
 </div>
 
 <script>
+
+    document.getElementById('consultasBtn').addEventListener('click', function(e) {
+    e.preventDefault();
+    window.location.href = '/Consultas';
+  });
+
+
   const cadastrosBtn = document.getElementById('cadastrosBtn');
   const modal = document.getElementById('cadastroModal');
   const okBtn = document.getElementById('okBtn');
@@ -227,20 +237,15 @@
     const selectedOption = document.querySelector('input[name="tipoCadastro"]:checked');
 
     if (selectedOption) {
-      if (selectedOption.value === 'doador') {
-        window.location.href = '/Doador';
+      if (selectedOption.value === 'doadorPF') {
+        window.location.href = '/DoadorPF';
+      } else if (selectedOption.value === 'doadorPJ') {
+        window.location.href = '/DoadorPJ';
       } else if (selectedOption.value === 'funcionario') {
         window.location.href = '/Funcionario';
       }
     }
     modal.style.display = 'none';
-  });
-
-
-  window.addEventListener('click', function(event) {
-    if (event.target === modal) {
-      modal.style.display = 'none';
-    }
   });
 </script>
 

@@ -173,6 +173,30 @@
         .panel-generate-btn:hover {
             background-color: #ddd;
         }
+        .back-arrow {
+            position: fixed;
+            bottom: 25px;
+            left: 25px;
+            background: linear-gradient(145deg, #7c3aed, #9D71E3);
+            color: white;
+            padding: 14px 16px;
+            border-radius: 50px;
+            font-size: 18px;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 6px 12px rgba(0,0,0,0.25);
+            transition: all 0.3s ease;
+            z-index: 1000;
+        }
+
+        .back-arrow:hover {
+            background: linear-gradient(145deg, #692CAB, #7c3aed);
+            transform: translateY(-2px) scale(1.05);
+        }
+    </style>
+
     </style>
 </head>
 <body>
@@ -213,10 +237,15 @@
     </div>
 
     <div class="right-panel">
-        <p class="panel-content">as consultas serão mostradas nessa parte</p>
-        <button class="panel-generate-btn">Gerar Relatório</button>
+        <p class="panel-content"> ... </p>
+        <button class="panel-generate-btn"> Gerar Relatório </button>
     </div>
+
 </div>
+
+<a href="/telaAutenticado" class="back-arrow" title="Voltar">
+    <i class="fas fa-arrow-left"></i>
+</a>
 
 </body>
 </html>
