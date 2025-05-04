@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title> reDoar - Doadores (CNPJ) </title>
+    <title>reDoar - Cadastro de Doadores Pessoa Jurídica</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <style>
         :root {
@@ -126,9 +126,9 @@
             background-color: rgba(255, 255, 255, 0.1);
             border: 2px solid rgba(255, 255, 255, 0.3);
             border-radius: 30px;
-            padding: 6px 10px;
+            padding: 14px 20px;
             margin-bottom: 0;
-            width: 70%;
+            width: 100%;
             transition: all 0.3s ease;
         }
 
@@ -350,7 +350,6 @@
             filter: drop-shadow(0 4px 8px rgba(0,0,0,0.3));
         }
 
-
         .right-panel p {
             font-size: 15px;
             line-height: 1.7;
@@ -359,45 +358,25 @@
             margin-bottom: 200px;
         }
 
-        @media (max-width: 1200px) {
-            .form-container {
-                grid-template-columns: 1fr;
-            }
-
-            .form-group.full-width, .partner-toggle {
-                grid-column: span 1;
-            }
-
-            .terms-container, .submit-btn {
-                grid-column: span 1;
-            }
+        .alert {
+            padding: 15px;
+            margin-bottom: 20px;
+            border: 1px solid transparent;
+            border-radius: 4px;
+            grid-column: span 2;
+            text-align: center;
         }
 
-        @media (max-width: 768px) {
-            .container-principal {
-                flex-direction: column;
-                height: auto;
-            }
+        .alert-success {
+            color: #3c763d;
+            background-color: #dff0d8;
+            border-color: #d6e9c6;
+        }
 
-            .left-panel, .right-panel {
-                width: 100%;
-                border-radius: 0;
-                padding: 40px 30px;
-            }
-
-            .left-panel {
-                border-bottom-right-radius: 40px;
-            }
-
-            .navbar {
-                padding: 10px 30px;
-                border-radius: 0 0 0 40px;
-            }
-
-            .left-branding {
-                left: 30px;
-                top: 15px;
-            }
+        .alert-danger {
+            color: #a94442;
+            background-color: #f2dede;
+            border-color: #ebccd1;
         }
 
         .back-arrow {
@@ -433,8 +412,6 @@
     <button onclick="window.location.href='/telainicial'" class="navbar-button">Logout</button>
 </nav>
 
-
-
 <div class="container-principal">
     <div class="left-panel">
         <div class="left-branding">
@@ -442,112 +419,114 @@
             <h1>Associação<br>Casa de Davi</h1>
         </div>
 
+        <h2>Cadastro de Doadores - Pessoa Jurídica</h2>
 
-        <h2>Cadastro de Doadores</h2>
-        <div class="form-container">
-            <div class="form-group">
-                <i class="fas fa-building"></i>
-                <input type="text" placeholder="RazãZo Social" required>
-            </div>
+        <!-- Mensagens de erro/sucesso -->
+        <div th:if="${success}" class="alert alert-success" th:text="${success}"></div>
+        <div th:if="${error}" class="alert alert-danger" th:text="${error}"></div>
 
-            <div class="form-group">
-                <i class="fas fa-id-card"></i>
-                <input type="text" placeholder="CNPJ" required>
-            </div>
+        <form th:action="@{/salvarDoadorPJ}" method="post">
+            <div class="form-container">
+                <div class="form-group">
+                    <i class="fas fa-building"></i>
+                    <input type="text" name="razaoSocial" placeholder="Razão Social" required>
+                </div>
 
-            <div class="form-group">
-                <i class="fas fa-envelope"></i>
-                <input type="email" placeholder="E-mail corporativo" required>
-            </div>
+                <div class="form-group">
+                    <i class="fas fa-id-card"></i>
+                    <input type="text" name="cnpj" placeholder="CNPJ" required>
+                </div>
 
-            <div class="form-group">
-                <i class="fas fa-phone"></i>
-                <input type="tel" placeholder="Telefone comercial" required>
-            </div>
+                <div class="form-group">
+                    <i class="fas fa-envelope"></i>
+                    <input type="email" name="email" placeholder="E-mail corporativo" required>
+                </div>
 
+                <div class="form-group">
+                    <i class="fas fa-phone"></i>
+                    <input type="tel" name="telefone" placeholder="Telefone comercial" required>
+                </div>
 
-            <div class="form-group">
-                <i class="fas fa-user-tie"></i>
-                <input type="text" placeholder="Responsável" required>
-            </div>
+                <!-- Coluna 2 -->
+                <div class="form-group">
+                    <i class="fas fa-user-tie"></i>
+                    <input type="text" name="responsavel" placeholder="Responsável" required>
+                </div>
 
-            <div class="form-group">
-                <i class="fas fa-map-marker-alt"></i>
-                <input type="text" placeholder="CEP" required>
-            </div>
+                <div class="form-group">
+                    <i class="fas fa-map-marker-alt"></i>
+                    <input type="text" name="cep" placeholder="CEP" required>
+                </div>
 
-            <div class="form-group full-width">
-                <i class="fas fa-map-marker-alt"></i>
-                <input type="text" placeholder="Endereço" required>
-            </div>
+                <div class="form-group full-width">
+                    <i class="fas fa-map-marker-alt"></i>
+                    <input type="text" name="endereco" placeholder="Endereço" required>
+                </div>
 
+                <div class="form-group">
+                    <i class="fas fa-city"></i>
+                    <input type="text" name="cidade" placeholder="Cidade" required>
+                </div>
 
-            <div class="form-group">
-                <i class="fas fa-city"></i>
-                <input type="text" placeholder="Cidade" required>
-            </div>
+                <div class="form-group">
+                    <i class="fas fa-flag"></i>
+                    <select name="estado" required>
+                        <option value="" disabled selected>Estado</option>
+                        <option value="AC">Acre</option>
+                        <option value="AL">Alagoas</option>
+                        <option value="AP">Amapá</option>
+                        <option value="AM">Amazonas</option>
+                        <option value="BA">Bahia</option>
+                        <option value="CE">Ceará</option>
+                        <option value="DF">Distrito Federal</option>
+                        <option value="ES">Espírito Santo</option>
+                        <option value="GO">Goiás</option>
+                        <option value="MA">Maranhão</option>
+                        <option value="MT">Mato Grosso</option>
+                        <option value="MS">Mato Grosso do Sul</option>
+                        <option value="MG">Minas Gerais</option>
+                        <option value="PA">Pará</option>
+                        <option value="PB">Paraíba</option>
+                        <option value="PR">Paraná</option>
+                        <option value="PE">Pernambuco</option>
+                        <option value="PI">Piauí</option>
+                        <option value="RJ">Rio de Janeiro</option>
+                        <option value="RN">Rio Grande do Norte</option>
+                        <option value="RS">Rio Grande do Sul</option>
+                        <option value="RO">Rondônia</option>
+                        <option value="RR">Roraima</option>
+                        <option value="SC">Santa Catarina</option>
+                        <option value="SP">São Paulo</option>
+                        <option value="SE">Sergipe</option>
+                        <option value="TO">Tocantins</option>
+                    </select>
+                </div>
 
-
-            <div class="form-group">
-                <i class="fas fa-flag"></i>
-                <select required>
-                    <option value="" disabled selected>Estado</option>
-                    <option value="AC">Acre</option>
-                    <option value="AL">Alagoas</option>
-                    <option value="AP">Amapá</option>
-                    <option value="AM">Amazonas</option>
-                    <option value="BA">Bahia</option>
-                    <option value="CE">Ceará</option>
-                    <option value="DF">Distrito Federal</option>
-                    <option value="ES">Espírito Santo</option>
-                    <option value="GO">Goiás</option>
-                    <option value="MA">Maranhão</option>
-                    <option value="MT">Mato Grosso</option>
-                    <option value="MS">Mato Grosso do Sul</option>
-                    <option value="MG">Minas Gerais</option>
-                    <option value="PA">Pará</option>
-                    <option value="PB">Paraíba</option>
-                    <option value="PR">Paraná</option>
-                    <option value="PE">Pernambuco</option>
-                    <option value="PI">Piauí</option>
-                    <option value="RJ">Rio de Janeiro</option>
-                    <option value="RN">Rio Grande do Norte</option>
-                    <option value="RS">Rio Grande do Sul</option>
-                    <option value="RO">Rondônia</option>
-                    <option value="RR">Roraima</option>
-                    <option value="SC">Santa Catarina</option>
-                    <option value="SP">São Paulo</option>
-                    <option value="SE">Sergipe</option>
-                    <option value="TO">Tocantins</option>
-                </select>
-            </div>
-
-
-            <div class="partner-toggle">
-                <label>
-                    <i class="fas fa-handshake"></i>
-                    É parceiro da associação?
-                    <span class="toggle-switch" style="margin-left: auto;">
-                        <input type="checkbox">
-                        <span class="slider"></span>
-                    </span>
-                </label>
-            </div>
-
-
-
-
-            <div class="terms-container">
-                <div class="terms-checkbox">
-                    <input type="checkbox" id="terms" required>
-                    <label for="terms">
-                        Li e concordo com os <a href="#">Termos de Uso</a> e <a href="#">Política de Privacidade</a>, autorizando o tratamento dos meus dados conforme a LGPD.
+                <!-- Toggle de Parceiro -->
+                <div class="partner-toggle">
+                    <label>
+                        <i class="fas fa-handshake"></i>
+                        É parceiro da associação?
+                        <span class="toggle-switch" style="margin-left: auto;">
+                            <input type="checkbox" name="parceiro">
+                            <span class="slider"></span>
+                        </span>
                     </label>
                 </div>
-            </div>
 
-            <button type="button" class="submit-btn">Cadastrar</button>
-        </div>
+                <!-- Termos e Botão -->
+                <div class="terms-container">
+                    <div class="terms-checkbox">
+                        <input type="checkbox" id="terms" required>
+                        <label for="terms">
+                            Li e concordo com os <a href="#">Termos de Uso</a> e <a href="#">Política de Privacidade</a>, autorizando o tratamento dos meus dados conforme a LGPD.
+                        </label>
+                    </div>
+                </div>
+
+                <button type="submit" class="submit-btn">Cadastrar</button>
+            </div>
+        </form>
     </div>
 
     <div class="right-panel">
@@ -558,12 +537,10 @@
             </p>
         </div>
     </div>
-
 </div>
 
 <a href="/telaAutenticado" class="back-arrow" title="Voltar">
     <i class="fas fa-arrow-left"></i>
 </a>
-
 </body>
 </html>
