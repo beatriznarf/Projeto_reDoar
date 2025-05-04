@@ -26,5 +26,20 @@ public class HomeController {
         return "telaTransformeVidas";
     }
 
+    @GetMapping("/Projetos")
+    public String telaProjetos() {
+        return "telaProjetos";
+    }
+
+    @GetMapping("/Contatos")
+    public String telaContatos() {
+        return "telaContatos";
+    }
+
+    @GetMapping("/Parcerias")
+    public String telaParcerias() {
+        return "telaParcerias";
+    }
+
 }
 
