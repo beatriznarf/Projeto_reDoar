@@ -14,7 +14,8 @@ public class Usuario {
     private String senha;
     private String cargo;
 
-    // Getters e Setters
+
+
     public Long getId() {
         return id;
     }

@@ -51,7 +51,7 @@ public class CadastroController {
                     emailExiste && cpfExiste ? "email_cpf_existentes" :
                             emailExiste ? "email_existente" : "cpf_existente");
 
-            // Manter os valores preenchidos
+
             redirectAttributes.addFlashAttribute("nome", nome);
             redirectAttributes.addFlashAttribute("cpf", cpf);
             redirectAttributes.addFlashAttribute("email", email);
@@ -59,7 +59,7 @@ public class CadastroController {
             return "redirect:/Funcionario";
         }
 
-        // Criar novo usuário/funcionário
+
         Usuario usuario = new Usuario();
         usuario.setNome(nome);
         usuario.setCpf(cpf);
@@ -67,7 +67,7 @@ public class CadastroController {
         usuario.setSenha(senha);
         usuario.setCargo(cargo);
 
-        // Salvar no banco de dados
+
         usuarioRepository.save(usuario);
 
         redirectAttributes.addFlashAttribute("success", true);
