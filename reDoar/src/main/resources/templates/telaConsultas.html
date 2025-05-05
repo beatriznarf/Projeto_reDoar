@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="pt-br" xmlns:th="http://www.w3.org/1999/xhtml">
+<html lang="pt-br" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <title>reDoar - Consultas</title>
@@ -145,19 +145,48 @@
             flex: 1;
             position: relative;
             display: flex;
-            justify-content: center;
-            align-items: center;
+            flex-direction: column;
             padding: 40px;
+            overflow-y: auto;
         }
 
-        .panel-content {
+        .result-container {
+            flex: 1;
             color: white;
-            font-size: 14px;
+        }
+
+        .no-results {
+            text-align: center;
             font-style: italic;
+            margin-top: 50px;
+            color: #ccc;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 20px;
+        }
+
+        th, td {
+            padding: 12px 15px;
+            text-align: left;
+            border-bottom: 1px solid #444;
+        }
+
+        th {
+            background-color: #692CAB;
+            color: white;
+            position: sticky;
+            top: 0;
+        }
+
+        tr:hover {
+            background-color: rgba(105, 44, 171, 0.1);
         }
 
         .panel-generate-btn {
-            position: absolute;
+            position: fixed;
             bottom: 20px;
             right: 20px;
             background-color: white;
@@ -173,6 +202,7 @@
         .panel-generate-btn:hover {
             background-color: #ddd;
         }
+
         .back-arrow {
             position: fixed;
             bottom: 25px;
@@ -195,8 +225,12 @@
             background: linear-gradient(145deg, #692CAB, #7c3aed);
             transform: translateY(-2px) scale(1.05);
         }
-    </style>
 
+        .periodo-consulta {
+            margin-bottom: 20px;
+            font-size: 18px;
+            color: #A370F0;
+        }
     </style>
 </head>
 <body>
@@ -215,21 +249,25 @@
             <h2>Associação<br>Casa de Davi</h2>
         </div>
 
-        <div class="panel-inputs">
-            <div class="input-wrapper">
-                <i class="fas fa-calendar-alt"></i>
-                <input type="text" placeholder="__/__/____">
+        <form id="consultaForm" method="post">
+            <div class="panel-inputs">
+                <div class="input-wrapper">
+                    <i class="fas fa-calendar-alt"></i>
+                    <input type="text" name="dataInicio" placeholder="dd/MM/yyyy" required
+                           pattern="\d{2}/\d{2}/\d{4}" title="Digite a data no formato dd/MM/yyyy">
+                </div>
+                <div class="input-wrapper">
+                    <i class="fas fa-calendar-alt"></i>
+                    <input type="text" name="dataFim" placeholder="dd/MM/yyyy" required
+                           pattern="\d{2}/\d{2}/\d{4}" title="Digite a data no formato dd/MM/yyyy">
+                </div>
             </div>
-            <div class="input-wrapper">
-                <i class="fas fa-calendar-alt"></i>
-                <input type="text" placeholder="__/__/____">
-            </div>
-        </div>
 
-        <button class="panel-button">Doações</button>
-        <button class="panel-button">Doadores</button>
-        <button class="panel-button">Parceiros</button>
-        <button class="panel-button">Funcionários</button>
+            <button type="submit" formaction="/consultarDoadores" class="panel-button">Doadores</button>
+            <button type="submit" formaction="/consultarFuncionarios" class="panel-button">Funcionários</button>
+            <button class="panel-button">Doações</button>
+            <button class="panel-button">Parceiros</button>
+        </form>
 
         <div class="panel-dots">
             <span></span><span></span><span></span><span></span>
@@ -237,10 +275,86 @@
     </div>
 
     <div class="right-panel">
-        <p class="panel-content"> ... </p>
-        <button class="panel-generate-btn"> Gerar Relatório </button>
-    </div>
+        <div class="result-container">
+            <!-- Resultados de Funcionários -->
+            <div th:if="${tipoConsulta == 'funcionarios'}">
+                <h3 class="periodo-consulta">Funcionários cadastrados:
+                    <span th:text="${dataInicio}"></span>  <span th:text="${dataFim}"></span>
+                </h3>
 
+
+
+                <div th:if="${funcionarios == null or funcionarios.isEmpty()}" class="no-results">
+                    <i class="fas fa-info-circle" style="font-size: 24px; margin-bottom: 10px;"></i>
+                    <p>Nenhum funcionário encontrado no período especificado.</p>
+                </div>
+
+                <table th:if="${funcionarios != null and !funcionarios.isEmpty()}" border="1">
+                    <thead>
+                    <tr>
+                        <th>Nome</th>
+                        <th>CPF</th>
+                        <th>Email</th>
+                        <th>Cargo</th>
+                        <th>Data Cadastro</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr th:each="funcionario : ${funcionarios}">
+                        <td th:text="${funcionario.nome}"></td>
+                        <td th:text="${funcionario.cpf}"></td>
+                        <td th:text="${funcionario.email}"></td>
+                        <td th:text="${funcionario.cargo}"></td>
+                        <td th:text="${funcionario.dataCadastro != null} ? ${#temporals.format(funcionario.dataCadastro, 'dd/MM/yyyy HH:mm')} : 'Não informado'"></td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+
+
+
+
+            <!-- Resultados de Doadores -->
+            <div th:if="${tipoConsulta == 'doadores'}">
+                <h3 class="periodo-consulta">Doadores cadastrados:
+                    <span th:text="${dataInicio}"></span>  <span th:text="${dataFim}"></span>
+                </h3>
+
+                <div th:if="${doadores == null or doadores.isEmpty()}" class="no-results">
+                    <i class="fas fa-info-circle" style="font-size: 24px; margin-bottom: 10px;"></i>
+                    <p>Nenhum doador encontrado no período especificado.</p>
+                </div>
+
+                <table th:if="${doadores != null and !doadores.isEmpty()}" border="1">
+                    <thead>
+                    <tr>
+                        <th>Tipo</th>
+                        <th>Nome/Razão Social</th>
+                        <th>Documento</th>
+                        <th>Email</th>
+                        <th>Data Cadastro</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr th:each="doador : ${doadores}">
+                        <td th:text="${doador.tipo == 'PF' ? 'Pessoa Física' : 'Pessoa Jurídica'}"></td>
+                        <td th:text="${doador.tipo == 'PF' ? doador.nomeCompleto : doador.razaoSocial}"></td>
+                        <td th:text="${doador.documento}"></td>
+                        <td th:text="${doador.email}"></td>
+                        <td th:text="${doador.dataCadastro != null} ? ${#temporals.format(doador.dataCadastro, 'dd/MM/yyyy HH:mm')} : 'Não informado'"></td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <button class="panel-generate-btn"
+                th:if="${tipoConsulta != null and
+                        ((tipoConsulta == 'funcionarios' and funcionarios != null and !funcionarios.isEmpty()) or
+                         (tipoConsulta == 'doadores' and doadores != null and !doadores.isEmpty()))}">
+            <i class="fas fa-file-export"></i> Gerar Relatório
+        </button>
+    </div>
 </div>
 
 <a href="/telaAutenticado" class="back-arrow" title="Voltar">

@@ -1,6 +1,7 @@
 package br.edu.reDoar.model;
 
 import jakarta.persistence.*;
+import java.time.LocalDateTime;
 
 @Entity
 @Table(name = "doadores")
@@ -29,13 +30,25 @@ public class Doador {
     private String responsavel;
     private Boolean parceiro;
 
-    // Campos de endereço (comuns)
+
+
     private String cep;
     private String endereco;
     private String cidade;
     private String estado;
 
-    // Getters e Setters
+
+    @Column(name = "data_cadastro", nullable = false, updatable = false)
+    private LocalDateTime dataCadastro = LocalDateTime.now();
+
+    public LocalDateTime getDataCadastro() {
+        return dataCadastro;
+    }
+
+    public void setDataCadastro(LocalDateTime dataCadastro) {
+        this.dataCadastro = dataCadastro;
+    }
+
     public Long getId() {
         return id;
     }

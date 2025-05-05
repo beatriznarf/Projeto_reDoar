@@ -1,6 +1,7 @@
 package br.edu.reDoar.model;
 
 import jakarta.persistence.*;
+import java.time.LocalDateTime;
 
 @Entity
 @Table(name = "usuarios")
@@ -14,6 +15,17 @@ public class Usuario {
     private String senha;
     private String cargo;
 
+
+    @Column(name = "data_cadastro", nullable = false, updatable = false)
+    private LocalDateTime dataCadastro = LocalDateTime.now();
+
+    public LocalDateTime getDataCadastro() {
+        return dataCadastro;
+    }
+
+    public void setDataCadastro(LocalDateTime dataCadastro) {
+        this.dataCadastro = dataCadastro;
+    }
 
 
     public Long getId() {
