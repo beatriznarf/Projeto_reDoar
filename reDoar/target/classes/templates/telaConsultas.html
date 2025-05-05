@@ -311,9 +311,6 @@
                 </table>
             </div>
 
-
-
-
             <!-- Resultados de Doadores -->
             <div th:if="${tipoConsulta == 'doadores'}">
                 <h3 class="periodo-consulta">Doadores cadastrados:
@@ -346,12 +343,77 @@
                     </tbody>
                 </table>
             </div>
+
+            <!-- Resultados de Doações -->
+            <div th:if="${tipoConsulta == 'doacoes'}">
+                <h3 class="periodo-consulta">Doações cadastradas:
+                    <span th:text="${dataInicio}"></span> <span th:text="${dataFim}"></span>
+                </h3>
+
+                <div th:if="${doacoes == null or doacoes.isEmpty()}" class="no-results">
+                    <i class="fas fa-info-circle" style="font-size: 24px; margin-bottom: 10px;"></i>
+                    <p>Nenhuma doação encontrada no período especificado.</p>
+                </div>
+
+                <table th:if="${doacoes != null and !doacoes.isEmpty()}" border="1">
+                    <thead>
+                    <tr>
+                        <th>Valor</th>
+                        <th>Data</th>
+                        <th>Doador</th>
+                        <th>Tipo de Pagamento</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr th:each="doacao : ${doacoes}">
+                        <td th:text="${#numbers.formatDecimal(doacao.valor, 2, 'COMMA', '.', '')}"></td>
+                        <td th:text="${#temporals.format(doacao.data, 'dd/MM/yyyy HH:mm')}"></td>
+                        <td th:text="${doacao.doador.nomeCompleto != null ? doacao.doador.nomeCompleto : doacao.doador.razaoSocial}"></td>
+                        <td th:text="${doacao.formaPagamento}"></td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <!-- Resultados de Parceiros -->
+            <div th:if="${tipoConsulta == 'parceiros'}">
+                <h3 class="periodo-consulta">Parceiros cadastrados:
+                    <span th:text="${dataInicio}"></span> <span th:text="${dataFim}"></span>
+                </h3>
+
+                <div th:if="${parceiros == null or parceiros.isEmpty()}" class="no-results">
+                    <i class="fas fa-info-circle" style="font-size: 24px; margin-bottom: 10px;"></i>
+                    <p>Nenhum parceiro encontrado no período especificado.</p>
+                </div>
+
+                <table th:if="${parceiros != null and !parceiros.isEmpty()}" border="1">
+                    <thead>
+                    <tr>
+                        <th>Nome</th>
+                        <th>Email</th>
+                        <th>Telefone</th>
+                        <th>Data Cadastro</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr th:each="parceiro : ${parceiros}">
+                        <td th:text="${parceiro.nome}"></td>
+                        <td th:text="${parceiro.email}"></td>
+                        <td th:text="${parceiro.telefone}"></td>
+                        <td th:text="${#temporals.format(parceiro.dataCadastro, 'dd/MM/yyyy HH:mm')}"></td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+
         </div>
 
         <button class="panel-generate-btn"
                 th:if="${tipoConsulta != null and
                         ((tipoConsulta == 'funcionarios' and funcionarios != null and !funcionarios.isEmpty()) or
-                         (tipoConsulta == 'doadores' and doadores != null and !doadores.isEmpty()))}">
+                         (tipoConsulta == 'doadores' and doadores != null and !doadores.isEmpty()) or
+                         (tipoConsulta == 'doacoes' and doacoes != null and !doacoes.isEmpty()) or
+                         (tipoConsulta == 'parceiros' and parceiros != null and !parceiros.isEmpty()))}">
             <i class="fas fa-file-export"></i> Gerar Relatório
         </button>
     </div>
