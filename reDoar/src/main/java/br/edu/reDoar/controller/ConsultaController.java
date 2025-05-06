@@ -81,8 +81,11 @@ public class ConsultaController {
         LocalDateTime fim = parseDate(dataFim).atTime(LocalTime.MAX);
 
         List<Doacao> doacoes = doacaoRepository.findByDataBetween(inicio, fim);
+
         model.addAttribute("doacoes", doacoes);
         model.addAttribute("tipoConsulta", "doacoes");
+        model.addAttribute("dataInicio", dataInicio);
+        model.addAttribute("dataFim", dataFim);
 
         return "telaConsultas";
     }
@@ -104,6 +107,12 @@ public class ConsultaController {
 
         return "telaConsultas";
     }
+
+
+
+
+
+
 
     private LocalDate parseDate(String dateStr) {
         // Converte de dd/MM/yyyy para LocalDate

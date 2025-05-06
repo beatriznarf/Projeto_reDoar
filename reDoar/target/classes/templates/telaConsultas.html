@@ -342,7 +342,7 @@
                 </table>
             </div>
 
-            <!-- Resultados de Doações -->
+            <!-- Resultados de Doações (única seção) -->
             <div th:if="${tipoConsulta == 'doacoes'}">
                 <h3 class="periodo-consulta">Doações cadastradas:
                     <span th:text="${dataInicio}"></span> <span th:text="${dataFim}"></span>
@@ -359,7 +359,8 @@
                         <th>Valor</th>
                         <th>Data</th>
                         <th>Doador</th>
-                        <th>Tipo de Pagamento</th>
+                        <th>Método de Pagamento</th>
+                        <th>Observações</th>
                     </tr>
                     </thead>
                     <tbody>
@@ -367,7 +368,8 @@
                         <td th:text="${#numbers.formatDecimal(doacao.valor, 2, 'COMMA', '.', '')}"></td>
                         <td th:text="${#temporals.format(doacao.data, 'dd/MM/yyyy HH:mm')}"></td>
                         <td th:text="${doacao.doador.nomeCompleto != null ? doacao.doador.nomeCompleto : doacao.doador.razaoSocial}"></td>
-                        <td th:text="${doacao.formaPagamento}"></td>
+                        <td th:text="${doacao.metodoPagamento}"></td>
+                        <td th:text="${doacao.observacao != null ? doacao.observacao : '-'}"></td>
                     </tr>
                     </tbody>
                 </table>
