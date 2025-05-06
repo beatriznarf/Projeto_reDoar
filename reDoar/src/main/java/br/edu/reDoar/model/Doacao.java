@@ -27,7 +27,7 @@ public class Doacao {
 
     private String observacao;
 
-    // Getters e Setters
+
 
     public Long getId() {
         return id;

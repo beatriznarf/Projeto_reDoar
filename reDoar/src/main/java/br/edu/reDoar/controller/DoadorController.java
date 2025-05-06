@@ -1,12 +1,12 @@
 package br.edu.reDoar.controller;
 
 import br.edu.reDoar.model.Doador;
-import br.edu.reDoar.repositories.DoadorRepository;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import br.edu.reDoar.repositories.DoadorRepository;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 @Controller
@@ -67,7 +67,7 @@ public class DoadorController {
         return "redirect:/DoadorPF";
     }
 
-    // Método para salvar Pessoa Jurídica
+    // Metodo para salvar Pessoa Jurídica
     @PostMapping("/salvarDoadorPJ")
     public String salvarDoadorPJ(
             @RequestParam String razaoSocial,

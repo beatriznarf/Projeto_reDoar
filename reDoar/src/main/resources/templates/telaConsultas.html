@@ -265,8 +265,8 @@
 
             <button type="submit" formaction="/consultarDoadores" class="panel-button">Doadores</button>
             <button type="submit" formaction="/consultarFuncionarios" class="panel-button">Funcionários</button>
-            <button class="panel-button">Doações</button>
-            <button class="panel-button">Parceiros</button>
+            <button type="submit" formaction="/consultarDoacoes" class="panel-button">Doações</button>
+            <button type="submit" formaction="/consultarParceiros" class="panel-button">Parceiros</button>
         </form>
 
         <div class="panel-dots">
@@ -281,8 +281,6 @@
                 <h3 class="periodo-consulta">Funcionários cadastrados:
                     <span th:text="${dataInicio}"></span>  <span th:text="${dataFim}"></span>
                 </h3>
-
-
 
                 <div th:if="${funcionarios == null or funcionarios.isEmpty()}" class="no-results">
                     <i class="fas fa-info-circle" style="font-size: 24px; margin-bottom: 10px;"></i>
@@ -389,23 +387,28 @@
                 <table th:if="${parceiros != null and !parceiros.isEmpty()}" border="1">
                     <thead>
                     <tr>
-                        <th>Nome</th>
+                        <th>Tipo</th>
+                        <th>Razão Social</th>
+                        <th>CNPJ</th>
                         <th>Email</th>
                         <th>Telefone</th>
+                        <th>Responsável</th>
                         <th>Data Cadastro</th>
                     </tr>
                     </thead>
                     <tbody>
                     <tr th:each="parceiro : ${parceiros}">
-                        <td th:text="${parceiro.nome}"></td>
+                        <td>Pessoa Jurídica</td>
+                        <td th:text="${parceiro.razaoSocial}"></td>
+                        <td th:text="${parceiro.documento}"></td>
                         <td th:text="${parceiro.email}"></td>
                         <td th:text="${parceiro.telefone}"></td>
-                        <td th:text="${#temporals.format(parceiro.dataCadastro, 'dd/MM/yyyy HH:mm')}"></td>
+                        <td th:text="${parceiro.responsavel}"></td>
+                        <td th:text="${parceiro.dataCadastro != null} ? ${#temporals.format(parceiro.dataCadastro, 'dd/MM/yyyy HH:mm')} : 'Não informado'"></td>
                     </tr>
                     </tbody>
                 </table>
             </div>
-
         </div>
 
         <button class="panel-generate-btn"

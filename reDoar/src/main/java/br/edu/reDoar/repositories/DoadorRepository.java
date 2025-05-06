@@ -17,4 +17,9 @@ public interface DoadorRepository extends JpaRepository<Doador, Long> {
     List<Doador> findByDataCadastroBetween(@Param("dataInicio") LocalDateTime dataInicio,
                                            @Param("dataFim") LocalDateTime dataFim);
 
+    @Query("SELECT d FROM Doador d WHERE d.parceiro = :parceiro AND d.dataCadastro BETWEEN :inicio AND :fim")
+    List<Doador> findByParceiroAndDataCadastroBetween(@Param("parceiro") Boolean parceiro,
+                                                      @Param("inicio") LocalDateTime inicio,
+                                                      @Param("fim") LocalDateTime fim);
+
 }
