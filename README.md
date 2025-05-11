@@ -10,20 +10,6 @@ O reDoar é um sistema de gestão criado por alunos do IMEPAC, do curso de Anál
 
 
 ***
-📂 **Funcionalidades disponíveis até o presente momento, o que precisa ser feito e o que precisa ser corrigido:**
+O sistema “reDoar” surgiu no contexto da disciplina Projeto Integrador: Projeto e Implementação, ministrada no 5º e último período do curso de Análise e Desenvolvimento de Sistemas do IMEPAC – Instituto Master de Ensino Presidente Antônio Carlos, Araguari/MG. Esta disciplina tem como principal objetivo aplicar, de forma prática e integrada, os conhecimentos adquiridos ao longo do curso, por meio do desenvolvimento de soluções tecnológicas voltadas à comunidade local.
 
-💾 Botão "voltar", colocado em algumas telas;
-💾 Projeto sendo reestruturado, não há nenhuma funcionalidade no momento..
-
-
-***
-🛠️ NÃO DESENVOLVIDO AINDA:🛠️
-
-
-1. Projetos;
-2. Contatos;
-3. Parcerias;
-4. Esqueceu a senha?
-5. Saiba mais+
-6. Associação Casa de Davi;
-7. Transforme vidas;
+O ponto de partida do projeto foi a análise dos projetos de extensão promovidos pela instituição em parceria com diversas instituições da cidade de Araguari. Entre os diversos projetos apresentados, a equipe optou por desenvolver um sistema para o projeto denominado “reComeço”, que tem como foco a Associação Casa de Davi. O reComeço é um projeto de extensão multidisciplinar desenvolvido em parceria com a Casa de Davi — instituição que acolhe homens adultos em situação de rua —, visando promover recuperação social, capacitação profissional e geração de renda para os acolhidos, enquanto proporciona formação prática e humanizada aos alunos do IMEPAC.
