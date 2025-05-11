@@ -2,7 +2,7 @@
 <html lang="pt-br" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title> Sobre a Associação </title>
+    <title>Sobre a Associação</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
     <style>
@@ -29,7 +29,6 @@
             margin-bottom: 15px;
         }
 
-
         .navbar-button {
             background: none;
             border: none;
@@ -46,63 +45,6 @@
         .navbar-button:hover {
             background-color: rgba(255, 255, 255, 0.1);
         }
-
-
-        .main-section {
-            text-align: center;
-            padding: 50px 20px;
-        }
-
-        .logo-container img {
-            width: 100px;
-        }
-
-        .logo-container h1 {
-            font-size: 48px;
-            margin-top: 10px;
-            color: #692CAB;
-            font-weight: 700;
-        }
-
-
-
-        .card h2 {
-            font-size: 20px;
-            color: #9D71E3;
-            font-weight: 600;
-            margin: 5px 0 15px 0;
-            padding-left: 30px;
-        }
-
-
-        .card p {
-            font-size: 15px;
-            margin: 15px 0;
-            color: white;
-            text-align: center;
-            flex-grow: 1;
-        }
-
-        .card button {
-            background-color: #692CAB;
-            border: none;
-            color: white;
-            padding: 10px 20px;
-            font-weight: 600;
-            border-radius: 8px;
-            cursor: pointer;
-            transition: background 0.3s;
-            font-family: 'Poppins', sans-serif;
-            margin-top: auto;
-            align-self: center;
-            min-width: 160px;
-        }
-
-        .card button:hover {
-            background-color: #5A2493;
-        }
-
-
 
         .left-branding {
             position: absolute;
@@ -123,60 +65,120 @@
             line-height: 1.2;
         }
 
+        .content-container {
+            max-width: 1200px;
+            margin: 40px auto;
+            padding: 0 20px;
+        }
+
+        .page-title {
+            color: #692CAB;
+            font-size: 36px;
+            font-weight: 700;
+            margin-bottom: 30px;
+            text-align: center;
+        }
+
+        .about-text {
+            font-size: 16px;
+            line-height: 1.8;
+            text-align: justify;
+            text-justify: inter-word;
+        }
+
+        .text-box {
+            background-color: #1a1a1a;
+            border-left: 4px solid #692CAB;
+            padding: 25px;
+            margin: 15px 0;
+            border-radius: 5px;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .boxes-container {
+            display: flex;
+            gap: 30px;
+            margin: 30px 0;
+            align-items: stretch;
+        }
+
+        .box-column {
+            flex: 1;
+            min-width: 0;
+            display: flex;
+        }
+
         .section-title {
             color: #692CAB;
-            font-size: 32px;
-            font-weight: 700;
-            margin-top: 1px;
-            text-align: center;
+            font-size: 24px;
+            margin: 0 0 15px 0;
         }
 
-        .section-description {
-            max-width: 800px;
-            margin: 20px auto;
-            font-size: 16px;
+        .back-arrow {
+            position: fixed;
+            bottom: 25px;
+            left: 25px;
+            background: linear-gradient(145deg, #7c3aed, #9D71E3);
             color: white;
-            line-height: 1.8;
+            padding: 14px 16px;
+            border-radius: 50px;
+            font-size: 18px;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 6px 12px rgba(0,0,0,0.25);
+            transition: all 0.3s ease;
+            z-index: 1000;
+        }
+
+        .back-arrow:hover {
+            background: linear-gradient(145deg, #692CAB, #7c3aed);
+            transform: translateY(-2px) scale(1.05);
+        }
+
+        .gallery-button-container {
             text-align: center;
+            margin: 90px 0 40px 0;
         }
 
-        .info-box {
-            background-color: #1a1a1a;
-            padding: 40px;
-            border-radius: 20px;
-            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
-            max-width: 900px;
-            margin: 40px auto;
-        }
-
-        .card-button {
+        .gallery-button {
             background-color: #692CAB;
             border: none;
             color: white;
-            padding: 10px 20px;
+            padding: 12px 25px;
             font-weight: 600;
             border-radius: 8px;
             cursor: pointer;
             transition: background 0.3s;
             font-family: 'Poppins', sans-serif;
-            min-width: 180px;
             font-size: 16px;
+            text-decoration: none;
+            display: inline-block;
         }
 
-        .card-button:hover {
+        .gallery-button:hover {
             background-color: #5A2493;
         }
 
+        @media (max-width: 768px) {
+            .boxes-container {
+                flex-direction: column;
+            }
 
+            .gallery-button-container {
+                margin: 40px 0 30px 0;
+            }
+        }
     </style>
 </head>
 <body>
+
 <div class="left-branding">
     <img th:src="@{/logo.png}" alt="Logo reDoar">
-    <h1>
-        Associação <br>
-        Casa de Davi
-    </h1>
+    <h1>Associação <br>Casa de Davi</h1>
 </div>
 
 <nav class="navbar">
@@ -184,40 +186,56 @@
         <button onclick="window.location.href='/Projetos'" class="navbar-button">Projetos</button>
         <button onclick="window.location.href='/Contatos'" class="navbar-button">Contatos</button>
         <button onclick="window.location.href='/Parcerias'" class="navbar-button">Parcerias</button>
-        <button onclick="window.location.href='/login'" class="navbar-button" title="Acessar página de login">Login</button>
+        <button onclick="window.location.href='/login'" class="navbar-button">Login</button>
     </div>
 </nav>
 
-<section class="main-section">
-    <div class="logo-container">
-        <img th:src="@{/logo.png}" alt="Logo reDoar" style="width: 300px; margin-bottom: -80px">
+<div class="content-container">
+    <h1 class="page-title">Sobre a Associação</h1>
+
+    <div class="text-box">
+        <p class="about-text">
+            A Associação Casa de Davi trata-se de uma organização sem fins lucrativos, atuando no ramo da assistência social,
+            fundada em 2014 na cidade de Araguari, Minas Gerais. Suas origens estão ligadas a ações anteriores de um grupo
+            de evangelistas que ofereciam apoio a pessoas em situação de rua e vulnerabilidade, iniciada por um grupo de voluntários.
+        </p>
     </div>
 
-    <div class="info-box">
-        <h2 class="section-title">Associação Casa de Davi</h2>
-        <p class="section-description">
-            Foi criada no ano de 2014, na cidade de Araguari, sendo uma entidade civil, sem fins lucrativos, de caráter assistencial,
-            educacional, beneficente e cultural, com tempo indeterminado de duração.<br><br>
-            Tem a finalidade de prestar atendimento e atividades direcionadas para o desenvolvimento de sociabilidade, na perspectiva
-            de fortalecimento de vínculos interpessoais e/ou familiares que oportunizem a construção de novos projetos de vida.<br><br>
-            Assim, a Associação Casa de Davi contribui de forma significante para o amparo, a acolhida, a manutenção e a promoção
-            do ser humano, contando com a colaboração, parceria, e convênios com entidades afins e/ou poder público.
-        </p>
-        <h2 class="section-title" style="margin-top: 60px">Como Surgiu?</h2>
-        <p class="section-description">
-            A Associação Casa de Davi teve início com um grupo de evangelistas que levava caldo para lugares de grande vulnerabilidade, onde havia pessoas em uso abusivo de drogas e em situação de rua. Nosso objetivo era evangelizar e aquecer essas pessoas com ternura e um caldo quentinho.<br><br>
-            Muitas dessas pessoas pediam uma chance, uma oportunidade, um lugar para ficar. Muitos estavam com seus vínculos familiares rompidos, sem casa e sem ter para onde voltar. Alguns pediam para que os levássemos a um lugar seguro, pois não conseguiam mais viver nas ruas.<br><br>
-            Certo dia, enquanto oferecíamos caldo e falávamos do amor de Jesus para uma pessoa, ela nos perguntou se éramos seus irmãos. Respondemos que sim, e ela disse: “Meus irmãos têm uma casa para morar, mas eu não tenho onde ficar.” Isso nos fez refletir sobre a necessidade de criar um local onde não cobraríamos nada de ninguém.<br><br>
-            Nessa mesma época, o número de pessoas em situação de rua em Araguari estava crescendo. Em 2012, durante uma reunião, Virgínia Alcântara, secretária de serviço social, nos apresentou dados mostrando mais de 100 moradores de rua na cidade. Foi então que começamos a orar para que pudéssemos abrir um espaço em Araguari que atendesse esse público marginalizado.<br><br>
-            Em 2013, junto com o presbítero Wagner, passei uma semana na Cracolândia, em São Paulo, fazendo um estudo de campo para entender a origem desse público-alvo. Em 2014, alguns amigos conseguiram uma casa emprestada, onde recebemos o primeiro morador, o senhor Edson. Em questão de dias, a casa estava cheia.<br><br>
-            Também tínhamos um restaurante na avenida Minas Gerais, onde muitas dessas pessoas iam buscar alimento. Foi dali que começamos a fazer os encaminhamentos, e assim nasceu a Associação Casa de Davi.
-        </p>
-        <div style="text-align: center; margin-top: 30px;">
-            <button class="card-button" onclick="window.location.href='/Galeria'">Galeria de Imagens</button>
+    <div class="boxes-container">
+        <div class="box-column">
+            <div class="text-box">
+                <h3 class="section-title">Objetivo Central</h3>
+                <p class="about-text">
+                    Acolher e fornecer suporte a quem enfrenta condições de vulnerabilidade social,
+                    promover o resgate da dignidade humana e a construção de novos projetos de vida por meio de ações
+                    integradas que incluam acolhimento, proteção e reinserção social.
+                </p>
+            </div>
+        </div>
+
+        <div class="box-column">
+            <div class="text-box">
+                <h3 class="section-title">Público Atendido</h3>
+                <p class="about-text">
+                    Pessoas em situação de rua, em risco social ou com vínculos familiares
+                    rompidos ou fragilizados. A associação oferece um espaço seguro onde os indivíduos podem reconstruir suas
+                    vidas com dignidade e apoio profissional.
+                </p>
+            </div>
         </div>
     </div>
-</section>
 
+
+    <div class="gallery-button-container">
+        <button onclick="window.location.href='/Galeria'" class="gallery-button">
+            Galeria de Imagens
+        </button>
+    </div>
+</div>
+
+<a th:href="@{/telainicial}" class="back-arrow" title="Voltar para a tela inicial">
+    <i class="fas fa-arrow-left"></i>
+</a>
 
 </body>
 </html>

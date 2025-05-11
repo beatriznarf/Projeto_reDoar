@@ -2,7 +2,7 @@
 <html lang="pt-br" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title> Saiba Mais </title>
+    <title>Sobre o Sistema reDoar</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
     <style>
@@ -29,7 +29,6 @@
             margin-bottom: 15px;
         }
 
-
         .navbar-button {
             background: none;
             border: none;
@@ -46,63 +45,6 @@
         .navbar-button:hover {
             background-color: rgba(255, 255, 255, 0.1);
         }
-
-
-        .main-section {
-            text-align: center;
-            padding: 50px 20px;
-        }
-
-        .logo-container img {
-            width: 100px;
-        }
-
-        .logo-container h1 {
-            font-size: 48px;
-            margin-top: 10px;
-            color: #692CAB;
-            font-weight: 700;
-        }
-
-
-
-        .card h2 {
-            font-size: 20px;
-            color: #9D71E3;
-            font-weight: 600;
-            margin: 5px 0 15px 0;
-            padding-left: 30px;
-        }
-
-
-        .card p {
-            font-size: 15px;
-            margin: 15px 0;
-            color: white;
-            text-align: center;
-            flex-grow: 1;
-        }
-
-        .card button {
-            background-color: #692CAB;
-            border: none;
-            color: white;
-            padding: 10px 20px;
-            font-weight: 600;
-            border-radius: 8px;
-            cursor: pointer;
-            transition: background 0.3s;
-            font-family: 'Poppins', sans-serif;
-            margin-top: auto;
-            align-self: center;
-            min-width: 160px;
-        }
-
-        .card button:hover {
-            background-color: #5A2493;
-        }
-
-
 
         .left-branding {
             position: absolute;
@@ -123,15 +65,91 @@
             line-height: 1.2;
         }
 
+        .content-container {
+            max-width: 1100px;
+            margin: 30px auto;
+            padding: 0 20px;
+        }
+
+        .about-text {
+            font-size: 14px;
+            line-height: 1.7;
+            text-align: justify;
+            text-justify: inter-word;
+        }
+
+        .text-box {
+            background-color: #1a1a1a;
+            border-left: 3px solid #692CAB;
+            padding: 20px;
+            margin: 10px 0;
+            border-radius: 4px;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .boxes-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            margin: 20px 0;
+            align-items: stretch;
+        }
+
+        .box-column {
+            flex: 1;
+            min-width: 280px;
+            display: flex;
+        }
+
+        .section-title {
+            color: #692CAB;
+            font-size: 20px;
+            margin: 0 0 12px 0;
+            text-align: left;
+        }
+
+        .back-arrow {
+            position: fixed;
+            bottom: 25px;
+            left: 25px;
+            background: linear-gradient(145deg, #7c3aed, #9D71E3);
+            color: white;
+            padding: 14px 16px;
+            border-radius: 50px;
+            font-size: 18px;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 6px 12px rgba(0,0,0,0.25);
+            transition: all 0.3s ease;
+            z-index: 1000;
+        }
+
+        .back-arrow:hover {
+            background: linear-gradient(145deg, #692CAB, #7c3aed);
+            transform: translateY(-2px) scale(1.05);
+        }
+
+        @media (max-width: 768px) {
+            .box-column {
+                min-width: 100%;
+            }
+
+            .content-container {
+                margin: 20px auto;
+            }
+
+        }
     </style>
 </head>
 <body>
+
 <div class="left-branding">
     <img th:src="@{/logo.png}" alt="Logo reDoar">
-    <h1>
-        Associação <br>
-        Casa de Davi
-    </h1>
+    <h1>Associação <br>Casa de Davi</h1>
 </div>
 
 <nav class="navbar">
@@ -139,16 +157,44 @@
         <button onclick="window.location.href='/Projetos'" class="navbar-button">Projetos</button>
         <button onclick="window.location.href='/Contatos'" class="navbar-button">Contatos</button>
         <button onclick="window.location.href='/Parcerias'" class="navbar-button">Parcerias</button>
-        <button onclick="window.location.href='/login'" class="navbar-button" title="Acessar página de login">Login</button>
+        <button onclick="window.location.href='/login'" class="navbar-button">Login</button>
     </div>
 </nav>
 
-<section class="main-section">
-    <div class="logo-container">
-        <img th:src="@{/logo.png}" alt="Logo reDoar" style="width: 500px; margin-bottom: -80px">
-    </div>
-</section>
+<div class="content-container">
+    <div class="boxes-container">
+        <div class="box-column">
+            <div class="text-box">
+                <h3 class="section-title">Origem do Sistema</h3>
+                <p class="about-text">
+                    O sistema "reDoar" surgiu no contexto da disciplina Projeto Integrador: Projeto e Implementação, ministrada no 5º e último período do curso de Análise e Desenvolvimento de Sistemas do IMEPAC. Esta disciplina tem como objetivo aplicar, de forma prática, os conhecimentos adquiridos no curso, por meio do desenvolvimento de soluções tecnológicas voltadas à comunidade local.
+                </p>
+            </div>
+        </div>
 
+        <div class="box-column">
+            <div class="text-box">
+                <h3 class="section-title">Ponto de Partida</h3>
+                <p class="about-text">
+                    O projeto começou com a análise dos projetos de extensão do IMEPAC em parceria com instituições de Araguari. A equipe optou por desenvolver um sistema para o projeto "reComeço", focado na Associação Casa de Davi, que acolhe homens em situação de rua, promovendo recuperação social e capacitação profissional, enquanto proporciona formação prática aos alunos.
+                </p>
+            </div>
+        </div>
+
+        <div class="box-column">
+            <div class="text-box">
+                <h3 class="section-title">Objetivos do Sistema</h3>
+                <p class="about-text">
+                    Com o objetivo de promover reinserção social e autonomia dos acolhidos, surgiu o "reDoar", sistema para gestão de doações. Ele moderniza e padroniza o gerenciamento de doações, com cadastro de doadores, descrição das doações, seleção de destino (como Casa de Adulão, Betânia e Ismael) e geração de relatórios.
+                </p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<a th:href="@{/telainicial}" class="back-arrow" title="Voltar para a tela inicial">
+    <i class="fas fa-arrow-left"></i>
+</a>
 
 </body>
 </html>
