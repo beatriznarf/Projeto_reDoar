@@ -146,6 +146,76 @@
             transform: translateY(-2px) scale(1.05);
         }
 
+        .panel-button {
+            background-color: #A370F0;
+            color: white;
+            border: none;
+            border-radius: 12px;
+            padding: 12px 20px;
+            font-weight: bold;
+            font-size: 16px;
+            margin: 10px;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        .panel-button:hover {
+            background-color: #8f5dd9;
+        }
+
+        .form-section {
+            display: none;
+            margin-top: 30px;
+            text-align: center;
+            max-width: 500px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .form-section.active {
+            display: block;
+        }
+
+        .form-section form {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        .form-section input {
+            padding: 10px;
+            border-radius: 8px;
+            border: none;
+            font-size: 14px;
+        }
+
+        .form-section button[type="submit"] {
+            background-color: #692CAB;
+            color: white;
+            border: none;
+            padding: 10px;
+            border-radius: 8px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        .form-section button[type="submit"]:hover {
+            background-color: #5A2493;
+        }
+
+        .qr-card {
+            background-color: #1c1c1c;
+            padding: 15px;
+            border-radius: 10px;
+            margin-top: 10px;
+        }
+
+        .qr-card img {
+            max-width: 200px;
+            margin-top: 10px;
+        }
+
     </style>
 </head>
 <body>
@@ -161,19 +231,131 @@
     <div class="navbar-menu">
         <button onclick="window.location.href='/Projetos'" class="navbar-button">Projetos</button>
         <button onclick="window.location.href='/Contatos'" class="navbar-button">Contatos</button>
-        <button onclick="window.location.href='/Parcerias'" class="navbar-button">Parcerias</button>
+
         <button onclick="window.location.href='/login'" class="navbar-button" title="Acessar página de login">Login</button>
     </div>
 </nav>
 
 <section class="main-section">
+    <!--
     <div class="logo-container">
-        <img th:src="@{/logo.png}" alt="Logo reDoar" style="width: 500px; margin-bottom: -80px">
+        <img th:src="@{/logo.png}" alt="Logo reDoar" style="width: 200px; margin-bottom: -80px">
+    </div>
+    --->
+
+    <div style="margin-top: 40px;">
+        <button class="panel-button" onclick="showForm('instituicao1')">Casa de Davi</button>
+        <button class="panel-button" onclick="showForm('instituicao2')">Casa de Adulão I</button>
+        <button class="panel-button" onclick="showForm('instituicao3')">Casa de Ismael</button>
+        <button class="panel-button" onclick="showForm('instituicao4')">Projeto Jedida</button>
+        <button class="panel-button" onclick="showForm('instituicao5')">Projeto Betânia</button>
+    </div>
+
+    <!-- Formulário para Instituição 1 -->
+    <div id="instituicao1" class="form-section">
+        <h2>Doação para Casa de Davi</h2>
+        <form>
+            <input type="text" placeholder="Nome completo" required>
+            <input type="email" placeholder="E-mail" required>
+            <input type="tel" placeholder="Telefone" required>
+            <input type="text" placeholder="CPF" required>
+            <input type="text" value="Casa de Davi" readonly>
+            <input type="number" placeholder="Valor da doação (R$)" required min="1" step="0.01">
+            <div class="qr-card">
+                <p>Escaneie o QR Code para doar:</p>
+                <img src="qrcode1.png" alt="QR Code para Casa de Davi">
+            </div>
+            <button type="submit">Enviar</button>
+        </form>
+    </div>
+
+
+    <!-- Formulário para Instituição 2 -->
+    <div id="instituicao2" class="form-section">
+        <h2>Doação para Casa de Adulão I</h2>
+        <form>
+            <input type="text" placeholder="Nome completo" required>
+            <input type="email" placeholder="E-mail" required>
+            <input type="tel" placeholder="Telefone" required>
+            <input type="text" placeholder="CPF" required>
+            <input type="text" value="Casa de Adulão I" readonly>
+            <input type="number" placeholder="Valor da doação (R$)" required min="1" step="0.01">
+            <div class="qr-card">
+                <p>Escaneie o QR Code para doar:</p>
+                <img src="qrcode2.png" alt="QR Code para Casa de Adulão I">
+            </div>
+            <button type="submit">Enviar</button>
+        </form>
+    </div>
+
+    <!-- Formulário para Instituição 3 -->
+    <div id="instituicao3" class="form-section">
+        <h2>Doação para Casa de Ismael</h2>
+        <form>
+            <input type="text" placeholder="Nome completo" required>
+            <input type="email" placeholder="E-mail" required>
+            <input type="tel" placeholder="Telefone" required>
+            <input type="text" placeholder="CPF" required>
+            <input type="text" value="Casa de Ismael" readonly>
+            <input type="number" placeholder="Valor da doação (R$)" required min="1" step="0.01">
+            <div class="qr-card">
+                <p>Escaneie o QR Code para doar:</p>
+                <img src="qrcode3.png" alt="QR Code para Casa de Ismael">
+            </div>
+            <button type="submit">Enviar</button>
+        </form>
+    </div>
+
+    <!-- Formulário para Instituição 4 -->
+    <div id="instituicao4" class="form-section">
+        <h2>Doação para Projeto Jedida</h2>
+        <form>
+            <input type="text" placeholder="Nome completo" required>
+            <input type="email" placeholder="E-mail" required>
+            <input type="tel" placeholder="Telefone" required>
+            <input type="text" placeholder="CPF" required>
+            <input type="text" value="Projeto Jedida" readonly>
+            <input type="number" placeholder="Valor da doação (R$)" required min="1" step="0.01">
+            <div class="qr-card">
+                <p>Escaneie o QR Code para doar:</p>
+                <img src="qrcode4.png" alt="QR Code para Projeto Jedida">
+            </div>
+            <button type="submit">Enviar</button>
+        </form>
+    </div>
+    <!-- Formulário para Instituição 5 -->
+    <div id="instituicao5" class="form-section">
+        <h2>Doação para Projeto Betânia</h2>
+        <form>
+            <input type="text" placeholder="Nome completo" required>
+            <input type="email" placeholder="E-mail" required>
+            <input type="tel" placeholder="Telefone" required>
+            <input type="text" placeholder="CPF" required>
+            <input type="text" value="Projeto Betânia" readonly>
+            <input type="number" placeholder="Valor da doação (R$)" required min="1" step="0.01">
+            <div class="qr-card">
+                <p>Escaneie o QR Code para doar:</p>
+                <img src="qrcode5.png" alt="QR Code para Projeto Betânia">
+            </div>
+            <button type="submit">Enviar</button>
+        </form>
     </div>
 </section>
 
 <a th:href="@{/telainicial}" class="back-arrow" title="Voltar para a tela inicial">
     <i class="fas fa-arrow-left"></i>
 </a>
+
+<script>
+    function showForm(id) {
+        const forms = document.querySelectorAll('.form-section');
+        forms.forEach(form => form.classList.remove('active'));
+
+        const selectedForm = document.getElementById(id);
+        if (selectedForm) {
+            selectedForm.classList.add('active');
+        }
+    }
+</script>
 </body>
 </html>

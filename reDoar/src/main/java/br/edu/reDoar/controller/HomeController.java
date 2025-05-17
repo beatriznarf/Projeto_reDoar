@@ -36,10 +36,6 @@ public class HomeController {
         return "telaContatos";
     }
 
-    @GetMapping("/Parcerias")
-    public String telaParcerias() {
-        return "telaParcerias";
-    }
 
     @GetMapping("/Galeria")
     public String telaGaleria() {
