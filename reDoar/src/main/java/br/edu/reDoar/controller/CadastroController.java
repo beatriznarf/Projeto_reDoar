@@ -1,7 +1,6 @@
 package br.edu.reDoar.controller;
 
 import br.edu.reDoar.model.Usuario;
-import ch.qos.logback.core.model.Model;
 import org.springframework.stereotype.Controller;
 import br.edu.reDoar.repositories.UsuarioRepository;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -30,8 +29,6 @@ public class CadastroController {
     }
     @Autowired
     private UsuarioRepository usuarioRepository;
-
-
 
     @PostMapping("/salvarFuncionario")
     public String salvarFuncionario(

@@ -7,24 +7,19 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
+
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+import java.util.stream.Collectors;
 
 @Controller
 public class DoadorController {
 
     @Autowired
     private DoadorRepository doadorRepository;
-
-
-    //@GetMapping("/DoadorPF")
-    //public String cadastroDoadorPF() {
-    //    return "cadastroDoadorPF";
-    //}
-
-   // @GetMapping("/DoadorPJ")
-    //public String cadastroDoadorPJ() {
-     //   return "cadastroDoadorPJ";
-    //}
 
 
     @PostMapping("/salvarDoadorPF")
@@ -110,5 +105,23 @@ public class DoadorController {
 
         redirectAttributes.addFlashAttribute("success", "Doador Pessoa Jurídica cadastrado com sucesso!");
         return "redirect:/DoadorPJ";
+    }
+
+
+    @GetMapping("/listarDoadores")
+    @ResponseBody
+    public List<Map<String, Object>> listarDoadores() {
+        List<Doador> doadores = doadorRepository.findAll();
+
+        return doadores.stream().map(doador -> {
+            Map<String, Object> map = new HashMap<>();
+            map.put("id", doador.getId());
+            map.put("nome", doador.getTipo().equals("PF") ?
+                    doador.getNomeCompleto() :
+                    doador.getRazaoSocial());
+            map.put("tipo", doador.getTipo());
+            map.put("documento", doador.getDocumento());
+            return map;
+        }).collect(Collectors.toList());
     }
 }

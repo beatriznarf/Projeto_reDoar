@@ -365,14 +365,15 @@
                     </thead>
                     <tbody>
                     <tr th:each="doacao : ${doacoes}">
-                        <td th:text="${#numbers.formatDecimal(doacao.valor, 2, 'COMMA', '.', '')}"></td>
+                        <td th:text="${'R$ ' + #numbers.formatDecimal(doacao.valor, 1, 2, 'POINT')}"></td>
                         <td th:text="${#temporals.format(doacao.data, 'dd/MM/yyyy HH:mm')}"></td>
-                        <td th:text="${doacao.doador.nomeCompleto != null ? doacao.doador.nomeCompleto : doacao.doador.razaoSocial}"></td>
+                        <td th:text="${doacao.doador.tipo == 'PF' ? doacao.doador.nomeCompleto : doacao.doador.razaoSocial}"></td>
                         <td th:text="${doacao.metodoPagamento}"></td>
                         <td th:text="${doacao.observacao != null ? doacao.observacao : '-'}"></td>
                     </tr>
                     </tbody>
                 </table>
+
             </div>
 
             <!-- Resultados de Parceiros -->

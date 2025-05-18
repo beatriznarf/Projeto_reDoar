@@ -19,8 +19,9 @@ public class Doacao {
     @Column(nullable = false)
     private BigDecimal valor;
 
-    @Column(nullable = false)
+    @Column(name = "forma_pagamento", nullable = false)  // Alterando o nome da coluna
     private String metodoPagamento;
+
 
     @Column(name = "data", nullable = false)
     private LocalDateTime data = LocalDateTime.now();

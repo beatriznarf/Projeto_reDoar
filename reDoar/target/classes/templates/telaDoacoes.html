@@ -1,153 +1,372 @@
 <!DOCTYPE html>
-<html lang="pt-br" xmlns:th="http://www.thymeleaf.org">
+<html lang="pt-br">
 <head>
     <meta charset="UTF-8">
-    <title> Doações </title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>reDoar - Registro de Doações</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
     <style>
+        :root {
+            --roxo-principal: #692CAB;
+            --roxo-claro: #9D71E3;
+            --branco: #FFFFFF;
+            --preto: #000000;
+            --cinza-claro: rgba(255, 255, 255, 0.8);
+        }
+
         body {
-            background-color: #000;
-            color: white;
+            background-color: var(--preto);
+            color: var(--branco);
             font-family: 'Poppins', sans-serif;
             margin: 0;
             padding: 0;
-            line-height: 1.6;
+            height: 100vh;
+            overflow: hidden;
         }
 
         .navbar {
-            background-color: #692CAB;
-            padding: 8px 40px;
+            background-color: var(--roxo-principal);
+            padding: 12px 50px;
             display: flex;
             justify-content: flex-end;
             align-items: center;
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
-            border-radius: 0px 0px 0px 50px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.25);
+            border-radius: 0 0 0 60px;
             width: fit-content;
             margin-left: auto;
             margin-right: 0;
-            margin-bottom: 15px;
+            margin-bottom: 20px;
         }
-
 
         .navbar-button {
             background: none;
             border: none;
-            color: white;
+            color: var(--branco);
             font-weight: 600;
-            font-size: 16px;
+            font-size: 15px;
             font-family: 'Poppins', sans-serif;
-            padding: 5px 8px;
-            border-radius: 5px;
+            padding: 8px 15px;
+            border-radius: 8px;
             cursor: pointer;
             transition: all 0.3s ease;
+            margin: 0 5px;
         }
 
         .navbar-button:hover {
-            background-color: rgba(255, 255, 255, 0.1);
+            background-color: rgba(255, 255, 255, 0.15);
+            transform: translateY(-2px);
         }
 
-
-        .main-section {
-            text-align: center;
-            padding: 50px 20px;
+        .container-principal {
+            display: flex;
+            height: calc(100vh - 100px);
+            position: relative;
         }
-
-        .logo-container img {
-            width: 100px;
-        }
-
-        .logo-container h1 {
-            font-size: 48px;
-            margin-top: 10px;
-            color: #692CAB;
-            font-weight: 700;
-        }
-
-
-
-        .card h2 {
-            font-size: 20px;
-            color: #9D71E3;
-            font-weight: 600;
-            margin: 5px 0 15px 0;
-            padding-left: 30px;
-        }
-
-
-        .card p {
-            font-size: 15px;
-            margin: 15px 0;
-            color: white;
-            text-align: center;
-            flex-grow: 1;
-        }
-
-        .card button {
-            background-color: #692CAB;
-            border: none;
-            color: white;
-            padding: 10px 20px;
-            font-weight: 600;
-            border-radius: 8px;
-            cursor: pointer;
-            transition: background 0.3s;
-            font-family: 'Poppins', sans-serif;
-            margin-top: auto;
-            align-self: center;
-            min-width: 160px;
-        }
-
-        .card button:hover {
-            background-color: #5A2493;
-        }
-
-
 
         .left-branding {
             position: absolute;
             top: 20px;
-            left: 40px;
-            text-align: left;
+            left: 50px;
+            z-index: 10;
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
         }
 
         .left-branding img {
             width: 100px;
+            margin-top: -20px;
         }
 
         .left-branding h1 {
             font-size: 13px;
             font-weight: 700;
-            margin-top: -20px;
+            margin-top: -15px;
             margin-left: 10px;
             line-height: 1.2;
         }
 
+        .left-panel {
+            width: 60%;
+            background-color: var(--roxo-principal);
+            color: var(--branco);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            border-top-right-radius: 60px;
+            border-bottom-right-radius: 60px;
+            box-sizing: border-box;
+            padding: 60px 40px;
+            position: relative;
+            box-shadow: 10px 0 30px rgba(0,0,0,0.3);
+        }
+
+        .left-panel h2 {
+            font-size: 28px;
+            margin-bottom: 40px;
+            margin-top: 30px;
+            align-self: flex-start;
+            color: var(--branco);
+            font-weight: 600;
+            letter-spacing: 0.5px;
+        }
+
+        .form-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 25px;
+            width: 100%;
+            max-width: 850px;
+            box-sizing: border-box;
+        }
+
+        .form-group {
+            display: flex;
+            align-items: center;
+            background-color: rgba(255, 255, 255, 0.1);
+            border: 2px solid rgba(255, 255, 255, 0.3);
+            border-radius: 30px;
+            padding: 14px 20px;
+            margin-bottom: 0;
+            width: 100%;
+            box-sizing: border-box;
+        }
+
+        .form-group:hover {
+            border-color: var(--branco);
+            background-color: rgba(255, 255, 255, 0.15);
+        }
+
+        .form-group:focus-within {
+            border-color: var(--branco);
+            background-color: rgba(255, 255, 255, 0.2);
+            box-shadow: 0 0 0 3px rgba(157, 113, 227, 0.3);
+        }
+
+        .form-group.full-width {
+            grid-column: span 2;
+        }
+
+        .form-group i {
+            margin-right: 12px;
+            font-size: 18px;
+            color: var(--cinza-claro);
+            min-width: 20px;
+            text-align: center;
+        }
+
+        .form-group input,
+        .form-group select {
+            background: none;
+            border: none;
+            outline: none;
+            color: var(--branco);
+            font-size: 15px;
+            width: 100%;
+            font-family: 'Poppins', sans-serif;
+            padding: 2px 0;
+        }
+
+        .form-group input::placeholder {
+            color: rgba(255, 255, 255, 0.6);
+        }
+
+        .form-group select {
+            appearance: none;
+            background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='white'%3e%3cpath d='M7 10l5 5 5-5z'/%3e%3c/svg%3e");
+            background-repeat: no-repeat;
+            background-position: right 10px center;
+            background-size: 12px;
+        }
+
+        .form-group select option {
+            background-color: var(--roxo-principal);
+            color: var(--branco);
+            padding: 10px;
+        }
+
+        .submit-btn {
+            background-color: var(--branco);
+            color: var(--roxo-principal);
+            border: none;
+            padding: 15px 0;
+            width: 100%;
+            max-width: 200px;
+            border-radius: 30px;
+            font-weight: bold;
+            font-size: 16px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: block;
+            margin: 10px auto 0;
+            grid-column: span 2;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+        }
+
+        .submit-btn:hover {
+            background-color: #f0f0f0;
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(0,0,0,0.3);
+        }
+
+        .submit-btn:active {
+            transform: translateY(0);
+        }
+
+        .right-panel {
+            width: 40%;
+            padding: 60px 50px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            color: var(--branco);
+            text-align: center;
+        }
+
+        .right-panel-content {
+            max-width: 450px;
+        }
+
+        .right-panel img {
+            width: 90px;
+            margin-bottom: 25px;
+            filter: drop-shadow(0 4px 8px rgba(0,0,0,0.3));
+        }
+
+        .right-panel p {
+            font-size: 15px;
+            line-height: 1.7;
+            color: rgba(255, 255, 255, 0.9);
+            margin-top: -15px;
+        }
+
+        .back-arrow {
+            position: fixed;
+            bottom: 25px;
+            left: 25px;
+            background: linear-gradient(145deg, #7c3aed, #9D71E3);
+            color: white;
+            padding: 14px 16px;
+            border-radius: 50px;
+            font-size: 18px;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 6px 12px rgba(0,0,0,0.25);
+            transition: all 0.3s ease;
+            z-index: 1000;
+        }
+
+        .back-arrow:hover {
+            background: linear-gradient(145deg, #692CAB, #7c3aed);
+            transform: translateY(-2px) scale(1.05);
+        }
     </style>
 </head>
 <body>
-<div class="left-branding">
-    <img th:src="@{/logo.png}" alt="Logo reDoar">
-    <h1>
-        Associação <br>
-        Casa de Davi
-    </h1>
-</div>
 
 <nav class="navbar">
-    <div class="navbar-menu">
-        <button onclick="window.location.href='/Projetos'" class="navbar-button">Projetos</button>
-        <button onclick="window.location.href='/Contatos'" class="navbar-button">Contatos</button>
-
-        <button onclick="window.location.href='/login'" class="navbar-button" title="Acessar página de login">Login</button>
-    </div>
+    <button onclick="window.location.href='/Projetos'" class="navbar-button">Projetos</button>
+    <button onclick="window.location.href='/Contatos'" class="navbar-button">Contatos</button>
+    <button onclick="window.location.href='/telainicial'" class="navbar-button">Logout</button>
 </nav>
 
-<section class="main-section">
-    <div class="logo-container">
-        <img th:src="@{/logo.png}" alt="Logo reDoar" style="width: 500px; margin-bottom: -80px">
+<div class="container-principal">
+    <div class="left-panel">
+        <div class="left-branding">
+            <img src="logo-02.png" alt="Logo reDoar">
+            <h1>Associação<br>Casa de Davi</h1>
+        </div>
+
+        <h2>Registro de Doações</h2>
+
+        <form action="/registrarDoacao" method="post">
+            <div class="form-container">
+                <div class="form-group full-width">
+                    <i class="fas fa-user"></i>
+                    <select id="doador" name="doadorId" required>
+                        <option value="" disabled selected>Selecione o doador</option>
+                    </select>
+                </div>
+
+
+                <!-- Valor da doação -->
+                <div class="form-group">
+                    <i class="fas fa-money-bill-wave"></i>
+                    <input type="number" id="valor" name="valor" placeholder="Valor da doação" step="0.01" min="0" required>
+                </div>
+
+                <!-- Data da doação -->
+                <div class="form-group">
+                    <i class="fas fa-calendar-alt"></i>
+                    <input type="date" id="data" name="data" required>
+                </div>
+
+                <!-- Forma de pagamento -->
+                <div class="form-group">
+                    <i class="fas fa-credit-card"></i>
+                    <select id="formaPagamento" name="metodoPagamento" required>
+                        <option value="" disabled selected>Forma de pagamento</option>
+                        <option value="dinheiro">Dinheiro</option>
+                        <option value="pix">PIX</option>
+                        <option value="cartao_credito">Cartão de Crédito</option>
+                        <option value="cartao_debito">Cartão de Débito</option>
+                        <option value="transferencia">Transferência Bancária</option>
+                        <option value="cheque">Cheque</option>
+                        <option value="outro">Outro</option>
+                    </select>
+                </div>
+
+
+                <!-- Observações (opcional) -->
+                <div class="form-group full-width">
+                    <i class="fas fa-comment"></i>
+                    <input type="text" id="observacoes" name="observacoes" placeholder="Observações (opcional)">
+                </div>
+
+                <button type="submit" class="submit-btn">Registrar Doação</button>
+            </div>
+        </form>
     </div>
-</section>
+
+    <div class="right-panel">
+        <div class="right-panel-content">
+            <img src="logo.png" alt="Logo reDoar" style="width: 450px; margin-bottom: -50px">
+            <p>
+                Registre todas as doações recebidas para manter um histórico completo e transparente.
+                Esses dados são essenciais para nossa prestação de contas e relatórios financeiros.
+                Todas as informações são tratadas com confidencialidade e segurança.
+            </p>
+        </div>
+    </div>
+</div>
+
+<a href="/telaAutenticado" class="back-arrow" title="Voltar">
+    <i class="fas fa-arrow-left"></i>
+</a>
+
+
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        // Carregar lista de doadores
+        fetch('/listarDoadores')
+            .then(response => response.json())
+            .then(doadores => {
+                const select = document.getElementById('doador');
+                doadores.forEach(doador => {
+                    const option = document.createElement('option');
+                    option.value = doador.id;
+                    option.textContent = `${doador.nome} (${doador.tipo} - ${doador.documento})`;
+                    select.appendChild(option);
+                });
+            })
+            .catch(error => console.error('Erro ao carregar doadores:', error));
+    });
+</script>
+
 
 
 </body>

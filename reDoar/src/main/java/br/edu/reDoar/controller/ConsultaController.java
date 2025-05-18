@@ -90,6 +90,8 @@ public class ConsultaController {
         return "telaConsultas";
     }
 
+
+
     @PostMapping("/consultarParceiros")
     public String consultarParceiros(
             @RequestParam String dataInicio,
@@ -108,14 +110,8 @@ public class ConsultaController {
         return "telaConsultas";
     }
 
-
-
-
-
-
-
     private LocalDate parseDate(String dateStr) {
-        // Converte de dd/MM/yyyy para LocalDate
+
         String[] parts = dateStr.split("/");
         int day = Integer.parseInt(parts[0]);
         int month = Integer.parseInt(parts[1]);
