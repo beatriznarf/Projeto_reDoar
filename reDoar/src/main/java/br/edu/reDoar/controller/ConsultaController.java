@@ -1,5 +1,6 @@
 package br.edu.reDoar.controller;
 
+import java.math.BigDecimal;
 import java.util.List;
 import java.time.LocalTime;
 import java.time.LocalDate;
@@ -82,7 +83,13 @@ public class ConsultaController {
 
         List<Doacao> doacoes = doacaoRepository.findByDataBetween(inicio, fim);
 
+        // Calcula a soma total
+        BigDecimal totalDoacoes = doacoes.stream()
+                .map(Doacao::getValor)
+                .reduce(BigDecimal.ZERO, BigDecimal::add);
+
         model.addAttribute("doacoes", doacoes);
+        model.addAttribute("totalDoacoes", totalDoacoes);
         model.addAttribute("tipoConsulta", "doacoes");
         model.addAttribute("dataInicio", dataInicio);
         model.addAttribute("dataFim", dataFim);

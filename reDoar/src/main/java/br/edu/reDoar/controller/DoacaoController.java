@@ -53,12 +53,12 @@ public class DoacaoController {
 
             doacaoRepository.save(doacao);
 
-            redirectAttributes.addFlashAttribute("success", "Doação registrada com sucesso!");
+            redirectAttributes.addFlashAttribute("success", "Doação registrada com sucesso! 🎉");
             return "redirect:/Doacoes";
-
         } catch (Exception e) {
-            redirectAttributes.addFlashAttribute("error", "Erro ao registrar doação: " + e.getMessage());
+            redirectAttributes.addFlashAttribute("error", "Erro ao registrar doação: " + e.getMessage() + " ❌");
             return "redirect:/Doacoes";
         }
+
     }
 }

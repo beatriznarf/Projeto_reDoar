@@ -373,7 +373,14 @@
                     </tr>
                     </tbody>
                 </table>
-
+                <div th:if="${doacoes != null and !doacoes.isEmpty()}"
+                     style="text-align: right; margin-top: 20px; padding: 15px; background-color: #692CAB; border-radius: 10px;">
+                    <strong style="font-size: 18px;">
+                        Total do Período:
+                        <span th:text="${'R$ ' + #numbers.formatDecimal(totalDoacoes, 1, 2, 'POINT')}">
+        </span>
+                    </strong>
+                </div>
             </div>
 
             <!-- Resultados de Parceiros -->
