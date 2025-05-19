@@ -29,7 +29,6 @@
             margin-bottom: 15px;
         }
 
-
         .navbar-button {
             background: none;
             border: none;
@@ -46,63 +45,6 @@
         .navbar-button:hover {
             background-color: rgba(255, 255, 255, 0.1);
         }
-
-
-        .main-section {
-            text-align: center;
-            padding: 50px 20px;
-        }
-
-        .logo-container img {
-            width: 100px;
-        }
-
-        .logo-container h1 {
-            font-size: 48px;
-            margin-top: 10px;
-            color: #692CAB;
-            font-weight: 700;
-        }
-
-
-
-        .card h2 {
-            font-size: 20px;
-            color: #9D71E3;
-            font-weight: 600;
-            margin: 5px 0 15px 0;
-            padding-left: 30px;
-        }
-
-
-        .card p {
-            font-size: 15px;
-            margin: 15px 0;
-            color: white;
-            text-align: center;
-            flex-grow: 1;
-        }
-
-        .card button {
-            background-color: #692CAB;
-            border: none;
-            color: white;
-            padding: 10px 20px;
-            font-weight: 600;
-            border-radius: 8px;
-            cursor: pointer;
-            transition: background 0.3s;
-            font-family: 'Poppins', sans-serif;
-            margin-top: auto;
-            align-self: center;
-            min-width: 160px;
-        }
-
-        .card button:hover {
-            background-color: #5A2493;
-        }
-
-
 
         .left-branding {
             position: absolute;
@@ -146,6 +88,22 @@
             transform: translateY(-2px) scale(1.05);
         }
 
+        /* Novos estilos para a área de doação */
+        .main-section {
+            text-align: center;
+            padding: 50px 20px;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .donation-container {
+            background-color: #1c1c1c;
+            border-radius: 15px;
+            padding: 30px;
+            margin-top: 30px;
+            box-shadow: 0 4px 15px rgba(105, 44, 171, 0.2);
+        }
+
         .panel-button {
             background-color: #A370F0;
             color: white;
@@ -163,59 +121,128 @@
             background-color: #8f5dd9;
         }
 
-        .form-section {
+        .qr-section {
             display: none;
-            margin-top: 30px;
-            text-align: center;
-            max-width: 500px;
-            margin-left: auto;
-            margin-right: auto;
+            padding: 20px;
+            background-color: #292929;
+            border-radius: 12px;
+            margin-top: 20px;
         }
 
-        .form-section.active {
+        .qr-section.active {
             display: block;
         }
 
-        .form-section form {
-            display: flex;
-            flex-direction: column;
-            gap: 15px;
+        .qr-section h2 {
+            color: #9D71E3;
+            margin-bottom: 20px;
         }
 
-        .form-section input {
-            padding: 10px;
+        .qr-section img {
+            max-width: 250px;
+            margin: 20px 0;
+        }
+
+        .pix-key {
+            background-color: #333;
+            padding: 15px;
             border-radius: 8px;
-            border: none;
-            font-size: 14px;
+            margin: 20px auto;
+            max-width: 400px;
+            word-break: break-all;
         }
 
-        .form-section button[type="submit"] {
+        .copy-button {
             background-color: #692CAB;
             color: white;
             border: none;
-            padding: 10px;
+            padding: 10px 20px;
             border-radius: 8px;
             font-weight: bold;
             cursor: pointer;
             transition: 0.3s;
+            margin-top: 10px;
         }
 
-        .form-section button[type="submit"]:hover {
+        .copy-button:hover {
             background-color: #5A2493;
         }
 
-        .qr-card {
-            background-color: #1c1c1c;
+        /* Estilos do popup de contatos existente */
+        .popup {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.7);
+            z-index: 1000;
+        }
+
+        .popup-content {
+            background-color: #1a1a1a;
+            border-radius: 15px;
+            position: relative;
+            margin: 15% auto;
+            padding: 20px;
+            width: 80%;
+            max-width: 500px;
+            color: white;
+            border: 2px solid #692CAB;
+        }
+
+        .fechar-popup {
+            color: #9D71E3;
+            float: right;
+            font-size: 28px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        .contatos-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+            margin-top: 20px;
+            text-align: center;
+        }
+
+        .contato-item {
             padding: 15px;
             border-radius: 10px;
-            margin-top: 10px;
+            background-color: #292929;
+            transition: all 0.3s ease;
         }
 
-        .qr-card img {
-            max-width: 200px;
-            margin-top: 10px;
+        .contato-item:hover {
+            background-color: #692CAB;
+            transform: scale(1.05);
         }
 
+        .contato-item i {
+            font-size: 24px;
+            color: #9D71E3;
+            margin-bottom: 10px;
+        }
+
+        .contato-item:hover i {
+            color: white;
+        }
+
+        .contato-item p {
+            margin: 0;
+            font-size: 14px;
+        }
+
+        .contato-item a {
+            color: #9D71E3;
+            text-decoration: none;
+        }
+
+        .contato-item:hover a {
+            color: white;
+        }
     </style>
 </head>
 <body>
@@ -230,115 +257,80 @@
 <nav class="navbar">
     <div class="navbar-menu">
         <button onclick="window.location.href='/Projetos'" class="navbar-button">Projetos</button>
-        <button onclick="window.location.href='/Contatos'" class="navbar-button">Contatos</button>
-
+        <button onclick="abrirPopupContatos()" class="navbar-button">Contatos</button>
         <button onclick="window.location.href='/login'" class="navbar-button" title="Acessar página de login">Login</button>
     </div>
 </nav>
 
 <section class="main-section">
-    <!--
-    <div class="logo-container">
-        <img th:src="@{/logo.png}" alt="Logo reDoar" style="width: 200px; margin-bottom: -80px">
-    </div>
-    --->
+    <div class="donation-container">
+        <div style="margin-bottom: 30px;">
+            <button class="panel-button" onclick="showQR('instituicao1')">Casa de Davi</button>
+            <button class="panel-button" onclick="showQR('instituicao2')">Casa de Adulão I</button>
+            <button class="panel-button" onclick="showQR('instituicao3')">Casa de Ismael</button>
+            <button class="panel-button" onclick="showQR('instituicao4')">Projeto Jedida</button>
+            <button class="panel-button" onclick="showQR('instituicao5')">Projeto Betânia</button>
+        </div>
 
-    <div style="margin-top: 40px;">
-        <button class="panel-button" onclick="showForm('instituicao1')">Casa de Davi</button>
-        <button class="panel-button" onclick="showForm('instituicao2')">Casa de Adulão I</button>
-        <button class="panel-button" onclick="showForm('instituicao3')">Casa de Ismael</button>
-        <button class="panel-button" onclick="showForm('instituicao4')">Projeto Jedida</button>
-        <button class="panel-button" onclick="showForm('instituicao5')">Projeto Betânia</button>
-    </div>
-
-    <!-- Formulário para Instituição 1 -->
-    <div id="instituicao1" class="form-section">
-        <h2>Doação para Casa de Davi</h2>
-        <form>
-            <input type="text" placeholder="Nome completo" required>
-            <input type="email" placeholder="E-mail" required>
-            <input type="tel" placeholder="Telefone" required>
-            <input type="text" placeholder="CPF" required>
-            <input type="text" value="Casa de Davi" readonly>
-            <input type="number" placeholder="Valor da doação (R$)" required min="1" step="0.01">
-            <div class="qr-card">
-                <p>Escaneie o QR Code para doar:</p>
-                <img src="qrcode1.png" alt="QR Code para Casa de Davi">
+        <!-- QR Code Casa de Davi -->
+        <div id="qr-instituicao1" class="qr-section">
+            <h2>Doar para Casa de Davi</h2>
+            <img src="qrcode.png" alt="QR Code PIX Casa de Davi">
+            <div class="pix-key">
+                <p>Chave PIX (CNPJ):</p>
+                <span id="pix-key-1">20.542.770/0001-73</span>
+                <br>
+                <button class="copy-button" onclick="copyPixKey('pix-key-1')">Copiar Chave</button>
             </div>
-            <button type="submit">Enviar</button>
-        </form>
-    </div>
+        </div>
 
+        <!-- QR Code Casa de Adulão -->
+        <div id="qr-instituicao2" class="qr-section">
+            <h2>Doar para Casa de Adulão I</h2>
+            <img src="qrcode.png" alt="QR Code PIX Casa de Adulão">
+            <div class="pix-key">
+                <p>Chave PIX (CNPJ):</p>
+                <span id="pix-key-2">20.542.770/0001-73</span>
+                <br>
+                <button class="copy-button" onclick="copyPixKey('pix-key-2')">Copiar Chave</button>
+            </div>
+        </div>
 
-    <!-- Formulário para Instituição 2 -->
-    <div id="instituicao2" class="form-section">
-        <h2>Doação para Casa de Adulão I</h2>
-        <form>
-            <input type="text" placeholder="Nome completo" required>
-            <input type="email" placeholder="E-mail" required>
-            <input type="tel" placeholder="Telefone" required>
-            <input type="text" placeholder="CPF" required>
-            <input type="text" value="Casa de Adulão I" readonly>
-            <input type="number" placeholder="Valor da doação (R$)" required min="1" step="0.01">
-            <div class="qr-card">
-                <p>Escaneie o QR Code para doar:</p>
-                <img src="qrcode2.png" alt="QR Code para Casa de Adulão I">
+        <!-- QR Code Casa de Ismael -->
+        <div id="qr-instituicao3" class="qr-section">
+            <h2>Doar para Casa de Ismael</h2>
+            <img src="qrcode.png" alt="QR Code PIX Casa de Ismael">
+            <div class="pix-key">
+                <p>Chave PIX (CNPJ):</p>
+                <span id="pix-key-3">20.542.770/0001-73</span>
+                <br>
+                <button class="copy-button" onclick="copyPixKey('pix-key-3')">Copiar Chave</button>
             </div>
-            <button type="submit">Enviar</button>
-        </form>
-    </div>
+        </div>
 
-    <!-- Formulário para Instituição 3 -->
-    <div id="instituicao3" class="form-section">
-        <h2>Doação para Casa de Ismael</h2>
-        <form>
-            <input type="text" placeholder="Nome completo" required>
-            <input type="email" placeholder="E-mail" required>
-            <input type="tel" placeholder="Telefone" required>
-            <input type="text" placeholder="CPF" required>
-            <input type="text" value="Casa de Ismael" readonly>
-            <input type="number" placeholder="Valor da doação (R$)" required min="1" step="0.01">
-            <div class="qr-card">
-                <p>Escaneie o QR Code para doar:</p>
-                <img src="qrcode3.png" alt="QR Code para Casa de Ismael">
+        <!-- QR Code Projeto Jedida -->
+        <div id="qr-instituicao4" class="qr-section">
+            <h2>Doar para Projeto Jedida</h2>
+            <img src="qrcode.png" alt="QR Code PIX Projeto Jedida">
+            <div class="pix-key">
+                <p>Chave PIX (CNPJ):</p>
+                <span id="pix-key-4">20.542.770/0001-73</span>
+                <br>
+                <button class="copy-button" onclick="copyPixKey('pix-key-4')">Copiar Chave</button>
             </div>
-            <button type="submit">Enviar</button>
-        </form>
-    </div>
+        </div>
 
-    <!-- Formulário para Instituição 4 -->
-    <div id="instituicao4" class="form-section">
-        <h2>Doação para Projeto Jedida</h2>
-        <form>
-            <input type="text" placeholder="Nome completo" required>
-            <input type="email" placeholder="E-mail" required>
-            <input type="tel" placeholder="Telefone" required>
-            <input type="text" placeholder="CPF" required>
-            <input type="text" value="Projeto Jedida" readonly>
-            <input type="number" placeholder="Valor da doação (R$)" required min="1" step="0.01">
-            <div class="qr-card">
-                <p>Escaneie o QR Code para doar:</p>
-                <img src="qrcode4.png" alt="QR Code para Projeto Jedida">
+        <!-- QR Code Projeto Betânia -->
+        <div id="qr-instituicao5" class="qr-section">
+            <h2>Doar para Projeto Betânia</h2>
+            <img src="qrcode.png" alt="QR Code PIX Projeto Betânia">
+            <div class="pix-key">
+                <p>Chave PIX (CNPJ):</p>
+                <span id="pix-key-5">20.542.770/0001-73</span>
+                <br>
+                <button class="copy-button" onclick="copyPixKey('pix-key-5')">Copiar Chave</button>
             </div>
-            <button type="submit">Enviar</button>
-        </form>
-    </div>
-    <!-- Formulário para Instituição 5 -->
-    <div id="instituicao5" class="form-section">
-        <h2>Doação para Projeto Betânia</h2>
-        <form>
-            <input type="text" placeholder="Nome completo" required>
-            <input type="email" placeholder="E-mail" required>
-            <input type="tel" placeholder="Telefone" required>
-            <input type="text" placeholder="CPF" required>
-            <input type="text" value="Projeto Betânia" readonly>
-            <input type="number" placeholder="Valor da doação (R$)" required min="1" step="0.01">
-            <div class="qr-card">
-                <p>Escaneie o QR Code para doar:</p>
-                <img src="qrcode5.png" alt="QR Code para Projeto Betânia">
-            </div>
-            <button type="submit">Enviar</button>
-        </form>
+        </div>
     </div>
 </section>
 
@@ -346,16 +338,80 @@
     <i class="fas fa-arrow-left"></i>
 </a>
 
-<script>
-    function showForm(id) {
-        const forms = document.querySelectorAll('.form-section');
-        forms.forEach(form => form.classList.remove('active'));
+<!-- Pop-up de Contatos -->
+<div id="popupContatos" class="popup">
+    <div class="popup-content">
+        <span class="fechar-popup">&times;</span>
+        <h2>Nossos Contatos</h2>
+        <div class="contatos-grid">
+            <div class="contato-item">
+                <i class="fas fa-phone"></i>
+                <p>(34) 99999-9999</p>
+            </div>
+            <div class="contato-item">
+                <i class="fas fa-envelope"></i>
+                <p>contato@casadedavi.org.br</p>
+            </div>
+            <div class="contato-item">
+                <i class="fas fa-map-marker-alt"></i>
+                <p>Rua Example, 123 - Bairro - Araguari/MG</p>
+            </div>
+            <div class="contato-item">
+                <a href="https://facebook.com/" target="_blank">
+                    <i class="fab fa-facebook"></i>
+                </a>
+            </div>
+            <div class="contato-item">
+                <a href="https://instagram.com/" target="_blank">
+                    <i class="fab fa-instagram"></i>
+                </a>
+            </div>
+            <div class="contato-item">
+                <a href="https://api.whatsapp.com/send?phone=5534999999999" target="_blank">
+                    <i class="fab fa-whatsapp"></i>
+                </a>
+            </div>
+        </div>
+    </div>
+</div>
 
-        const selectedForm = document.getElementById(id);
-        if (selectedForm) {
-            selectedForm.classList.add('active');
+<script>
+    function showQR(id) {
+        const sections = document.querySelectorAll('.qr-section');
+        sections.forEach(section => section.classList.remove('active'));
+
+        const selectedSection = document.getElementById('qr-' + id);
+        if (selectedSection) {
+            selectedSection.classList.add('active');
         }
     }
+
+    function copyPixKey(elementId) {
+        const pixKey = document.getElementById(elementId).textContent;
+        navigator.clipboard.writeText(pixKey)
+            .then(() => alert('Chave PIX copiada com sucesso!'))
+            .catch(err => console.error('Erro ao copiar: ', err));
+    }
+
+    function abrirPopupContatos() {
+        document.getElementById('popupContatos').style.display = 'block';
+    }
+
+    document.querySelector('.fechar-popup').addEventListener('click', function() {
+        document.getElementById('popupContatos').style.display = 'none';
+    });
+
+    window.addEventListener('click', function(event) {
+        let popup = document.getElementById('popupContatos');
+        if (event.target == popup) {
+            popup.style.display = 'none';
+        }
+    });
+
+    // Mostrar o primeiro QR code por padrão
+    window.onload = function() {
+        showQR('instituicao1');
+    };
 </script>
 </body>
 </html>

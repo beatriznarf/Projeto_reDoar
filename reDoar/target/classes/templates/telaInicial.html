@@ -188,6 +188,91 @@
             line-height: 1.2;
         }
 
+        .popup {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.7);
+            z-index: 1000;
+        }
+
+        .popup-content {
+            background-color: #1a1a1a;
+            border-radius: 15px;
+            position: relative;
+            margin: 15% auto;
+            padding: 20px;
+            width: 80%;
+            max-width: 500px;
+            color: white;
+            border: 2px solid #692CAB;
+        }
+
+        .fechar-popup {
+            color: #9D71E3;
+            float: right;
+            font-size: 28px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        .fechar-popup:hover {
+            color: #692CAB;
+        }
+
+        .contatos-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+            margin-top: 20px;
+            text-align: center;
+        }
+
+        .contato-item {
+            padding: 15px;
+            border-radius: 10px;
+            background-color: #292929;
+            transition: all 0.3s ease;
+        }
+
+        .contato-item:hover {
+            background-color: #692CAB;
+            transform: scale(1.05);
+        }
+
+        .contato-item i {
+            font-size: 24px;
+            color: #9D71E3;
+            margin-bottom: 10px;
+        }
+
+        .contato-item:hover i {
+            color: white;
+        }
+
+        .contato-item p {
+            margin: 0;
+            font-size: 14px;
+        }
+
+        .contato-item a {
+            color: #9D71E3;
+            text-decoration: none;
+        }
+
+        .contato-item:hover a {
+            color: white;
+        }
+
+        .popup-content h2 {
+            color: #9D71E3;
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
     </style>
 </head>
 <body>
@@ -202,8 +287,7 @@
 <nav class="navbar">
     <div class="navbar-menu">
         <button onclick="window.location.href='/Projetos'" class="navbar-button">Projetos</button>
-        <button onclick="window.location.href='/Contatos'" class="navbar-button">Contatos</button>
-
+        <button onclick="abrirPopupContatos()" class="navbar-button">Contatos</button>
         <button onclick="window.location.href='/login'" class="navbar-button" title="Acessar página de login">Login</button>
     </div>
 </nav>
@@ -239,6 +323,59 @@
         </div>
     </div>
 </section>
+
+<div id="popupContatos" class="popup">
+    <div class="popup-content">
+        <span class="fechar-popup">&times;</span>
+        <h2>Nossos Contatos</h2>
+        <div class="contatos-grid">
+            <div class="contato-item">
+                <i class="fas fa-phone"></i>
+                <p>(34) 99999-9999</p>
+            </div>
+            <div class="contato-item">
+                <i class="fas fa-map-marker-alt"></i>
+                <p>Rua Example, 123 - Bairro - Araguari/MG</p>
+            </div>
+            <div class="contato-item">
+                <i class="fas fa-envelope"></i>
+                <p>contato@casadedavi.org.br</p>
+            </div>
+            <div class="contato-item">
+                <a href="https://facebook.com/" target="_blank">
+                    <i class="fab fa-facebook"></i>
+                </a>
+            </div>
+            <div class="contato-item">
+                <a href="https://instagram.com/" target="_blank">
+                    <i class="fab fa-instagram"></i>
+                </a>
+            </div>
+            <div class="contato-item">
+                <a href="https://api.whatsapp.com/send?phone=5534999999999" target="_blank">
+                    <i class="fab fa-whatsapp"></i>
+                </a>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    function abrirPopupContatos() {
+        document.getElementById('popupContatos').style.display = 'block';
+    }
+
+    document.querySelector('.fechar-popup').addEventListener('click', function() {
+        document.getElementById('popupContatos').style.display = 'none';
+    });
+
+    window.addEventListener('click', function(event) {
+        let popup = document.getElementById('popupContatos');
+        if (event.target == popup) {
+            popup.style.display = 'none';
+        }
+    });
+</script>
 
 </body>
 </html>
