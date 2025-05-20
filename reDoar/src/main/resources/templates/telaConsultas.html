@@ -402,13 +402,16 @@
                 <div class="input-wrapper">
                     <i class="fas fa-calendar-alt"></i>
                     <input type="text" name="dataInicio" placeholder="__/__/____" required
-                           pattern="\d{2}/\d{2}/\d{4}">
+                           pattern="\d{2}/\d{2}/\d{4}"
+                           th:value="${dataInicio}">
                 </div>
                 <div class="input-wrapper">
                     <i class="fas fa-calendar-alt"></i>
                     <input type="text" name="dataFim" placeholder="__/__/____" required
-                           pattern="\d{2}/\d{2}/\d{4}">
+                           pattern="\d{2}/\d{2}/\d{4}"
+                           th:value="${dataFim}">
                 </div>
+
 
             </div>
 

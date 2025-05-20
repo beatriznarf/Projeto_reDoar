@@ -9,11 +9,11 @@ import java.time.LocalDateTime;
 import br.edu.reDoar.model.Doacao;
 import br.edu.reDoar.model.Doador;
 import br.edu.reDoar.model.Usuario;
+import jakarta.servlet.http.HttpSession;
 import org.springframework.ui.Model;
 import org.springframework.stereotype.Controller;
 import br.edu.reDoar.repositories.DoacaoRepository;
 import br.edu.reDoar.repositories.UsuarioRepository;
-
 import br.edu.reDoar.repositories.DoadorRepository;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -32,9 +32,6 @@ public class ConsultaController {
     @Autowired
     private DoacaoRepository doacaoRepository;
 
-
-
-
     @GetMapping("/Consultas")
     public String telaConsultas() {
         return "telaConsultas";
@@ -44,14 +41,20 @@ public class ConsultaController {
     public String consultarFuncionarios(
             @RequestParam String dataInicio,
             @RequestParam String dataFim,
-            Model model) {
+            Model model,
+            HttpSession session) {
 
         LocalDateTime inicio = parseDate(dataInicio).atStartOfDay();
         LocalDateTime fim = parseDate(dataFim).atTime(LocalTime.MAX);
 
         List<Usuario> funcionarios = usuarioRepository.findByDataCadastroBetween(inicio, fim);
+
+
+        session.setAttribute("funcionarios", funcionarios);
         model.addAttribute("funcionarios", funcionarios);
         model.addAttribute("tipoConsulta", "funcionarios");
+        model.addAttribute("dataInicio", dataInicio);
+        model.addAttribute("dataFim", dataFim);
 
         return "telaConsultas";
     }
@@ -60,14 +63,20 @@ public class ConsultaController {
     public String consultarDoadores(
             @RequestParam String dataInicio,
             @RequestParam String dataFim,
-            Model model) {
+            Model model,
+            HttpSession session) {
 
         LocalDateTime inicio = parseDate(dataInicio).atStartOfDay();
         LocalDateTime fim = parseDate(dataFim).atTime(LocalTime.MAX);
 
         List<Doador> doadores = doadorRepository.findByDataCadastroBetween(inicio, fim);
+
+
+        session.setAttribute("doadores", doadores);
         model.addAttribute("doadores", doadores);
         model.addAttribute("tipoConsulta", "doadores");
+        model.addAttribute("dataInicio", dataInicio);
+        model.addAttribute("dataFim", dataFim);
 
         return "telaConsultas";
     }
@@ -76,18 +85,22 @@ public class ConsultaController {
     public String consultarDoacoes(
             @RequestParam String dataInicio,
             @RequestParam String dataFim,
-            Model model) {
+            Model model,
+            HttpSession session) {
 
         LocalDateTime inicio = parseDate(dataInicio).atStartOfDay();
         LocalDateTime fim = parseDate(dataFim).atTime(LocalTime.MAX);
 
         List<Doacao> doacoes = doacaoRepository.findByDataBetween(inicio, fim);
 
-        // Calcula a soma total
+
         BigDecimal totalDoacoes = doacoes.stream()
                 .map(Doacao::getValor)
                 .reduce(BigDecimal.ZERO, BigDecimal::add);
 
+
+        session.setAttribute("doacoes", doacoes);
+        session.setAttribute("totalDoacoes", totalDoacoes);
         model.addAttribute("doacoes", doacoes);
         model.addAttribute("totalDoacoes", totalDoacoes);
         model.addAttribute("tipoConsulta", "doacoes");
@@ -97,28 +110,29 @@ public class ConsultaController {
         return "telaConsultas";
     }
 
-
-
     @PostMapping("/consultarParceiros")
     public String consultarParceiros(
             @RequestParam String dataInicio,
             @RequestParam String dataFim,
-            Model model) {
+            Model model,
+            HttpSession session) {
 
         LocalDateTime inicio = parseDate(dataInicio).atStartOfDay();
         LocalDateTime fim = parseDate(dataFim).atTime(LocalTime.MAX);
 
-        // Busca apenas doadores PJ que são parceiros
         List<Doador> parceiros = doadorRepository.findByParceiroAndDataCadastroBetween(true, inicio, fim);
 
+
+        session.setAttribute("parceiros", parceiros);
         model.addAttribute("parceiros", parceiros);
         model.addAttribute("tipoConsulta", "parceiros");
+        model.addAttribute("dataInicio", dataInicio);
+        model.addAttribute("dataFim", dataFim);
 
         return "telaConsultas";
     }
 
     private LocalDate parseDate(String dateStr) {
-
         String[] parts = dateStr.split("/");
         int day = Integer.parseInt(parts[0]);
         int month = Integer.parseInt(parts[1]);

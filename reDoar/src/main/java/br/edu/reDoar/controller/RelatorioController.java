@@ -1,13 +1,9 @@
 package br.edu.reDoar.controller;
 
 import java.util.List;
-import java.time.LocalTime;
-import java.time.LocalDate;
-import java.time.LocalDateTime;
-import java.time.format.DateTimeFormatter;
 
+import jakarta.servlet.http.HttpSession;
 import org.springframework.http.MediaType;
-import com.itextpdf.text.DocumentException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.HttpHeaders;
 import br.edu.reDoar.service.RelatorioService;
@@ -25,43 +21,72 @@ public class RelatorioController {
     @Autowired
     private RelatorioService relatorioService;
 
-
-
     @PostMapping("/gerar/{tipo}")
     public ResponseEntity<byte[]> gerarRelatorio(
             @PathVariable String tipo,
             @RequestParam String dataInicio,
             @RequestParam String dataFim,
-            @RequestParam(required = false) String filtro) {
+            HttpSession session) {
+
+        List<?> dados = null;
+
+         switch(tipo.toLowerCase()) {
+            case "doadores":
+                dados = (List<?>) session.getAttribute("doadores");
+                break;
+            case "doacoes":
+                dados = (List<?>) session.getAttribute("doacoes");
+                break;
+            case "funcionarios":
+                dados = (List<?>) session.getAttribute("funcionarios");
+                break;
+            case "parceiros":
+                dados = (List<?>) session.getAttribute("parceiros");
+                break;
+            default:
+                return ResponseEntity.badRequest().build();
+        }
+
+        if (dados == null || dados.isEmpty()) {
+            return ResponseEntity.noContent().build();
+        }
 
         try {
-            DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
-            LocalDateTime inicio = LocalDate.parse(dataInicio, formatter).atStartOfDay();
-            LocalDateTime fim = LocalDate.parse(dataFim, formatter).atTime(LocalTime.MAX);
-
-            List<?> dados = relatorioService.buscarDadosRelatorio(tipo, inicio, fim);
-
-            if (dados == null || dados.isEmpty()) {
-                return ResponseEntity.noContent().build();
-            }
 
             byte[] pdf = relatorioService.gerarRelatorioPDF(tipo, dados, dataInicio, dataFim);
+
+
             HttpHeaders headers = new HttpHeaders();
             headers.setContentType(MediaType.APPLICATION_PDF);
-            headers.setContentDispositionFormData("attachment", "relatorio-" + tipo + ".pdf");
+            headers.setContentDisposition(
+                    org.springframework.http.ContentDisposition.builder("attachment")
+                            .filename("relatorio-" + tipo + ".pdf")
+                            .build());
+
 
             return new ResponseEntity<>(pdf, headers, HttpStatus.OK);
 
-        } catch (IllegalArgumentException e) {
-            return ResponseEntity.badRequest().build();
-        } catch (DocumentException e) {
-            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).build();
         } catch (Exception e) {
-            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).build();
+            e.printStackTrace();
+            return ResponseEntity.internalServerError().build();
         }
     }
 
+     private boolean validarDatas(String dataInicio, String dataFim) {
+        if (dataInicio == null || dataFim == null ||
+                dataInicio.trim().isEmpty() || dataFim.trim().isEmpty()) {
+            return false;
+        }
+
+         return true;
+    }
 
 
-
+    @ExceptionHandler(Exception.class)
+    public ResponseEntity<String> handleException(Exception e) {
+        e.printStackTrace();
+        return ResponseEntity
+                .status(HttpStatus.INTERNAL_SERVER_ERROR)
+                .body("Erro ao gerar relatório: " + e.getMessage());
+    }
 }

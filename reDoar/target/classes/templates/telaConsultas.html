@@ -402,13 +402,16 @@
                 <div class="input-wrapper">
                     <i class="fas fa-calendar-alt"></i>
                     <input type="text" name="dataInicio" placeholder="__/__/____" required
-                           pattern="\d{2}/\d{2}/\d{4}">
+                           pattern="\d{2}/\d{2}/\d{4}"
+                           th:value="${dataInicio}">
                 </div>
                 <div class="input-wrapper">
                     <i class="fas fa-calendar-alt"></i>
                     <input type="text" name="dataFim" placeholder="__/__/____" required
-                           pattern="\d{2}/\d{2}/\d{4}">
+                           pattern="\d{2}/\d{2}/\d{4}"
+                           th:value="${dataFim}">
                 </div>
+
 
             </div>
 
@@ -766,14 +769,13 @@
 
 
     document.querySelector('.panel-generate-btn').addEventListener('click', function() {
-        // Pegar o tipo diretamente do campo hidden
         const tipoConsulta = document.getElementById('tipoConsultaAtual').value;
         const dataInicio = document.querySelector('input[name="dataInicio"]').value;
         const dataFim = document.querySelector('input[name="dataFim"]').value;
 
-        console.log('Tipo de consulta:', tipoConsulta); // Debug
-        console.log('Data início:', dataInicio); // Debug
-        console.log('Data fim:', dataFim); // Debug
+        console.log('Tipo de consulta:', tipoConsulta);
+        console.log('Data início:', dataInicio);
+        console.log('Data fim:', dataFim);
 
         if (!tipoConsulta) {
             alert('Tipo de relatório não identificado');
@@ -785,12 +787,12 @@
             return;
         }
 
-        // Criar e enviar o formulário
+
         const form = document.createElement('form');
         form.method = 'POST';
         form.action = `/relatorios/gerar/${tipoConsulta}`;
 
-        // Adicionar os campos hidden
+
         const addHiddenInput = (name, value) => {
             const input = document.createElement('input');
             input.type = 'hidden';
@@ -802,12 +804,10 @@
         addHiddenInput('dataInicio', dataInicio);
         addHiddenInput('dataFim', dataFim);
 
-        // Adicionar filtro específico para parceiros se necessário
         if (tipoConsulta === 'parceiros') {
-            addHiddenInput('filtro', 'PJ'); // Parceiros são sempre PJ
+            addHiddenInput('filtro', 'PJ');
         }
 
-        // Debug
         console.log('Formulário sendo enviado para:', form.action);
         console.log('Com os dados:', {
             tipoConsulta,
@@ -815,7 +815,6 @@
             dataFim
         });
 
-        // Adicionar o form ao documento e submetê-lo
         document.body.appendChild(form);
         form.submit();
     });

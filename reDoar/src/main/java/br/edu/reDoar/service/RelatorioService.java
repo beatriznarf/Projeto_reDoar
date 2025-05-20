@@ -71,6 +71,7 @@ public class RelatorioService {
         return baos.toByteArray();
     }
 
+
     private void adicionarCabecalho(Document document, String tipoRelatorio, String dataInicio, String dataFim) throws DocumentException {
         Paragraph header = new Paragraph("Relatório de " + tipoRelatorio, HEADER_FONT);
         header.setAlignment(Element.ALIGN_CENTER);
