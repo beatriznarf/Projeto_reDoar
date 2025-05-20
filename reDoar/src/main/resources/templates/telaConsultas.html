@@ -390,6 +390,7 @@
 </nav>
 
 <div class="main-container">
+    <input type="hidden" id="tipoConsultaAtual" th:value="${tipoConsulta}">
     <div class="left-panel">
         <div class="panel-logo">
             <img th:src="@{/logo-02.png}" alt="Logo reDoar" style="width: 150px;">
@@ -592,14 +593,17 @@
             </div>
         </div>
 
-        <button class="panel-generate-btn"
+        <button type="button" class="panel-generate-btn"
+                th:data-tipo="${tipoConsulta}"
                 th:if="${tipoConsulta != null and
-                        ((tipoConsulta == 'funcionarios' and funcionarios != null and !funcionarios.isEmpty()) or
-                         (tipoConsulta == 'doadores' and doadores != null and !doadores.isEmpty()) or
-                         (tipoConsulta == 'doacoes' and doacoes != null and !doacoes.isEmpty()) or
-                         (tipoConsulta == 'parceiros' and parceiros != null and !parceiros.isEmpty()))}">
+                ((tipoConsulta == 'funcionarios' and funcionarios != null and !funcionarios.isEmpty()) or
+                 (tipoConsulta == 'doadores' and doadores != null and !doadores.isEmpty()) or
+                 (tipoConsulta == 'doacoes' and doacoes != null and !doacoes.isEmpty()) or
+                 (tipoConsulta == 'parceiros' and parceiros != null and !parceiros.isEmpty()))}">
             <i class="fas fa-file-export"></i> Gerar Relatório
         </button>
+
+
     </div>
 </div>
 
@@ -761,6 +765,57 @@
     });
 
 
+    document.querySelector('.panel-generate-btn').addEventListener('click', function() {
+        const tipoConsulta = document.getElementById('tipoConsultaAtual').value;
+        const dataInicio = document.querySelector('input[name="dataInicio"]').value;
+        const dataFim = document.querySelector('input[name="dataFim"]').value;
+
+        console.log('Tipo de consulta:', tipoConsulta);
+        console.log('Data início:', dataInicio);
+        console.log('Data fim:', dataFim);
+
+        if (!tipoConsulta) {
+            alert('Tipo de relatório não identificado');
+            return;
+        }
+
+        if (!dataInicio || !dataFim) {
+            alert('Por favor, preencha as datas de início e fim');
+            return;
+        }
+
+
+        const form = document.createElement('form');
+        form.method = 'POST';
+        form.action = `/relatorios/gerar/${tipoConsulta}`;
+
+
+        const addHiddenInput = (name, value) => {
+            const input = document.createElement('input');
+            input.type = 'hidden';
+            input.name = name;
+            input.value = value;
+            form.appendChild(input);
+        };
+
+        addHiddenInput('dataInicio', dataInicio);
+        addHiddenInput('dataFim', dataFim);
+
+        if (tipoConsulta === 'parceiros') {
+            addHiddenInput('filtro', 'PJ');
+        }
+
+        console.log('Formulário sendo enviado para:', form.action);
+        console.log('Com os dados:', {
+            tipoConsulta,
+            dataInicio,
+            dataFim
+        });
+
+        document.body.appendChild(form);
+        form.submit();
+    });
+    
 </script>
 
 
