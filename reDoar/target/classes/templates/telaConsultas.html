@@ -773,10 +773,6 @@
         const dataInicio = document.querySelector('input[name="dataInicio"]').value;
         const dataFim = document.querySelector('input[name="dataFim"]').value;
 
-        console.log('Tipo de consulta:', tipoConsulta);
-        console.log('Data início:', dataInicio);
-        console.log('Data fim:', dataFim);
-
         if (!tipoConsulta) {
             alert('Tipo de relatório não identificado');
             return;
@@ -787,11 +783,9 @@
             return;
         }
 
-
         const form = document.createElement('form');
         form.method = 'POST';
         form.action = `/relatorios/gerar/${tipoConsulta}`;
-
 
         const addHiddenInput = (name, value) => {
             const input = document.createElement('input');
@@ -804,16 +798,22 @@
         addHiddenInput('dataInicio', dataInicio);
         addHiddenInput('dataFim', dataFim);
 
+        // Adiciona o filtro ativo de tipo de doador
+        if (tipoConsulta === 'doadores') {
+            const tipoDoadorAtivo = document.querySelector('.filtro-container .filtro-btn[data-tipo].active').getAttribute('data-tipo');
+            addHiddenInput('filtroTipo', tipoDoadorAtivo);
+        }
+
+        // Adiciona o filtro ativo de método de pagamento
+        if (tipoConsulta === 'doacoes') {
+            const metodoPagamentoAtivo = document.querySelector('.filtro-container .filtro-btn[data-pagamento].active').getAttribute('data-pagamento');
+            addHiddenInput('filtroPagamento', metodoPagamentoAtivo);
+        }
+
+        // Adiciona o filtro específico para parceiros
         if (tipoConsulta === 'parceiros') {
             addHiddenInput('filtro', 'PJ');
         }
-
-        console.log('Formulário sendo enviado para:', form.action);
-        console.log('Com os dados:', {
-            tipoConsulta,
-            dataInicio,
-            dataFim
-        });
 
         document.body.appendChild(form);
         form.submit();
