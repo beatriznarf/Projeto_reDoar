@@ -25,6 +25,7 @@ import org.springframework.transaction.annotation.Transactional;
 @Transactional
 public class RelatorioService {
 
+
     @Autowired
     private DoadorRepository doadorRepository;
 
