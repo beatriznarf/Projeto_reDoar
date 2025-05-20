@@ -72,30 +72,35 @@
         }
 
         .about-text {
-            font-size: 14px;
-            line-height: 1.7;
+            font-size: 14.5px;
+            line-height: 1.6; 
             text-align: justify;
             text-justify: inter-word;
+            margin: 5px 0;
         }
+
+
 
         .text-box {
             background-color: #1a1a1a;
             border-left: 3px solid #692CAB;
-            padding: 20px;
-            margin: 10px 0;
+            padding: 15px;
+            margin: 5px 0;
             border-radius: 4px;
-            height: 100%;
+            height: auto;
             display: flex;
             flex-direction: column;
         }
 
+
         .boxes-container {
             display: flex;
             flex-wrap: wrap;
-            gap: 20px;
-            margin: 20px 0;
+            gap: 15px;
+            margin: 15px 0;
             align-items: stretch;
         }
+
 
         .box-column {
             flex: 1;
@@ -106,9 +111,12 @@
         .section-title {
             color: #692CAB;
             font-size: 20px;
-            margin: 0 0 12px 0;
+            margin: 0 0 10px 0;
             text-align: left;
+            font-weight: 600;
         }
+
+
 
         .back-arrow {
             position: fixed;
@@ -229,6 +237,25 @@
             margin-bottom: 20px;
         }
 
+        .main-section {
+            text-align: center;
+            padding: 20px 20px 0 20px;
+        }
+
+        .logo-container img {
+            max-width: 500px;
+            width: 100%;
+            height: auto;
+        }
+
+        @media (max-width: 768px) {
+            .logo-container img {
+                width: 300px;
+                margin-bottom: -40px;
+            }
+        }
+
+
     </style>
 </head>
 <body>
@@ -245,6 +272,14 @@
         <button onclick="window.location.href='/login'" class="navbar-button">Login</button>
     </div>
 </nav>
+
+<section class="main-section">
+    <div class="logo-container">
+        <img th:src="@{/logo.png}" alt="Logo reDoar" style="width: 500px; margin-bottom: -80px">
+    </div>
+</section>
+
+
 
 <div class="content-container">
     <div class="boxes-container">
