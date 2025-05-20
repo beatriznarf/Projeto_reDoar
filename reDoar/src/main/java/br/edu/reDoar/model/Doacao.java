@@ -19,7 +19,7 @@ public class Doacao {
     @Column(nullable = false)
     private BigDecimal valor;
 
-    @Column(name = "forma_pagamento", nullable = false)  // Alterando o nome da coluna
+    @Column(name = "forma_pagamento", nullable = false)
     private String metodoPagamento;
 
 

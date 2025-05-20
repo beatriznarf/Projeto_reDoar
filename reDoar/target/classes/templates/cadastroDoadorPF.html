@@ -426,13 +426,12 @@
 
         <h2>Cadastro de Doadores - Pessoa Física</h2>
 
-        <!-- Mensagens de erro/sucesso -->
+
         <div th:if="${success}" class="alert alert-success" th:text="${success}"></div>
         <div th:if="${error}" class="alert alert-danger" th:text="${error}"></div>
 
         <form th:action="@{/salvarDoadorPF}" method="post">
             <div class="form-container">
-                <!-- Coluna 1 -->
                 <div class="form-group">
                     <i class="fas fa-user"></i>
                     <input type="text" name="nomeCompleto" placeholder="Nome completo" required>
@@ -453,7 +452,7 @@
                     <input type="tel" name="telefone" placeholder="Telefone" required>
                 </div>
 
-                <!-- Coluna 2 -->
+
                 <div class="form-group">
                     <i class="fas fa-map-marker-alt"></i>
                     <input type="text" name="cep" placeholder="CEP" required>

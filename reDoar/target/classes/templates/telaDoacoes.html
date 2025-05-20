@@ -439,19 +439,19 @@
                 </div>
 
 
-                <!-- Valor da doação -->
+
                 <div class="form-group">
                     <i class="fas fa-money-bill-wave"></i>
                     <input type="number" id="valor" name="valor" placeholder="Valor da doação" step="0.01" min="0" required>
                 </div>
 
-                <!-- Data da doação -->
+
                 <div class="form-group">
                     <i class="fas fa-calendar-alt"></i>
                     <input type="date" id="data" name="data" required>
                 </div>
 
-                <!-- Forma de pagamento -->
+
                 <div class="form-group">
                     <i class="fas fa-credit-card"></i>
                     <select id="formaPagamento" name="metodoPagamento" required>
@@ -467,7 +467,7 @@
                 </div>
 
 
-                <!-- Observações (opcional) -->
+
                 <div class="form-group full-width">
                     <i class="fas fa-comment"></i>
                     <input type="text" id="observacoes" name="observacoes" placeholder="Observações (opcional)">
@@ -532,7 +532,6 @@
 
 <script>
     document.addEventListener('DOMContentLoaded', function() {
-        // Carregar lista de doadores
         fetch('/listarDoadores')
             .then(response => response.json())
             .then(doadores => {

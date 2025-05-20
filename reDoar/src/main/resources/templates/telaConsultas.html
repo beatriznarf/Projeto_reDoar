@@ -317,6 +317,68 @@
             margin-bottom: 20px;
         }
 
+        .panel-inputs input::placeholder {
+            color: #999;
+            opacity: 0.5;
+        }
+
+        .panel-inputs select {
+            background-color: white;
+            border-radius: 10px;
+            color: #333;
+        }
+
+        .panel-inputs select:focus {
+            outline: none;
+        }
+
+        .filtro-container {
+            display: flex;
+            justify-content: flex-end;
+            margin-bottom: 20px;
+        }
+
+
+
+        .filtro-select option {
+            background-color: #1a1a1a;
+            color: white;
+        }
+
+
+        .filtro-container {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 20px;
+            flex-wrap: wrap; /* Permite que os botões quebrem linha em telas menores */
+        }
+
+
+        .filtro-btn {
+            background-color: #A370F0;
+            color: white;
+            border: none;
+            border-radius: 12px;
+            padding: 8px 16px;
+            font-weight: bold;
+            font-size: 14px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            white-space: nowrap;
+        }
+
+        .filtro-btn:hover {
+            background-color: #8f5dd9;
+            transform: translateY(-2px);
+        }
+
+        .filtro-btn.active {
+            background-color: #692CAB;
+            box-shadow: 0 4px 8px rgba(105, 44, 171, 0.3);
+        }
+
+
+
     </style>
 </head>
 <body>
@@ -338,14 +400,15 @@
             <div class="panel-inputs">
                 <div class="input-wrapper">
                     <i class="fas fa-calendar-alt"></i>
-                    <input type="text" name="dataInicio" placeholder="dd/MM/yyyy" required
-                           pattern="\d{2}/\d{2}/\d{4}" title="Digite a data no formato dd/MM/yyyy">
+                    <input type="text" name="dataInicio" placeholder="__/__/____" required
+                           pattern="\d{2}/\d{2}/\d{4}">
                 </div>
                 <div class="input-wrapper">
                     <i class="fas fa-calendar-alt"></i>
-                    <input type="text" name="dataFim" placeholder="dd/MM/yyyy" required
-                           pattern="\d{2}/\d{2}/\d{4}" title="Digite a data no formato dd/MM/yyyy">
+                    <input type="text" name="dataFim" placeholder="__/__/____" required
+                           pattern="\d{2}/\d{2}/\d{4}">
                 </div>
+
             </div>
 
             <button type="submit" formaction="/consultarDoadores" class="panel-button">Doadores</button>
@@ -394,11 +457,23 @@
                 </table>
             </div>
 
+
+
+
             <!-- Resultados de Doadores -->
             <div th:if="${tipoConsulta == 'doadores'}">
                 <h3 class="periodo-consulta">Doadores cadastrados:
                     <span th:text="${dataInicio}"></span>  <span th:text="${dataFim}"></span>
                 </h3>
+
+                <div class="filtro-container" style="margin-bottom: 20px;">
+                    <button type="button" class="filtro-btn active" data-tipo="">Todos</button>
+                    <button type="button" class="filtro-btn" data-tipo="PF">Pessoa Física</button>
+                    <button type="button" class="filtro-btn" data-tipo="PJ">Pessoa Jurídica</button>
+                </div>
+
+
+
 
                 <div th:if="${doadores == null or doadores.isEmpty()}" class="no-results">
                     <i class="fas fa-info-circle" style="font-size: 24px; margin-bottom: 10px;"></i>
@@ -432,6 +507,17 @@
                 <h3 class="periodo-consulta">Doações cadastradas:
                     <span th:text="${dataInicio}"></span> <span th:text="${dataFim}"></span>
                 </h3>
+
+                <div class="filtro-container" style="margin-bottom: 20px;">
+                    <button type="button" class="filtro-btn active" data-pagamento="">Todos</button>
+                    <button type="button" class="filtro-btn" data-pagamento="dinheiro">Dinheiro</button>
+                    <button type="button" class="filtro-btn" data-pagamento="pix">PIX</button>
+                    <button type="button" class="filtro-btn" data-pagamento="cartao_credito">Cartão de Crédito</button>
+                    <button type="button" class="filtro-btn" data-pagamento="cartao_debito">Cartão de Débito</button>
+                    <button type="button" class="filtro-btn" data-pagamento="transferencia">Transferência</button>
+                    <button type="button" class="filtro-btn" data-pagamento="cheque">Cheque</button>
+                </div>
+
 
                 <div th:if="${doacoes == null or doacoes.isEmpty()}" class="no-results">
                     <i class="fas fa-info-circle" style="font-size: 24px; margin-bottom: 10px;"></i>
@@ -572,7 +658,111 @@
             popup.style.display = 'none';
         }
     });
+
+
+
+    function formatDate(input) {
+        let value = input.value.replace(/\D/g, '');
+
+        if (value.length >= 2) {
+            value = value.substring(0, 2) + '/' + value.substring(2);
+        }
+        if (value.length >= 5) {
+            value = value.substring(0, 5) + '/' + value.substring(5);
+        }
+        if (value.length > 10) {
+            value = value.substring(0, 10);
+        }
+
+        input.value = value;
+    }
+
+   document.addEventListener('DOMContentLoaded', function() {
+        let dateInputs = document.querySelectorAll('input[name="dataInicio"], input[name="dataFim"]');
+        dateInputs.forEach(function(input) {
+            input.addEventListener('input', function() {
+                formatDate(this);
+            });
+        });
+    });
+
+
+    document.addEventListener('DOMContentLoaded', function() {
+        let tipoDoadorAtivo = '';
+        let metodoPagamentoAtivo = '';
+
+        const filtroTipoButtons = document.querySelectorAll('.filtro-container .filtro-btn[data-tipo]');
+        if (filtroTipoButtons.length > 0) {
+            filtroTipoButtons.forEach(button => {
+                button.addEventListener('click', function () {
+                    filtroTipoButtons.forEach(btn => btn.classList.remove('active'));
+                    this.classList.add('active');
+
+                    tipoDoadorAtivo = this.getAttribute('data-tipo');
+                    aplicarFiltros();
+                });
+            });
+        }
+
+        const filtroPagamentoButtons = document.querySelectorAll('.filtro-container .filtro-btn[data-pagamento]');
+        if (filtroPagamentoButtons.length > 0) {
+            filtroPagamentoButtons.forEach(button => {
+                button.addEventListener('click', function () {
+                    filtroPagamentoButtons.forEach(btn => btn.classList.remove('active'));
+                    this.classList.add('active');
+
+                    metodoPagamentoAtivo = this.getAttribute('data-pagamento');
+
+                    aplicarFiltros();
+                });
+            });
+        }
+
+        function aplicarFiltros() {
+            const rows = document.querySelectorAll('table tbody tr');
+            let total = 0;
+
+            rows.forEach(row => {
+                const tipoCell = row.cells[0].textContent;
+                const pagamentoCell = row.cells[3].textContent.toLowerCase();
+                let mostrarLinha = true;
+
+
+                if (tipoDoadorAtivo !== '') {
+                    if (tipoDoadorAtivo === 'PF' && tipoCell !== 'Pessoa Física') {
+                        mostrarLinha = false;
+                    } else if (tipoDoadorAtivo === 'PJ' && tipoCell !== 'Pessoa Jurídica') {
+                        mostrarLinha = false;
+                    }
+                }
+
+
+                if (metodoPagamentoAtivo !== '' && mostrarLinha) {
+                    if (pagamentoCell !== metodoPagamentoAtivo) {
+                        mostrarLinha = false;
+                    }
+                }
+
+
+                row.style.display = mostrarLinha ? '' : 'none';
+
+
+                if (mostrarLinha) {
+                    const valorStr = row.cells[0].textContent.replace('R$ ', '').replace(',', '.');
+                    total += parseFloat(valorStr);
+                }
+            });
+
+            const totalElement = document.querySelector('.result-container strong span');
+            if (totalElement) {
+                totalElement.textContent = 'R$ ' + total.toFixed(2).replace('.', ',');
+            }
+        }
+    });
+
+
 </script>
+
 
 </body>
 </html>

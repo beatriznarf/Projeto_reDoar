@@ -1,5 +1,11 @@
 package br.edu.reDoar.controller;
 
+
+import java.util.Map;
+import java.util.List;
+import java.util.HashMap;
+import java.util.stream.Collectors;
+
 import br.edu.reDoar.model.Doador;
 import org.springframework.stereotype.Controller;
 import br.edu.reDoar.repositories.DoadorRepository;
@@ -10,10 +16,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-import java.util.stream.Collectors;
 
 @Controller
 public class DoadorController {

@@ -1,12 +1,12 @@
 package br.edu.reDoar.repositories;
 
-import java.time.LocalDateTime;
 import java.util.List;
+import java.time.LocalDateTime;
 
 import br.edu.reDoar.model.Parceiro;
-import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
+import org.springframework.data.jpa.repository.JpaRepository;
 
 public interface ParceiroRepository extends JpaRepository<Parceiro, Long> {
 

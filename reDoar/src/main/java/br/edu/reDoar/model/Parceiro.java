@@ -32,8 +32,6 @@ public class Parceiro {
     @Column(name = "data_cadastro", nullable = false, updatable = false)
     private LocalDateTime dataCadastro = LocalDateTime.now();
 
-    // Getters e Setters
-
     public Long getId() {
         return id;
     }
