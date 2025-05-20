@@ -124,43 +124,61 @@
     }
 
     .gallery-container {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
-      gap: 20px;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 30px;
       padding: 40px;
+      max-width: 1400px;
+      margin: 0 auto;
+    }
+
+    .image-card {
+      aspect-ratio: 16/9;
+      overflow: hidden;
+      border-radius: 10px;
+      box-shadow: 0 4px 8px rgba(105, 44, 171, 0.2);
+      transition: transform 0.3s ease;
+    }
+
+    .image-card:hover {
+      transform: scale(1.03);
+      box-shadow: 0 6px 12px rgba(105, 44, 171, 0.3);
     }
 
     .image-card img {
-      width: 300px;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
       border-radius: 10px;
-      cursor: pointer;
-      transition: transform 0.3s;
+      transition: transform 0.5s ease;
     }
 
     .image-card img:hover {
       transform: scale(1.05);
     }
 
-    /* Modal */
+    /* Melhorias para o modal */
     .modal {
       display: none;
       position: fixed;
       z-index: 9999;
-      padding-top: 80px;
+      padding: 50px;
       left: 0;
       top: 0;
       width: 100%;
       height: 100%;
-      background-color: rgba(0,0,0,0.9);
+      background-color: rgba(0,0,0,0.95);
+      backdrop-filter: blur(5px);
     }
 
     .modal-content {
       margin: auto;
       display: block;
-      max-width: 80%;
-      max-height: 80%;
+      max-width: 90%;
+      max-height: 90vh;
+      object-fit: contain;
       border-radius: 10px;
+      box-shadow: 0 0 20px rgba(105, 44, 171, 0.3);
     }
 
     .close {
