@@ -268,7 +268,7 @@
         .contatos-grid {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
-            gap: 15px;
+            gap: 15px; /* Reduzido um pouco o gap */
             margin-top: 20px;
             text-align: center;
             max-width: 100%;
@@ -279,22 +279,22 @@
             border-radius: 10px;
             background-color: #292929;
             transition: all 0.3s ease;
-            min-height: 80px;
+            min-height: 80px; /* Altura mínima fixa */
             display: flex;
             flex-direction: column;
             justify-content: center;
             align-items: center;
-            word-break: break-word;
-            max-width: 100%;
+            word-break: break-word; /* Quebra palavras longas */
+            max-width: 100%; /* Largura máxima */
         }
 
         .contato-item p {
             margin: 0;
             font-size: 14px;
-            width: 100%;
-            padding: 0 5px;
+            width: 100%; /* Ocupa toda a largura disponível */
+            padding: 0 5px; /* Pequeno padding lateral */
             box-sizing: border-box;
-            overflow-wrap: break-word;
+            overflow-wrap: break-word; /* Quebra palavras longas */
         }
 
         .contato-item:hover {
@@ -326,39 +326,6 @@
             text-align: center;
             margin-bottom: 20px;
         }
-
-        .success-message {
-            background-color: rgba(0, 255, 0, 0.1);
-            color: #51cf66;
-            border: 1px solid #51cf66;
-            opacity: 1;
-            transition: opacity 0.3s ease-in-out;
-        }
-
-        .feedback-message {
-            text-align: center;
-            margin-bottom: 20px;
-            padding: 10px;
-            border-radius: 5px;
-            width: 80%;
-            max-width: 400px;
-            font-size: 14px;
-            opacity: 1;
-            transition: opacity 0.3s ease-in-out;
-        }
-
-        .error-message {
-            background-color: rgba(255, 0, 0, 0.1);
-            color: #ff6b6b;
-            border: 1px solid #ff6b6b;
-        }
-
-        .success-message {
-            background-color: rgba(0, 255, 0, 0.1);
-            color: #51cf66;
-            border: 1px solid #51cf66;
-        }
-
 
     </style>
 </head>
@@ -473,27 +440,22 @@
 </div>
 
 <script>
-    document.addEventListener('DOMContentLoaded', function() {
-        const successMessage = document.querySelector('.success-message');
-        const errorMessage = document.querySelector('.error-message');
+    function abrirPopupContatos() {
+        document.getElementById('popupContatos').style.display = 'block';
+    }
 
-        function fadeOutMessage(element, delay) {
-            if (element) {
-                setTimeout(function() {
-                    element.style.opacity = '0';
+    document.querySelector('.fechar-popup').addEventListener('click', function() {
+        document.getElementById('popupContatos').style.display = 'none';
+    });
 
-                    setTimeout(function() {
-                        element.style.display = 'none';
-                    }, 300);
-                }, delay);
-            }
+    window.addEventListener('click', function(event) {
+        let popup = document.getElementById('popupContatos');
+        if (event.target == popup) {
+            popup.style.display = 'none';
         }
-
-        fadeOutMessage(successMessage, 4000);
-
-        fadeOutMessage(errorMessage, 4000);
     });
 </script>
+
 
 </body>
 </html>
