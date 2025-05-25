@@ -466,6 +466,71 @@
         }
 
 
+        .title-container {
+            width: 100%;
+            max-width: 500px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin-bottom: 30px;
+            text-align: center;
+        }
+
+        .page-title {
+            position: relative;
+            font-size: 32px;
+            font-weight: 600;
+            margin-bottom: 15px;
+            margin-top: 60px;
+            color: white;
+            text-align: center;
+            padding-bottom: 15px;
+            white-space: nowrap;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 15px;
+        }
+
+        .page-title::after {
+            content: '';
+            position: absolute;
+            left: 50%;
+            bottom: 0;
+            width: 100px;
+            height: 3px;
+            background: linear-gradient(to right, rgba(255, 255, 255, 0.2), #ffffff, rgba(255, 255, 255, 0.2));
+            border-radius: 2px;
+            transform: translateX(-50%);
+        }
+
+        .page-title i {
+            font-size: 28px;
+            color: rgba(255, 255, 255, 0.9);
+            animation: float 3s ease-in-out infinite;
+        }
+
+        .page-title i:first-child {
+            animation-delay: 0s;
+        }
+
+        .page-title i:last-child {
+            animation-delay: 1.5s;
+        }
+
+        @keyframes float {
+            0%, 100% {
+                transform: translateY(0);
+            }
+            50% {
+                transform: translateY(-5px);
+            }
+        }
+
+
+
+
+
     </style>
 </head>
 <body>
@@ -484,8 +549,13 @@
             <h1>Associação<br>Casa de Davi</h1>
         </div>
 
-        <h2>Cadastro de Doadores - Pessoa Física</h2>
-
+        <div class="title-container">
+            <h2 class="page-title">
+                <i class="fas fa-hand-holding-heart"></i>
+                Cadastro de Pessoa Física
+                <i class="fas fa-hand-holding-heart"></i>
+            </h2>
+        </div>
 
         <div th:if="${success}" class="message success-message">
             <i class="fas fa-check-circle"></i>
