@@ -277,26 +277,6 @@
             margin-top: -15px;
         }
 
-        .alert {
-            padding: 15px;
-            margin-bottom: 20px;
-            border: 1px solid transparent;
-            border-radius: 4px;
-            grid-column: span 2;
-            text-align: center;
-        }
-
-        .alert-success {
-            color: #3c763d;
-            background-color: #dff0d8;
-            border-color: #d6e9c6;
-        }
-
-        .alert-danger {
-            color: #a94442;
-            background-color: #f2dede;
-            border-color: #ebccd1;
-        }
 
         .back-arrow {
             position: fixed;
@@ -526,20 +506,28 @@
                 transform: translateY(-5px);
             }
         }
+        .navbar-button i {
+            margin-right: 8px;
+        }
 
-
-
-
+        .popup-content p {
+            line-height: 1.6;
+            color: #ffffff;
+        }
 
     </style>
 </head>
 <body>
 
 <nav class="navbar">
-    <button onclick="window.location.href='/Projetos'" class="navbar-button">Projetos</button>
-    <button onclick="abrirPopupContatos()" class="navbar-button">Contatos</button>
-
-    <button onclick="window.location.href='/telainicial'" class="navbar-button"> Sair </button>
+    <div class="navbar-menu">
+        <button onclick="abrirPopup('popupAdulao')" class="navbar-button"><i class="fas fa-home"></i> Casa de Adulão I</button>
+        <button onclick="abrirPopup('popupBetania')" class="navbar-button"><i class="fas fa-home"></i> Casa Betânia</button>
+        <button onclick="abrirPopup('popupIsmael')" class="navbar-button"><i class="fas fa-home"></i> Casa de Ismael</button>
+        <button onclick="abrirPopup('popupJedida')" class="navbar-button"><i class="fas fa-home"></i> Projeto Jedida</button>
+        <button onclick="abrirPopupContatos()" class="navbar-button"><i class="fas fa-address-book"></i> Contatos</button>
+        <button onclick="window.location.href='/telainicial'" class="navbar-button"><i class="fas fa-sign-out-alt"></i> Sair</button>
+    </div>
 </nav>
 
 <div class="container-principal">
@@ -705,6 +693,41 @@
     </div>
 </div>
 
+
+<div id="popupAdulao" class="popup">
+    <div class="popup-content">
+        <span class="fechar-popup" onclick="fecharPopup('popupAdulao')">&times;</span>
+        <h2>Casa de Adulão I</h2>
+        <p style="text-align: justify; padding: 20px;">Casa de Adulão I é um projeto social que oferece acolhimento temporário a homens maiores de 18 anos em situação de rua ou desabrigo em Araguari, Minas Gerais. Seu objetivo é ser um espaço de refúgio e reconstrução, ajudando aqueles que enfrentam rompimentos familiares, abandono ou falta de moradia fixa. Inspirada na caverna de Adulão, citada na Bíblia como um lugar de proteção, a casa busca restaurar a dignidade e oferecer novas oportunidades aos seus acolhidos.</p>
+    </div>
+</div>
+
+<div id="popupBetania" class="popup">
+    <div class="popup-content">
+        <span class="fechar-popup" onclick="fecharPopup('popupBetania')">&times;</span>
+        <h2>Casa Betânia</h2>
+        <p style="text-align: justify; padding: 20px;">Fundada em junho de 2021, a Casa Betânia é uma instituição sem fins lucrativos localizada em Araguari, Minas Gerais, dedicada a acolher mulheres em situação de vulnerabilidade. Seu foco principal é oferecer suporte a vítimas de violência doméstica, dependência química e outras circunstâncias de risco, proporcionando um ambiente seguro. Atua como um pilar na rede de proteção social do município, promovendo a reintegração social. Com uma média de idade de 25 anos, as mulheres atendidas encontram na Casa Betânia não apenas abrigo, mas também oportunidades de reconstrução pessoal e social. A instituição promove atividades que visam elevar a autoestima e o bem-estar, como cuidados estéticos e orientações de saúde.</p>
+    </div>
+</div>
+
+<div id="popupJedida" class="popup">
+    <div class="popup-content">
+        <span class="fechar-popup" onclick="fecharPopup('popupJedida')">&times;</span>
+        <h2>Projeto Jedida</h2>
+        <p style="text-align: justify; padding: 20px;">Este espaço de convivência acolhe crianças em um ambiente seguro, afetuoso e enriquecedor, onde podem interagir, aprender e se divertir de forma saudável. O projeto Jedida é inspirado na história bíblica do rei Josias, que, aos 8 anos, foi escolhido por Deus para governar Israel. Apesar do exemplo negativo de seu pai e avô, que fizeram o que era mau aos olhos de Deus, Josias foi orientado por sua mãe, Jedida, uma mulher sábia e amorosa que o ensinou a seguir os princípios do Senhor e a trilhar o caminho do bem. O objetivo do Jedida é oferecer às crianças um espaço acolhedor, onde possam desenvolver seus valores, reconhecer seus potenciais, fortalecer os vínculos familiares e aprender a enfrentar medos e desafios. Queremos guiá-las a fazer o que é certo, ajudando-as a crescer com confiança, fé e propósito.</p>
+    </div>
+</div>
+
+<div id="popupIsmael" class="popup">
+    <div class="popup-content">
+        <span class="fechar-popup" onclick="fecharPopup('popupIsmael')">&times;</span>
+        <h2>Casa de Ismael</h2>
+        <p style="text-align: justify; padding: 20px;">A Casa de Ismael é uma instituição dedicada à proteção integral de crianças e adolescentes em situação de vulnerabilidade social e familiar em Araguari, Minas Gerais. Seu objetivo principal é oferecer um ambiente acolhedor e seguro, onde os jovens possam encontrar apoio, orientação e oportunidades para um desenvolvimento saudável. A Casa de Ismael desenvolve iniciativas relevantes no enfrentamento da vulnerabilidade infantojuvenil, oferecendo acolhimento e promovendo oportunidades que contribuem para um futuro mais digno a crianças e adolescentes.</p>
+    </div>
+</div>
+
+
+
 <script>
     function abrirPopupContatos() {
         document.getElementById('popupContatos').style.display = 'block';
@@ -732,8 +755,21 @@
     });
 
 
+    function abrirPopup(popupId) {
+        document.getElementById(popupId).style.display = 'block';
+    }
+    function fecharPopup(popupId) {
+        document.getElementById(popupId).style.display = 'none';
+    }
+    window.onclick = function(event) {
+        let popups = document.getElementsByClassName('popup');
+        for(let popup of popups) {
+            if (event.target == popup) {
+                popup.style.display = 'none';
+            }
+        }
+    }
+
 </script>
-
-
 </body>
 </html>

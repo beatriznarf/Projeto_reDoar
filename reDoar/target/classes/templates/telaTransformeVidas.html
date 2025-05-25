@@ -88,7 +88,6 @@
             transform: translateY(-2px) scale(1.05);
         }
 
-        /* Novos estilos para a área de doação */
         .main-section {
             text-align: center;
             padding: 50px 20px;
@@ -168,7 +167,6 @@
             background-color: #5A2493;
         }
 
-        /* Estilos do popup de contatos existente */
         .popup {
             display: none;
             position: fixed;
@@ -203,7 +201,7 @@
         .contatos-grid {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
-            gap: 15px; /* Reduzido um pouco o gap */
+            gap: 15px;
             margin-top: 20px;
             text-align: center;
             max-width: 100%;
@@ -214,13 +212,13 @@
             border-radius: 10px;
             background-color: #292929;
             transition: all 0.3s ease;
-            min-height: 80px; /* Altura mínima fixa */
+            min-height: 80px;
             display: flex;
             flex-direction: column;
             justify-content: center;
             align-items: center;
-            word-break: break-word; /* Quebra palavras longas */
-            max-width: 100%; /* Largura máxima */
+            word-break: break-word;
+            max-width: 100%;
         }
 
         .contato-item:hover {
@@ -241,10 +239,10 @@
         .contato-item p {
             margin: 0;
             font-size: 14px;
-            width: 100%; /* Ocupa toda a largura disponível */
-            padding: 0 5px; /* Pequeno padding lateral */
+            width: 100%;
+            padding: 0 5px;
             box-sizing: border-box;
-            overflow-wrap: break-word; /* Quebra palavras longas */
+            overflow-wrap: break-word;
         }
 
         .contato-item a {
@@ -254,6 +252,14 @@
 
         .contato-item:hover a {
             color: white;
+        }
+        .navbar-button i {
+            margin-right: 8px;
+        }
+
+        .popup-content p {
+            line-height: 1.6;
+            color: #ffffff;
         }
     </style>
 </head>
@@ -268,89 +274,38 @@
 
 <nav class="navbar">
     <div class="navbar-menu">
-        <button onclick="window.location.href='/Projetos'" class="navbar-button">Projetos</button>
-        <button onclick="abrirPopupContatos()" class="navbar-button">Contatos</button>
-        <button onclick="window.location.href='/login'" class="navbar-button" title="Acessar página de login"> Entrar </button>
+        <button onclick="abrirPopup('popupAdulao')" class="navbar-button"><i class="fas fa-home"></i> Casa de Adulão I</button>
+        <button onclick="abrirPopup('popupBetania')" class="navbar-button"><i class="fas fa-home"></i> Casa Betânia</button>
+        <button onclick="abrirPopup('popupIsmael')" class="navbar-button"><i class="fas fa-home"></i> Casa de Ismael</button>
+        <button onclick="abrirPopup('popupJedida')" class="navbar-button"><i class="fas fa-home"></i> Projeto Jedida</button>
+        <button onclick="abrirPopupContatos()" class="navbar-button"><i class="fas fa-address-book"></i> Contatos</button>
+        <button onclick="window.location.href='/login'" class="navbar-button" title="Acessar página de login"><i class="fas fa-sign-in-alt"></i> Entrar</button>
     </div>
 </nav>
 
-<section class="main-section">
-    <div class="donation-container">
-        <div style="margin-bottom: 30px;">
-            <button class="panel-button" onclick="showQR('instituicao1')">Casa de Davi</button>
-            <button class="panel-button" onclick="showQR('instituicao2')">Casa de Adulão I</button>
-            <button class="panel-button" onclick="showQR('instituicao3')">Casa de Ismael</button>
-            <button class="panel-button" onclick="showQR('instituicao4')">Projeto Jedida</button>
-            <button class="panel-button" onclick="showQR('instituicao5')">Projeto Betânia</button>
-        </div>
-
-        <!-- QR Code Casa de Davi -->
-        <div id="qr-instituicao1" class="qr-section">
-            <h2>Doar para Casa de Davi</h2>
-            <img src="qrcode.png" alt="QR Code PIX Casa de Davi">
-            <div class="pix-key">
-                <p>Chave PIX (CNPJ):</p>
-                <span id="pix-key-1">20.542.770/0001-73</span>
-                <br>
-                <button class="copy-button" onclick="copyPixKey('pix-key-1')">Copiar Chave</button>
+        <section class="main-section">
+            <div class="donation-container">
+                <div class="qr-section" style="display: block;">
+                    <h2>Fazer uma Doação</h2>
+                    <p style="color: #9D71E3; margin-bottom: 20px;">Sua contribuição ajuda a manter todos os nossos projetos sociais</p>
+                    <img src="qrcode.png" alt="QR Code PIX">
+                    <div class="pix-key">
+                        <p>Chave PIX (CNPJ):</p>
+                        <span id="pix-key">20.542.770/0001-73</span>
+                        <br>
+                        <button class="copy-button" onclick="copyPixKey('pix-key')">Copiar Chave</button>
+                    </div>
+                </div>
             </div>
-        </div>
+        </section>
 
-        <!-- QR Code Casa de Adulão -->
-        <div id="qr-instituicao2" class="qr-section">
-            <h2>Doar para Casa de Adulão I</h2>
-            <img src="qrcode.png" alt="QR Code PIX Casa de Adulão">
-            <div class="pix-key">
-                <p>Chave PIX (CNPJ):</p>
-                <span id="pix-key-2">20.542.770/0001-73</span>
-                <br>
-                <button class="copy-button" onclick="copyPixKey('pix-key-2')">Copiar Chave</button>
-            </div>
-        </div>
 
-        <!-- QR Code Casa de Ismael -->
-        <div id="qr-instituicao3" class="qr-section">
-            <h2>Doar para Casa de Ismael</h2>
-            <img src="qrcode.png" alt="QR Code PIX Casa de Ismael">
-            <div class="pix-key">
-                <p>Chave PIX (CNPJ):</p>
-                <span id="pix-key-3">20.542.770/0001-73</span>
-                <br>
-                <button class="copy-button" onclick="copyPixKey('pix-key-3')">Copiar Chave</button>
-            </div>
-        </div>
-
-        <!-- QR Code Projeto Jedida -->
-        <div id="qr-instituicao4" class="qr-section">
-            <h2>Doar para Projeto Jedida</h2>
-            <img src="qrcode.png" alt="QR Code PIX Projeto Jedida">
-            <div class="pix-key">
-                <p>Chave PIX (CNPJ):</p>
-                <span id="pix-key-4">20.542.770/0001-73</span>
-                <br>
-                <button class="copy-button" onclick="copyPixKey('pix-key-4')">Copiar Chave</button>
-            </div>
-        </div>
-
-        <!-- QR Code Projeto Betânia -->
-        <div id="qr-instituicao5" class="qr-section">
-            <h2>Doar para Projeto Betânia</h2>
-            <img src="qrcode.png" alt="QR Code PIX Projeto Betânia">
-            <div class="pix-key">
-                <p>Chave PIX (CNPJ):</p>
-                <span id="pix-key-5">20.542.770/0001-73</span>
-                <br>
-                <button class="copy-button" onclick="copyPixKey('pix-key-5')">Copiar Chave</button>
-            </div>
-        </div>
-    </div>
-</section>
-
-<a th:href="@{/telainicial}" class="back-arrow" title="Voltar para a tela inicial">
+        <a th:href="@{/telainicial}" class="back-arrow" title="Voltar para a tela inicial">
     <i class="fas fa-arrow-left"></i>
 </a>
 
-<!-- Pop-up de Contatos -->
+
+
 <div id="popupContatos" class="popup">
     <div class="popup-content">
         <span class="fechar-popup">&times;</span>
@@ -388,6 +343,39 @@
     </div>
 </div>
 
+<div id="popupAdulao" class="popup">
+    <div class="popup-content">
+        <span class="fechar-popup" onclick="fecharPopup('popupAdulao')">&times;</span>
+        <h2>Casa de Adulão I</h2>
+        <p style="text-align: justify; padding: 20px;">Casa de Adulão I é um projeto social que oferece acolhimento temporário a homens maiores de 18 anos em situação de rua ou desabrigo em Araguari, Minas Gerais. Seu objetivo é ser um espaço de refúgio e reconstrução, ajudando aqueles que enfrentam rompimentos familiares, abandono ou falta de moradia fixa. Inspirada na caverna de Adulão, citada na Bíblia como um lugar de proteção, a casa busca restaurar a dignidade e oferecer novas oportunidades aos seus acolhidos.</p>
+    </div>
+</div>
+
+<div id="popupBetania" class="popup">
+    <div class="popup-content">
+        <span class="fechar-popup" onclick="fecharPopup('popupBetania')">&times;</span>
+        <h2>Casa Betânia</h2>
+        <p style="text-align: justify; padding: 20px;">Fundada em junho de 2021, a Casa Betânia é uma instituição sem fins lucrativos localizada em Araguari, Minas Gerais, dedicada a acolher mulheres em situação de vulnerabilidade. Seu foco principal é oferecer suporte a vítimas de violência doméstica, dependência química e outras circunstâncias de risco, proporcionando um ambiente seguro. Atua como um pilar na rede de proteção social do município, promovendo a reintegração social. Com uma média de idade de 25 anos, as mulheres atendidas encontram na Casa Betânia não apenas abrigo, mas também oportunidades de reconstrução pessoal e social. A instituição promove atividades que visam elevar a autoestima e o bem-estar, como cuidados estéticos e orientações de saúde.</p>
+    </div>
+</div>
+
+<div id="popupJedida" class="popup">
+    <div class="popup-content">
+        <span class="fechar-popup" onclick="fecharPopup('popupJedida')">&times;</span>
+        <h2>Projeto Jedida</h2>
+        <p style="text-align: justify; padding: 20px;">Este espaço de convivência acolhe crianças em um ambiente seguro, afetuoso e enriquecedor, onde podem interagir, aprender e se divertir de forma saudável. O projeto Jedida é inspirado na história bíblica do rei Josias, que, aos 8 anos, foi escolhido por Deus para governar Israel. Apesar do exemplo negativo de seu pai e avô, que fizeram o que era mau aos olhos de Deus, Josias foi orientado por sua mãe, Jedida, uma mulher sábia e amorosa que o ensinou a seguir os princípios do Senhor e a trilhar o caminho do bem. O objetivo do Jedida é oferecer às crianças um espaço acolhedor, onde possam desenvolver seus valores, reconhecer seus potenciais, fortalecer os vínculos familiares e aprender a enfrentar medos e desafios. Queremos guiá-las a fazer o que é certo, ajudando-as a crescer com confiança, fé e propósito.</p>
+    </div>
+</div>
+
+<div id="popupIsmael" class="popup">
+    <div class="popup-content">
+        <span class="fechar-popup" onclick="fecharPopup('popupIsmael')">&times;</span>
+        <h2>Casa de Ismael</h2>
+        <p style="text-align: justify; padding: 20px;">A Casa de Ismael é uma instituição dedicada à proteção integral de crianças e adolescentes em situação de vulnerabilidade social e familiar em Araguari, Minas Gerais. Seu objetivo principal é oferecer um ambiente acolhedor e seguro, onde os jovens possam encontrar apoio, orientação e oportunidades para um desenvolvimento saudável. A Casa de Ismael desenvolve iniciativas relevantes no enfrentamento da vulnerabilidade infantojuvenil, oferecendo acolhimento e promovendo oportunidades que contribuem para um futuro mais digno a crianças e adolescentes.</p>
+    </div>
+</div>
+
+
 <script>
     function showQR(id) {
         const sections = document.querySelectorAll('.qr-section');
@@ -399,13 +387,7 @@
         }
     }
 
-    function copyPixKey(elementId) {
-        const pixKey = document.getElementById(elementId).textContent;
-        navigator.clipboard.writeText(pixKey)
-            .then(() => alert('Chave PIX copiada com sucesso!'))
-            .catch(err => console.error('Erro ao copiar: ', err));
-    }
-
+    // este script é para o popup de contatos
     function abrirPopupContatos() {
         document.getElementById('popupContatos').style.display = 'block';
     }
@@ -421,10 +403,21 @@
         }
     });
 
-    // Mostrar o primeiro QR code por padrão
-    window.onload = function() {
-        showQR('instituicao1');
-    };
+    //aqui é para as casas no navbar
+    function abrirPopup(popupId) {
+        document.getElementById(popupId).style.display = 'block';
+    }
+    function fecharPopup(popupId) {
+        document.getElementById(popupId).style.display = 'none';
+    }
+    window.onclick = function(event) {
+        let popups = document.getElementsByClassName('popup');
+        for(let popup of popups) {
+            if (event.target == popup) {
+                popup.style.display = 'none';
+            }
+        }
+    }
 </script>
 </body>
 </html>
