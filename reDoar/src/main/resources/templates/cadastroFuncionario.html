@@ -103,8 +103,11 @@
             padding: 10px 15px;
             margin-bottom: 20px;
             width: 100%;
-            max-width: 400px;
+            max-width: 42px;
+            min-width: 420px;
+            box-sizing: border-box;
         }
+
 
         .form-group i {
             margin-right: 10px;
@@ -119,7 +122,9 @@
             font-size: 14px;
             width: 100%;
             font-family: 'Poppins', sans-serif;
+            padding: 0 10px;
         }
+
 
         .form-group select option {
             background-color: #692CAB;
@@ -208,15 +213,6 @@
         }
 
 
-        .feedback-message {
-            text-align: center;
-            margin-bottom: 20px;
-            padding: 10px;
-            border-radius: 5px;
-            width: 80%;
-            max-width: 400px;
-            font-size: 14px;
-        }
 
         .error-message {
             background-color: rgba(255, 0, 0, 0.1);
@@ -375,6 +371,74 @@
         }
 
 
+        .title-container {
+            width: 100%;
+            max-width: 500px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin-bottom: 30px;
+            text-align: center;
+        }
+
+
+        .page-title {
+            position: relative;
+            font-size: 32px;
+            font-weight: 600;
+            margin-bottom: 15px;
+            margin-top: 60px;
+            color: white;
+            text-align: center;
+            padding-bottom: 15px;
+            white-space: nowrap;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 15px;
+        }
+
+
+        .page-title::after {
+            content: '';
+            position: absolute;
+            left: 50%;
+            bottom: 0;
+            width: 100px;
+            height: 3px;
+            background: linear-gradient(to right, rgba(255, 255, 255, 0.2), #ffffff, rgba(255, 255, 255, 0.2));
+            border-radius: 2px;
+            transform: translateX(-50%);
+        }
+
+
+
+        .page-title i {
+            font-size: 28px;
+            color: rgba(255, 255, 255, 0.9);
+            animation: float 3s ease-in-out infinite;
+        }
+
+
+        .page-title i:first-child {
+            animation-delay: 0s;
+        }
+
+
+        .page-title i:last-child {
+            animation-delay: 1.5s;
+        }
+
+
+        @keyframes float {
+            0%, 100% {
+                transform: translateY(0);
+            }
+            50% {
+                transform: translateY(-5px);
+            }
+        }
+
 
 
     </style>
@@ -395,8 +459,13 @@
             <h1>Associação<br>Casa de Davi</h1>
         </div>
 
-        <h2>Cadastro de Funcionários</h2>
-
+        <div class="title-container">
+            <h2 class="page-title">
+                <i class="fas fa-user-tie"></i>
+                Cadastro de Funcionários
+                <i class="fas fa-user-tie"></i>
+            </h2>
+        </div>
 
         <div th:if="${errorType}" class="message error-message">
             <i class="fas fa-exclamation-circle"></i>
