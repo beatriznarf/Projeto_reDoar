@@ -261,6 +261,18 @@
             line-height: 1.6;
             color: #ffffff;
         }
+
+        .copy-button.copied {
+            background-color: #4CAF50;
+        }
+        .copy-button.copied::after {
+            content: "Copiado!";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+        }
     </style>
 </head>
 <body>
@@ -377,15 +389,22 @@
 
 
 <script>
-    function showQR(id) {
-        const sections = document.querySelectorAll('.qr-section');
-        sections.forEach(section => section.classList.remove('active'));
+    function copyPixKey(elementId) {
+        const pixKey = document.getElementById(elementId).textContent;
+        navigator.clipboard.writeText(pixKey).then(() => {
+            const button = document.querySelector('.copy-button');
+            const originalText = button.textContent;
+            button.textContent = 'Copiado!';
 
-        const selectedSection = document.getElementById('qr-' + id);
-        if (selectedSection) {
-            selectedSection.classList.add('active');
-        }
+            setTimeout(() => {
+                button.textContent = originalText;
+            }, 2000);
+        }).catch(err => {
+            console.error('Erro ao copiar: ', err);
+            alert('Não foi possível copiar a chave. Por favor, tente copiar manualmente.');
+        });
     }
+
 
     // este script é para o popup de contatos
     function abrirPopupContatos() {
