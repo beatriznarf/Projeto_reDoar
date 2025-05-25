@@ -102,15 +102,15 @@
             padding: 60px 40px;
             position: relative;
             box-shadow: 10px 0 30px rgba(0,0,0,0.3);
-            overflow-y: hidden; /* Alterado de auto para hidden */
-            height: 92vh; /* Alterado de 90vh para 85vh */
+            overflow-y: hidden;
+            height: 92vh;
             margin: 15px 0;
         }
 
         .left-panel h2 {
             font-size: 28px;
             margin-bottom: 40px;
-            margin-top: 100px; /* Aumentado para dar mais espaço após a logo */
+            margin-top: 100px;
             align-self: flex-start;
             color: var(--branco);
             font-weight: 600;
@@ -120,15 +120,15 @@
         .form-container {
             display: grid;
             grid-template-columns: 1fr 1fr;
-            gap: 20px; /* Reduzido de 25px para 20px */
-            width: 95%; /* Adicionado para dar um pouco mais de espaço nas laterais */
-            max-width: 800px; /* Reduzido de 850px para 800px */
+            gap: 20px;
+            width: 95%;
+            max-width: 800px;
             box-sizing: border-box;
-            padding: 15px; /* Reduzido de 20px para 15px */
+            padding: 15px;
         }
 
         .form-group {
-            position: relative;  /* Adicionado */
+            position: relative;
             display: flex;
             align-items: center;
             background-color: rgba(255, 255, 255, 0.1);
@@ -138,7 +138,7 @@
             margin-bottom: 0;
             width: 100%;
             box-sizing: border-box;
-            min-height: 55px;  /* Adicionado altura mínima */
+            min-height: 55px;
         }
 
         .form-group:hover {
@@ -347,7 +347,7 @@
             justify-content: center;
             color: var(--branco);
             text-align: center;
-            height: 90vh; /* Adicionado para alinhar com o painel esquerdo */
+            height: 90vh;
         }
 
         .right-panel-content {
@@ -450,7 +450,7 @@
         .contatos-grid {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
-            gap: 15px; /* Reduzido um pouco o gap */
+            gap: 15px;
             margin-top: 20px;
             text-align: center;
             max-width: 100%;
@@ -461,22 +461,22 @@
             border-radius: 10px;
             background-color: #292929;
             transition: all 0.3s ease;
-            min-height: 80px; /* Altura mínima fixa */
+            min-height: 80px;
             display: flex;
             flex-direction: column;
             justify-content: center;
             align-items: center;
-            word-break: break-word; /* Quebra palavras longas */
-            max-width: 100%; /* Largura máxima */
+            word-break: break-word;
+            max-width: 100%;
         }
 
         .contato-item p {
             margin: 0;
             font-size: 14px;
-            width: 100%; /* Ocupa toda a largura disponível */
-            padding: 0 5px; /* Pequeno padding lateral */
+            width: 100%;
+            padding: 0 5px;
             box-sizing: border-box;
-            overflow-wrap: break-word; /* Quebra palavras longas */
+            overflow-wrap: break-word;
         }
 
         .contato-item:hover {
@@ -509,6 +509,57 @@
             margin-bottom: 20px;
         }
 
+
+        .message {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            padding: 15px 25px;
+            border-radius: 8px;
+            font-weight: 500;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+            z-index: 1000;
+            animation: slideIn 0.3s ease;
+        }
+
+        .success-message {
+            background-color: #10B981;
+            color: white;
+        }
+
+        .error-message {
+            background-color: #EF4444;
+            color: white;
+        }
+
+        @keyframes slideIn {
+            from {
+                transform: translateX(100%);
+                opacity: 0;
+            }
+            to {
+                transform: translateX(0);
+                opacity: 1;
+            }
+        }
+
+        @keyframes slideOut {
+            from {
+                transform: translateX(0);
+                opacity: 1;
+            }
+            to {
+                transform: translateX(100%);
+                opacity: 0;
+            }
+        }
+
+
+
+
     </style>
 </head>
 <body>
@@ -530,8 +581,16 @@
         <h2>Cadastro de Doadores - Pessoa Jurídica</h2>
 
 
-        <div th:if="${success}" class="alert alert-success" th:text="${success}"></div>
-        <div th:if="${error}" class="alert alert-danger" th:text="${error}"></div>
+        <div th:if="${success}" class="message success-message">
+            <i class="fas fa-check-circle"></i>
+            <span th:text="${success}"></span>
+        </div>
+
+        <div th:if="${error}" class="message error-message">
+            <i class="fas fa-exclamation-circle"></i>
+            <span th:text="${error}"></span>
+        </div>
+
 
         <form th:action="@{/salvarDoadorPJ}" method="post">
             <div class="form-container">
@@ -702,8 +761,16 @@
             popup.style.display = 'none';
         }
     });
+
+    document.addEventListener('DOMContentLoaded', function() {
+        const messages = document.querySelectorAll('.message');
+        messages.forEach(message => {
+            setTimeout(() => {
+                message.style.animation = 'slideOut 0.3s ease forwards';
+                setTimeout(() => message.remove(), 300);
+            }, 5000);
+        });
+    });
 </script>
-
-
 </body>
 </html>
