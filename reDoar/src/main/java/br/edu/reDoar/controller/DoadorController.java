@@ -7,13 +7,10 @@ import java.util.HashMap;
 import java.util.stream.Collectors;
 
 import br.edu.reDoar.model.Doador;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.stereotype.Controller;
 import br.edu.reDoar.repositories.DoadorRepository;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 
@@ -125,5 +122,168 @@ public class DoadorController {
             map.put("documento", doador.getDocumento());
             return map;
         }).collect(Collectors.toList());
+    }
+
+
+
+
+    @GetMapping("/listarDoadoresPF")
+    @ResponseBody
+    public List<Map<String, Object>> listarDoadoresPF() {
+        return doadorRepository.findAll().stream()
+                .filter(doador -> "PF".equals(doador.getTipo()))
+                .map(doador -> {
+                    Map<String, Object> map = new HashMap<>();
+                    map.put("id", doador.getId());
+                    map.put("nome", doador.getNomeCompleto());
+                    map.put("documento", doador.getDocumento());
+                    return map;
+                }).collect(Collectors.toList());
+    }
+
+    @GetMapping("/listarDoadoresPJ")
+    @ResponseBody
+    public List<Map<String, Object>> listarDoadoresPJ() {
+        return doadorRepository.findAll().stream()
+                .filter(doador -> "PJ".equals(doador.getTipo()))
+                .map(doador -> {
+                    Map<String, Object> map = new HashMap<>();
+                    map.put("id", doador.getId());
+                    map.put("nome", doador.getRazaoSocial());
+                    map.put("documento", doador.getDocumento());
+                    return map;
+                }).collect(Collectors.toList());
+    }
+
+    @GetMapping("/buscarDoador/{id}")
+    @ResponseBody
+    public Doador buscarDoador(@PathVariable Long id) {
+        return doadorRepository.findById(id).orElse(null);
+    }
+
+
+
+
+
+    @PostMapping("/atualizarDoadorPF")
+    @ResponseBody
+    public Map<String, String> atualizarDoadorPF(
+            @RequestParam Long id,
+            @RequestParam(required = false) String nomeCompleto,
+            @RequestParam(required = false) String documento,
+            @RequestParam(required = false) String email,
+            @RequestParam(required = false) String telefone,
+            @RequestParam(required = false) String cep,
+            @RequestParam(required = false) String endereco,
+            @RequestParam(required = false) String cidade,
+            @RequestParam(required = false) String estado) {
+
+        Map<String, String> response = new HashMap<>();
+        try {
+            Doador doador = doadorRepository.findById(id)
+                    .orElseThrow(() -> new RuntimeException("Doador não encontrado"));
+
+            if (!doador.getTipo().equals("PF")) {
+                throw new RuntimeException("ID não corresponde a um doador PF");
+            }
+
+            // Verifica se o novo documento já existe (se foi alterado)
+            if (documento != null && !documento.equals(doador.getDocumento()) &&
+                    doadorRepository.existsByDocumento(documento)) {
+                response.put("status", "error");
+                response.put("message", "CPF já cadastrado");
+                return response;
+            }
+
+            // Verifica se o novo email já existe (se foi alterado)
+            if (email != null && !email.equals(doador.getEmail()) &&
+                    doadorRepository.existsByEmail(email)) {
+                response.put("status", "error");
+                response.put("message", "Email já cadastrado");
+                return response;
+            }
+
+            if (nomeCompleto != null && !nomeCompleto.isEmpty()) doador.setNomeCompleto(nomeCompleto);
+            if (documento != null && !documento.isEmpty()) doador.setDocumento(documento);
+            if (email != null && !email.isEmpty()) doador.setEmail(email);
+            if (telefone != null && !telefone.isEmpty()) doador.setTelefone(telefone);
+            if (cep != null && !cep.isEmpty()) doador.setCep(cep);
+            if (endereco != null && !endereco.isEmpty()) doador.setEndereco(endereco);
+            if (cidade != null && !cidade.isEmpty()) doador.setCidade(cidade);
+            if (estado != null && !estado.isEmpty()) doador.setEstado(estado);
+
+            doadorRepository.save(doador);
+            response.put("status", "success");
+            response.put("message", "Dados atualizados com sucesso!");
+        } catch (Exception e) {
+            response.put("status", "error");
+            response.put("message", e.getMessage());
+        }
+        return response;
+    }
+
+    @PostMapping("/atualizarDoadorPJ")
+    @ResponseBody
+    public Map<String, String> atualizarDoadorPJ(
+            @RequestParam Long id,
+            @RequestParam(required = false) String razaoSocial,
+            @RequestParam(required = false) String documento,
+            @RequestParam(required = false) String email,
+            @RequestParam(required = false) String telefone,
+            @RequestParam(required = false) String responsavel,
+            @RequestParam(required = false) Boolean parceiro,
+            @RequestParam(required = false) String cep,
+            @RequestParam(required = false) String endereco,
+            @RequestParam(required = false) String cidade,
+            @RequestParam(required = false) String estado) {
+
+        Map<String, String> response = new HashMap<>();
+        try {
+            Doador doador = doadorRepository.findById(id)
+                    .orElseThrow(() -> new RuntimeException("Doador não encontrado"));
+
+            if (!doador.getTipo().equals("PJ")) {
+                throw new RuntimeException("ID não corresponde a um doador PJ");
+            }
+
+            // Verifica se o novo documento já existe (se foi alterado)
+            if (documento != null && !documento.equals(doador.getDocumento()) &&
+                    doadorRepository.existsByDocumento(documento)) {
+                response.put("status", "error");
+                response.put("message", "CNPJ já cadastrado");
+                return response;
+            }
+
+            // Verifica se o novo email já existe (se foi alterado)
+            if (email != null && !email.equals(doador.getEmail()) &&
+                    doadorRepository.existsByEmail(email)) {
+                response.put("status", "error");
+                response.put("message", "Email já cadastrado");
+                return response;
+            }
+
+            if (razaoSocial != null && !razaoSocial.isEmpty()) {
+                doador.setRazaoSocial(razaoSocial);
+            }
+
+            if (razaoSocial != null && !razaoSocial.isEmpty()) doador.setRazaoSocial(razaoSocial);
+            if (documento != null && !documento.isEmpty()) doador.setDocumento(documento);
+            if (email != null && !email.isEmpty()) doador.setEmail(email);
+            if (telefone != null && !telefone.isEmpty()) doador.setTelefone(telefone);
+            if (responsavel != null && !responsavel.isEmpty()) doador.setResponsavel(responsavel);
+            if (parceiro != null) doador.setParceiro(parceiro);
+            if (cep != null && !cep.isEmpty()) doador.setCep(cep);
+            if (endereco != null && !endereco.isEmpty()) doador.setEndereco(endereco);
+            if (cidade != null && !cidade.isEmpty()) doador.setCidade(cidade);
+            if (estado != null && !estado.isEmpty()) doador.setEstado(estado);
+
+            doadorRepository.save(doador);
+            response.put("status", "success");
+            response.put("message", "Dados atualizados com sucesso!");
+        } catch (Exception e) {
+            response.put("status", "error");
+            response.put("message", e.getMessage());
+        }
+        return response;
     }
 }

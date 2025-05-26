@@ -266,6 +266,11 @@
       line-height: 1.6;
       color: #ffffff;
     }
+    .menu-options a i {
+      margin-right: 8px; 
+      font-size: 16px;
+    }
+
 
   </style>
 </head>
@@ -296,10 +301,12 @@
 </div>
 
 <div class="menu-options">
-  <a id="cadastrosBtn">Cadastros</a>
-  <a href="/Doacoes" id="doacoesBtn">Doações</a>
-  <a href="#" id="consultasBtn">Consultas</a>
+  <a id="cadastrosBtn"><i class="fas fa-user-plus"></i> Cadastros</a>
+  <a href="/telaEditarDados" id="editarBtn"><i class="fas fa-user-edit"></i> Editar</a>
+  <a href="/Doacoes" id="doacoesBtn"><i class="fas fa-hand-holding-heart"></i> Doações</a>
+  <a href="#" id="consultasBtn"><i class="fas fa-search"></i> Consultas</a>
 </div>
+
 
 
 <div id="cadastroModal" class="modal">
