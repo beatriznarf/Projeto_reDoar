@@ -11,4 +11,9 @@ public class EditarDadosController {
         return "telaEditarDados";
     }
 
+    @GetMapping("/telaEditarDoacao")
+    public String telaEditarDoacao() {
+         return "telaEditarDoacao";
+    }
+
 }

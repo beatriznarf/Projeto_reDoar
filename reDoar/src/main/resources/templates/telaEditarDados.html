@@ -679,7 +679,7 @@
                     </select>
                 </div>
                 <div class="form-group">
-                <i class="fas fa-user"></i>
+                    <i class="fas fa-user"></i>
                     <input type="text" placeholder="Nome Completo" name="nomeCompleto">
                 </div>
                 <div class="form-group">
@@ -831,7 +831,7 @@
 </div>
 
 
-        <a href="/telaAutenticado" class="back-arrow" title="Voltar">
+<a href="/telaAutenticado" class="back-arrow" title="Voltar">
     <i class="fas fa-arrow-left"></i>
 </a>
 
@@ -941,9 +941,9 @@
     });
 
 
-        // Adicione estas animações ao seu CSS
-        const style = document.createElement('style');
-        style.textContent = `
+    // Adicione estas animações ao seu CSS
+    const style = document.createElement('style');
+    style.textContent = `
         @keyframes slideIn {
         from {
         transform: translateX(100%);
@@ -966,9 +966,9 @@
     }
     }
         `;
-        document.head.appendChild(style);
+    document.head.appendChild(style);
 
-        document.addEventListener('DOMContentLoaded', function() {
+    document.addEventListener('DOMContentLoaded', function() {
         // Inicialização
         carregarUsuarios();
         carregarDoadores();
@@ -980,34 +980,34 @@
         setupFormEvents();
     });
 
-        function setupPopupEvents() {
+    function setupPopupEvents() {
         document.querySelector('.fechar-popup')?.addEventListener('click', () => {
             document.getElementById('popupContatos').style.display = 'none';
         });
 
         window.onclick = function(event) {
-        let popups = document.getElementsByClassName('popup');
-        for(let popup of popups) {
-        if (event.target == popup) {
-        popup.style.display = 'none';
-    }
-    }
-    };
+            let popups = document.getElementsByClassName('popup');
+            for(let popup of popups) {
+                if (event.target == popup) {
+                    popup.style.display = 'none';
+                }
+            }
+        };
     }
 
-        function abrirPopupContatos() {
+    function abrirPopupContatos() {
         document.getElementById('popupContatos').style.display = 'block';
     }
 
-        function abrirPopup(popupId) {
+    function abrirPopup(popupId) {
         document.getElementById(popupId).style.display = 'block';
     }
 
-        function fecharPopup(popupId) {
+    function fecharPopup(popupId) {
         document.getElementById(popupId).style.display = 'none';
     }
 
-        function carregarUsuarios() {
+    function carregarUsuarios() {
         fetch('/buscarTodosUsuarios')
             .then(response => response.json())
             .then(usuarios => {
@@ -1024,7 +1024,7 @@
             .catch(error => console.error('Erro ao carregar usuários:', error));
     }
 
-        function carregarDoadores() {
+    function carregarDoadores() {
         // Carregar Doadores PF
         fetch('/listarDoadoresPF')
             .then(response => response.json())
@@ -1041,20 +1041,20 @@
 
         // Carregar Doadores PJ
         fetch('/listarDoadoresPJ')
-        .then(response => response.json())
-        .then(data => {
-        const selectPJ = document.getElementById('selecionarDoadorPJ');
-        selectPJ.innerHTML = '<option value="">Selecione um doador</option>';
-        data.forEach(doador => {
-        const option = document.createElement('option');
-        option.value = doador.id;
-        option.textContent = `${doador.nome} - ${doador.documento}`;
-        selectPJ.appendChild(option);
-    });
-    });
+            .then(response => response.json())
+            .then(data => {
+                const selectPJ = document.getElementById('selecionarDoadorPJ');
+                selectPJ.innerHTML = '<option value="">Selecione um doador</option>';
+                data.forEach(doador => {
+                    const option = document.createElement('option');
+                    option.value = doador.id;
+                    option.textContent = `${doador.nome} - ${doador.documento}`;
+                    selectPJ.appendChild(option);
+                });
+            });
     }
 
-        function carregarDadosDoador(id, tipo) {
+    function carregarDadosDoador(id, tipo) {
         fetch(`/buscarDoador/${id}`)
             .then(response => response.json())
             .then(doador => {
@@ -1080,7 +1080,7 @@
             });
     }
 
-     function setupFormEvents() {
+    function setupFormEvents() {
         // Evento de mudança para funcionários
         document.getElementById('selecionarUsuario')?.addEventListener('change', function() {
             const form = document.getElementById('formFuncionarios');
@@ -1091,17 +1091,17 @@
 
 
         // Eventos de mudança para doadores
-         document.getElementById('selecionarDoadorPF')?.addEventListener('change', function() {
-             limparCamposDoador('PF');
-         });
-         document.getElementById('selecionarDoadorPJ')?.addEventListener('change', function() {
-             limparCamposDoador('PJ');
-         });
+        document.getElementById('selecionarDoadorPF')?.addEventListener('change', function() {
+            limparCamposDoador('PF');
+        });
+        document.getElementById('selecionarDoadorPJ')?.addEventListener('change', function() {
+            limparCamposDoador('PJ');
+        });
 
 
-         // Setup dos eventos de submit
-         setupSubmitEvents();
-     }
+        // Setup dos eventos de submit
+        setupSubmitEvents();
+    }
     function limparCamposDoador(tipo) {
         const form = document.getElementById(`formDoadores${tipo}`);
         const campos = tipo === 'PF'
@@ -1126,81 +1126,81 @@
         document.getElementById('formDoadoresPJ')?.addEventListener('submit', handleDoadorPJSubmit);
     }
 
-        function handleFuncionarioSubmit(e) {
+    function handleFuncionarioSubmit(e) {
         e.preventDefault();
         const usuarioId = document.getElementById('selecionarUsuario').value;
         if (!usuarioId) {
-        mostrarMensagem('Por favor, selecione um funcionário', 'error');
-        return;
-    }
+            mostrarMensagem('Por favor, selecione um funcionário', 'error');
+            return;
+        }
 
         const formData = {
-        id: usuarioId
-    };
+            id: usuarioId
+        };
 
         ['nome', 'cpf', 'email', 'senha', 'cargo'].forEach(campo => {
-        const valor = this.querySelector(`[name="${campo}"]`).value.trim();
-        if (valor) formData[campo] = valor;
-    });
+            const valor = this.querySelector(`[name="${campo}"]`).value.trim();
+            if (valor) formData[campo] = valor;
+        });
 
         fetch('/atualizarUsuario', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(formData)
-    })
-        .then(response => response.json())
-        .then(data => {
-        if (data.message) {
-        mostrarMensagem('Funcionário atualizado com sucesso!', 'success');
-        carregarUsuarios();
-        this.reset();
-        document.getElementById('selecionarUsuario').value = '';
-    } else {
-        mostrarMensagem(data.error || 'Erro ao atualizar funcionário', 'error');
-    }
-    })
-        .catch(() => mostrarMensagem('Erro ao atualizar funcionário', 'error'));
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(formData)
+        })
+            .then(response => response.json())
+            .then(data => {
+                if (data.message) {
+                    mostrarMensagem('Funcionário atualizado com sucesso!', 'success');
+                    carregarUsuarios();
+                    this.reset();
+                    document.getElementById('selecionarUsuario').value = '';
+                } else {
+                    mostrarMensagem(data.error || 'Erro ao atualizar funcionário', 'error');
+                }
+            })
+            .catch(() => mostrarMensagem('Erro ao atualizar funcionário', 'error'));
     }
 
-        function handleDoadorPFSubmit(e) {
+    function handleDoadorPFSubmit(e) {
         e.preventDefault();
         submitDoadorForm(this, 'PF');
     }
 
-        function handleDoadorPJSubmit(e) {
+    function handleDoadorPJSubmit(e) {
         e.preventDefault();
         submitDoadorForm(this, 'PJ');
     }
 
-        function submitDoadorForm(form, tipo) {
+    function submitDoadorForm(form, tipo) {
         const doadorId = document.getElementById(`selecionarDoador${tipo}`).value;
         if (!doadorId) {
-        mostrarMensagem('Por favor, selecione um doador', 'error');
-        return;
-    }
+            mostrarMensagem('Por favor, selecione um doador', 'error');
+            return;
+        }
 
         const formData = new FormData(form);
         formData.append('id', doadorId);
 
         fetch(`/atualizarDoador${tipo}`, {
-        method: 'POST',
-        body: formData
-    })
-        .then(response => response.json())
-        .then(data => {
-        if (data.status === 'success') {
-        mostrarMensagem('Dados atualizados com sucesso!', 'success');
-        form.reset();
-        document.getElementById(`selecionarDoador${tipo}`).value = '';
-        carregarDoadores();
-    } else {
-        mostrarMensagem(data.message || 'Erro ao atualizar dados', 'error');
-    }
-    })
-        .catch(() => mostrarMensagem('Erro ao atualizar dados', 'error'));
+            method: 'POST',
+            body: formData
+        })
+            .then(response => response.json())
+            .then(data => {
+                if (data.status === 'success') {
+                    mostrarMensagem('Dados atualizados com sucesso!', 'success');
+                    form.reset();
+                    document.getElementById(`selecionarDoador${tipo}`).value = '';
+                    carregarDoadores();
+                } else {
+                    mostrarMensagem(data.message || 'Erro ao atualizar dados', 'error');
+                }
+            })
+            .catch(() => mostrarMensagem('Erro ao atualizar dados', 'error'));
     }
 
-        function mostrarMensagem(texto, tipo) {
+    function mostrarMensagem(texto, tipo) {
         const mensagensExistentes = document.querySelectorAll('.message');
         mensagensExistentes.forEach(msg => msg.remove());
 
@@ -1217,31 +1217,31 @@
         div.appendChild(span);
 
         Object.assign(div.style, {
-        position: 'fixed',
-        top: '20px',
-        right: '20px',
-        padding: '15px 25px',
-        borderRadius: '5px',
-        zIndex: '9999',
-        animation: 'slideIn 0.3s ease',
-        backgroundColor: tipo === 'success' ? '#4CAF50' : '#f44336',
-        color: 'white'
-    });
+            position: 'fixed',
+            top: '20px',
+            right: '20px',
+            padding: '15px 25px',
+            borderRadius: '5px',
+            zIndex: '9999',
+            animation: 'slideIn 0.3s ease',
+            backgroundColor: tipo === 'success' ? '#4CAF50' : '#f44336',
+            color: 'white'
+        });
 
         document.body.appendChild(div);
 
         setTimeout(() => {
-        div.style.animation = 'slideOut 0.3s ease forwards';
-        setTimeout(() => div.remove(), 300);
-    }, 3000);
+            div.style.animation = 'slideOut 0.3s ease forwards';
+            setTimeout(() => div.remove(), 300);
+        }, 3000);
     }
 
-        function mostrarFormulario(tipo) {
+    function mostrarFormulario(tipo) {
         document.querySelectorAll('.nav-button').forEach(btn => btn.classList.remove('active'));
         document.querySelectorAll('.form-content').forEach(form => {
-        form.style.display = 'none';
-        form.classList.remove('active');
-    });
+            form.style.display = 'none';
+            form.classList.remove('active');
+        });
 
         document.querySelector(`.nav-button[onclick*="${tipo}"]`).classList.add('active');
 
@@ -1249,10 +1249,10 @@
         formulario.classList.add('active');
 
         if (tipo === 'funcionarios') {
-        formulario.style.display = 'flex';
-    } else {
-        formulario.style.display = 'grid';
-    }
+            formulario.style.display = 'flex';
+        } else {
+            formulario.style.display = 'grid';
+        }
     }
 </script>
 </body>
