@@ -273,6 +273,111 @@
             width: 100%;
             height: 100%;
         }
+        .popup {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.7);
+            z-index: 1000;
+        }
+
+        .popup-content {
+            background-color: #1a1a1a;
+            border-radius: 15px;
+            position: relative;
+            margin: 15% auto;
+            padding: 20px;
+            width: 80%;
+            max-width: 500px;
+            color: white;
+            border: 2px solid #692CAB;
+        }
+
+        .fechar-popup {
+            color: #9D71E3;
+            float: right;
+            font-size: 28px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        .fechar-popup:hover {
+            color: #692CAB;
+        }
+
+        .contatos-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 15px;
+            margin-top: 20px;
+            text-align: center;
+            max-width: 100%;
+        }
+
+        .contato-item {
+            padding: 15px;
+            border-radius: 10px;
+            background-color: #292929;
+            transition: all 0.3s ease;
+            min-height: 80px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            word-break: break-word;
+            max-width: 100%;
+        }
+
+        .contato-item:hover {
+            background-color: #692CAB;
+            transform: scale(1.05);
+        }
+
+        .contato-item i {
+            font-size: 24px;
+            color: #9D71E3;
+            margin-bottom: 10px;
+        }
+
+        .contato-item:hover i {
+            color: white;
+        }
+
+        .contato-item p {
+            margin: 0;
+            font-size: 14px;
+            width: 100%;
+            padding: 0 5px;
+            box-sizing: border-box;
+            overflow-wrap: break-word;
+        }
+
+        .contato-item a {
+            color: #9D71E3;
+            text-decoration: none;
+        }
+
+        .contato-item:hover a {
+            color: white;
+        }
+
+        .popup-content h2 {
+            color: #9D71E3;
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        .navbar-button i {
+            margin-right: 8px;
+        }
+
+        .popup-content p {
+            line-height: 1.6;
+            color: #ffffff;
+        }
+
     </style>
 </head>
 <body>
