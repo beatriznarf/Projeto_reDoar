@@ -467,9 +467,6 @@
 
   <div class="right-panel">
     <div class="result-container">
-      <h3 class="periodo-consulta">Período da consulta:
-        <span id="periodoInicio"></span> a <span id="periodoFim"></span>
-      </h3>
 
       <div class="doacoes-container" style="display: none;">
         <div id="listaDoacoes">
@@ -601,10 +598,10 @@
     }
   }
 
-  // Removido o código que setava automaticamente o período de 30 dias
   document.addEventListener('DOMContentLoaded', function() {
-    atualizarPeriodoConsulta();
+    //atualizarPeriodoConsulta();
   });
+
 
   function atualizarPeriodoConsulta() {
     const dataInicio = document.getElementById('dataInicio').value;
@@ -635,24 +632,22 @@
   function buscarDoacoes() {
     const dataInicio = document.getElementById('dataInicio').value;
     const dataFim = document.getElementById('dataFim').value;
-
     if (!dataInicio || !dataFim) {
       mostrarMensagem('Por favor, selecione ambas as datas', 'error');
       return;
     }
-
-    // Verifica se a data de início é maior que a data de fim
     if (new Date(dataInicio) > new Date(dataFim)) {
       mostrarMensagem('A data de início não pode ser maior que a data de fim', 'error');
       return;
     }
-
     document.querySelector('.doacoes-container').style.display = 'flex';
     document.getElementById('btnExcluir').style.display = 'none';
-    atualizarPeriodoConsulta();
+    
+    const inicio = new Date(dataInicio);
+    inicio.setHours(0, 0, 0, 0);
 
-    const inicio = new Date(dataInicio + 'T00:00:00');
-    const fim = new Date(dataFim + 'T23:59:59');
+    const fim = new Date(dataFim);
+    fim.setHours(23, 59, 59, 999);
 
     fetch(`/buscarDoacoesPorPeriodo?dataInicio=${inicio.toISOString()}&dataFim=${fim.toISOString()}`)
             .then(response => response.json())
