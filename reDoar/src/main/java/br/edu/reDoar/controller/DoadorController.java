@@ -1,18 +1,18 @@
 package br.edu.reDoar.controller;
 
-
 import java.util.Map;
 import java.util.List;
 import java.util.HashMap;
 import java.util.stream.Collectors;
 
 import br.edu.reDoar.model.Doador;
+import br.edu.reDoar.model.Parceiro;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.stereotype.Controller;
 import br.edu.reDoar.repositories.DoadorRepository;
+import br.edu.reDoar.repositories.ParceiroRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
-
 
 @Controller
 public class DoadorController {
@@ -20,6 +20,8 @@ public class DoadorController {
     @Autowired
     private DoadorRepository doadorRepository;
 
+    @Autowired
+    private ParceiroRepository parceiroRepository;
 
     @PostMapping("/salvarDoadorPF")
     public String salvarDoadorPF(
@@ -61,7 +63,6 @@ public class DoadorController {
         return "redirect:/DoadorPF";
     }
 
-    // Metodo para salvar Pessoa Jurídica
     @PostMapping("/salvarDoadorPJ")
     public String salvarDoadorPJ(
             @RequestParam String razaoSocial,
@@ -76,7 +77,6 @@ public class DoadorController {
             @RequestParam String estado,
             RedirectAttributes redirectAttributes) {
 
-        // Verificar se CNPJ ou email já existem
         if (doadorRepository.existsByDocumento(cnpj)) {
             redirectAttributes.addFlashAttribute("error", "CNPJ já cadastrado");
             return "redirect:/DoadorPJ";
@@ -84,6 +84,11 @@ public class DoadorController {
 
         if (doadorRepository.existsByEmail(email)) {
             redirectAttributes.addFlashAttribute("error", "Email já cadastrado");
+            return "redirect:/DoadorPJ";
+        }
+
+        if (parceiro != null && parceiro && parceiroRepository.existsByCnpj(cnpj)) {
+            redirectAttributes.addFlashAttribute("error", "CNPJ já cadastrado como parceiro");
             return "redirect:/DoadorPJ";
         }
 
@@ -102,9 +107,31 @@ public class DoadorController {
 
         doadorRepository.save(doador);
 
+        if (parceiro != null && parceiro) {
+            Parceiro novoParceiro = new Parceiro();
+            novoParceiro.setCnpj(cnpj);
+            novoParceiro.setEmail(email);
+            novoParceiro.setRazaoSocial(razaoSocial);
+            novoParceiro.setResponsavel(responsavel);
+            novoParceiro.setTelefone(telefone);
+            novoParceiro.setCep(cep);
+            novoParceiro.setEndereco(endereco);
+            novoParceiro.setCidade(cidade);
+            novoParceiro.setEstado(estado);
+
+            try {
+                parceiroRepository.save(novoParceiro);
+            } catch (Exception e) {
+                redirectAttributes.addFlashAttribute("warning",
+                        "Doador cadastrado, mas houve um erro ao registrar como parceiro: " + e.getMessage());
+                return "redirect:/DoadorPJ";
+            }
+        }
+
         redirectAttributes.addFlashAttribute("success", "Doador Pessoa Jurídica cadastrado com sucesso!");
         return "redirect:/DoadorPJ";
     }
+
 
 
     @GetMapping("/listarDoadores")
