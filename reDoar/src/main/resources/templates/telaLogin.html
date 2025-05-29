@@ -7,15 +7,17 @@
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&family=Lilita+One&display=swap" rel="stylesheet">
     <style>
         body {
-            background-color: #000;
-            color: white;
+            background-color: #9cc2d5;
+            color: #222424;
             font-family: 'Poppins', sans-serif;
             margin: 0;
             padding: 0;
+            line-height: 1.6;
+
         }
 
         .navbar {
-            background-color: #692CAB;
+            background-color: #222424;
             padding: 8px 40px;
             display: flex;
             justify-content: flex-end;
@@ -31,7 +33,7 @@
         .navbar-button {
             background: none;
             border: none;
-            color: white;
+            color: #d9d7d2;
             font-weight: 600;
             font-size: 16px;
             font-family: 'Poppins', sans-serif;
@@ -42,47 +44,82 @@
         }
 
         .navbar-button:hover {
-            background-color: rgba(255, 255, 255, 0.1);
+            background-color: #daae84;
+            color: #222424;
         }
 
         .main-section {
             text-align: center;
-            padding: 50px 20px;
-        }
-
-        .logo-container img {
-            width: 100px;
+            padding: 20px;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
         }
 
         .logo-container h1 {
             font-size: 48px;
             margin-top: 10px;
-            color: #692CAB;
+            color: #966033;
             font-weight: 700;
         }
+
+
+        .login-card {
+            background-color: #ffffff;
+            border-radius: 15px;
+            padding: 30px;
+            width: 100%;
+            max-width: 500px;
+            margin: 5px auto 0;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            border: 3px solid #222424;
+            min-height: 400px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .login-logo {
+            margin-bottom: 30px;
+            text-align: center;
+        }
+
+        .login-logo img {
+            width: 220px;
+            margin-bottom: 15px;
+        }
+
+        .login-logo h1 {
+            font-size: 32px;
+            color: #222424;
+            margin: 0;
+            font-weight: 700;
+        }
+
 
         .login-field {
             width: 320px;
             margin: 0 auto 25px auto;
             display: flex;
             align-items: center;
-            border: 2px solid #9D71E3;
+            border: 2px solid #222424;
             border-radius: 30px;
             padding: 10px 15px;
             background-color: transparent;
-            color: white;
+            color: #222424;
         }
 
         .login-field i {
             font-size: 20px;
-            color: #9D71E3;
+            color: #222424;
             margin-right: 12px;
         }
 
         .login-field input {
             background: none;
             border: none;
-            color: white;
+            color: #222424;
             font-family: 'Poppins', sans-serif;
             font-size: 16px;
             outline: none;
@@ -90,19 +127,18 @@
         }
 
         .login-field input::placeholder {
-            color: white;
+            color: #222424;
             opacity: 1;
         }
 
         .login-button {
             width: 354px;
             padding: 10px 15px;
-
             margin: 0 auto 25px auto;
-            border: 2px solid #9D71E3;
+            border: 2px solid #222424;
             border-radius: 30px;
-            background-color: transparent;
-            color: #fff;
+            background-color: #222424;
+            color: #ffffff;
             font-size: 16px;
             font-weight: bold;
             cursor: pointer;
@@ -111,17 +147,14 @@
         }
 
         .login-button:hover {
-            background-color: #692CAB;
-            color: white;
+            background-color: #966033;
         }
-
-
 
         .back-arrow {
             position: fixed;
             bottom: 25px;
             left: 25px;
-            background: linear-gradient(145deg, #7c3aed, #9D71E3);
+            background: #222424;
             color: white;
             padding: 14px 16px;
             border-radius: 50px;
@@ -136,7 +169,7 @@
         }
 
         .back-arrow:hover {
-            background: linear-gradient(145deg, #692CAB, #7c3aed);
+            background: #966033;
             transform: translateY(-2px) scale(1.05);
         }
 
@@ -151,6 +184,7 @@
             text-align: left;
         }
 
+
         .left-branding img {
             width: 100px;
         }
@@ -158,27 +192,19 @@
         .left-branding h1 {
             font-size: 13px;
             font-weight: 700;
-            margin-top: -20px;
+            margin-top: -5px;
             margin-left: 10px;
             line-height: 1.2;
+            color: #222424;
         }
-
 
         .error-message {
-            color: white;
-            font-size: 16px;
+            color: #ff0000;
+            background-color: #ffe6e6;
+            padding: 10px;
+            border-radius: 8px;
             margin-bottom: 20px;
-        }
-
-        .close-error {
-            background-color: #9D71E3;
-            color: white;
-            border: none;
-            padding: 8px 20px;
-            border-radius: 5px;
-            cursor: pointer;
-            font-weight: 600;
-            transition: background-color 0.3s;
+            font-size: 14px;
         }
 
 
@@ -189,24 +215,24 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background-color: rgba(0, 0, 0, 0.7);
+            background-color: rgba(34, 36, 36, 0.7);
             z-index: 1000;
         }
 
         .popup-content {
-            background-color: #1a1a1a;
+            background-color: #ffffff;
             border-radius: 15px;
             position: relative;
             margin: 15% auto;
             padding: 20px;
             width: 80%;
             max-width: 500px;
-            color: white;
-            border: 2px solid #692CAB;
+            color: #222424;
+            border: 2px solid #222424;
         }
 
         .fechar-popup {
-            color: #9D71E3;
+            color: #966033;
             float: right;
             font-size: 28px;
             font-weight: bold;
@@ -214,13 +240,13 @@
         }
 
         .fechar-popup:hover {
-            color: #692CAB;
+            color: #daae84;
         }
 
         .contatos-grid {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
-            gap: 15px; /* Reduzido um pouco o gap */
+            gap: 15px;
             margin-top: 20px;
             text-align: center;
             max-width: 100%;
@@ -229,53 +255,58 @@
         .contato-item {
             padding: 15px;
             border-radius: 10px;
-            background-color: #292929;
+            background-color: #ffffff;
             transition: all 0.3s ease;
-            min-height: 80px; /* Altura mínima fixa */
+            min-height: 80px;
             display: flex;
             flex-direction: column;
             justify-content: center;
             align-items: center;
-            word-break: break-word; /* Quebra palavras longas */
-            max-width: 100%; /* Largura máxima */
+            word-break: break-word;
+            max-width: 100%;
+            border: 1px solid #222424;
         }
 
         .contato-item p {
             margin: 0;
             font-size: 14px;
-            width: 100%; /* Ocupa toda a largura disponível */
-            padding: 0 5px; /* Pequeno padding lateral */
+            width: 100%;
+            padding: 0 5px;
             box-sizing: border-box;
-            overflow-wrap: break-word; /* Quebra palavras longas */
+            overflow-wrap: break-word;
+            color: #222424;
         }
 
-
         .contato-item:hover {
-            background-color: #692CAB;
-            transform: scale(1.05);
+            background-color: #222424;
+            color: #ffffff;
+        }
+
+        .contato-item:hover p {
+            color: #ffffff;
         }
 
         .contato-item i {
             font-size: 24px;
-            color: #9D71E3;
+            color: #966033;
             margin-bottom: 10px;
         }
 
         .contato-item:hover i {
-            color: white;
+            color: #daae84;
         }
 
         .contato-item a {
-            color: #9D71E3;
+            color: #966033;
             text-decoration: none;
         }
 
         .contato-item:hover a {
-            color: white;
+            color: #daae84;
         }
 
         .popup-content h2 {
-            color: #9D71E3;
+            color: #966033;
             text-align: center;
             margin-bottom: 20px;
         }
@@ -286,7 +317,7 @@
 
         .popup-content p {
             line-height: 1.6;
-            color: #ffffff;
+            color: #222424;
         }
 
     </style>
@@ -294,7 +325,7 @@
 <body>
 
 <div class="left-branding">
-    <img th:src="@{/logo.png}" alt="Logo reDoar">
+    <img th:src="@{/logomain.png}" alt="Logo reDoar">
     <h1>
         Associação <br>
         Casa de Davi
@@ -313,28 +344,33 @@
 </nav>
 
 <div class="main-section">
-    <div class="logo-container">
-        <img th:src="@{/logo.png}" alt="Logo reDoar" style="width: 400px; margin-top: -30px; margin-bottom: -30px">
+
+    <div class="login-card">
+        <div class="login-logo">
+            <img th:src="@{/logomain.png}" alt="Logo reDoar">
+            <h1> Login </h1>
+        </div>
+
+        <form action="/login" method="post">
+            <div th:if="${param.error}" class="error-message">
+                E-mail ou senha inválidos!
+            </div>
+
+            <div class="login-field">
+                <i class="fas fa-envelope"></i>
+                <input type="email" name="email" placeholder="E-mail" required>
+            </div>
+
+            <div class="login-field">
+                <i class="fas fa-lock"></i>
+                <input type="password" name="senha" placeholder="Senha" required>
+            </div>
+
+            <button type="submit" class="login-button">Entrar</button>
+        </form>
     </div>
-
-    <form action="/login" method="post">
-        <div th:if="${param.error}" class="error-message" style="color: red; margin-bottom: 15px;">
-            E-mail ou senha inválidos!
-        </div>
-
-        <div class="login-field">
-            <i class="fas fa-envelope"></i>
-            <input type="email" name="email" placeholder="E-mail" required>
-        </div>
-
-        <div class="login-field">
-            <i class="fas fa-lock"></i>
-            <input type="password" name="senha" placeholder="Senha" required>
-        </div>
-
-        <button type="submit" class="login-button">Entrar</button>
-    </form>
 </div>
+
 
 <a th:href="@{/telainicial}" class="back-arrow" title="Voltar para a tela inicial">
     <i class="fas fa-arrow-left"></i>
@@ -403,7 +439,6 @@
     </div>
 </div>
 
-
 <script>
     function abrirPopupContatos() {
         document.getElementById('popupContatos').style.display = 'block';
@@ -423,9 +458,11 @@
     function abrirPopup(popupId) {
         document.getElementById(popupId).style.display = 'block';
     }
+
     function fecharPopup(popupId) {
         document.getElementById(popupId).style.display = 'none';
     }
+
     window.onclick = function(event) {
         let popups = document.getElementsByClassName('popup');
         for(let popup of popups) {
