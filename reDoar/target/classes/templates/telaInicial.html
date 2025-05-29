@@ -7,8 +7,8 @@
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
     <style>
         body {
-            background-color: #000;
-            color: white;
+            background-color: #9cc2d5;
+            color: #222424;
             font-family: 'Poppins', sans-serif;
             margin: 0;
             padding: 0;
@@ -16,7 +16,7 @@
         }
 
         .navbar {
-            background-color: #692CAB;
+            background-color: #222424;
             padding: 8px 40px;
             display: flex;
             justify-content: flex-end;
@@ -29,11 +29,10 @@
             margin-bottom: 15px;
         }
 
-
         .navbar-button {
             background: none;
             border: none;
-            color: white;
+            color: #d9d7d2;
             font-weight: 600;
             font-size: 16px;
             font-family: 'Poppins', sans-serif;
@@ -44,9 +43,9 @@
         }
 
         .navbar-button:hover {
-            background-color: rgba(255, 255, 255, 0.1);
+            background-color: #daae84;
+            color: #222424;
         }
-
 
         .main-section {
             text-align: center;
@@ -60,7 +59,7 @@
         .logo-container h1 {
             font-size: 48px;
             margin-top: 10px;
-            color: #692CAB;
+            color: #966033;
             font-weight: 700;
         }
 
@@ -74,29 +73,30 @@
         }
 
         .card {
-            background-color: #1a1a1a;
+            background-color: #ffffff;
             border-radius: 10px;
             padding: 25px 25px 25px 50px;
             width: 300px;
-            box-shadow: 0 4px 10px rgba(255, 255, 255, 0.1);
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
             display: flex;
             flex-direction: column;
             position: relative;
+            border: 1px solid #222424;
         }
-
 
         .card::before {
             content: "•••";
-            color: #FFFFFF;
+            color: #222424;
             font-size: 24px;
             position: absolute;
             top: 0px;
             left: 80px;
             letter-spacing: 3px;
         }
+
         .card::after {
             content: "•";
-            color: #ECBCFF;
+            color: #966033;
             font-size: 24px;
             position: absolute;
             top: 0px;
@@ -112,25 +112,24 @@
 
         .card h2 {
             font-size: 20px;
-            color: #9D71E3;
+            color: #966033;
             font-weight: 600;
             margin: 5px 0 15px 0;
             padding-left: 30px;
         }
 
-
         .card p {
             font-size: 15px;
             margin: 15px 0;
-            color: white;
+            color: #222424;
             text-align: center;
             flex-grow: 1;
         }
 
         .card button {
-            background-color: #692CAB;
+            background-color: #222424;
             border: none;
-            color: white;
+            color: #ffffff;
             padding: 10px 20px;
             font-weight: 600;
             border-radius: 8px;
@@ -143,12 +142,11 @@
         }
 
         .card button:hover {
-            background-color: #5A2493;
+            background-color: #966033;
         }
 
-
         .bookmark-icon {
-            color: #9D71E3;
+            color: #daae84;
             font-size: 70px;
             position: absolute;
             top: -2px;
@@ -170,9 +168,10 @@
         .left-branding h1 {
             font-size: 13px;
             font-weight: 700;
-            margin-top: -20px;
+            margin-top: -5px;
             margin-left: 10px;
             line-height: 1.2;
+            color: #222424;
         }
 
         .popup {
@@ -182,24 +181,24 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background-color: rgba(0, 0, 0, 0.7);
+            background-color: rgba(34, 36, 36, 0.7);
             z-index: 1000;
         }
 
         .popup-content {
-            background-color: #1a1a1a;
+            background-color: #ffffff;
             border-radius: 15px;
             position: relative;
             margin: 15% auto;
             padding: 20px;
             width: 80%;
             max-width: 500px;
-            color: white;
-            border: 2px solid #692CAB;
+            color: #222424;
+            border: 2px solid #222424;
         }
 
         .fechar-popup {
-            color: #9D71E3;
+            color: #966033;
             float: right;
             font-size: 28px;
             font-weight: bold;
@@ -207,13 +206,13 @@
         }
 
         .fechar-popup:hover {
-            color: #692CAB;
+            color: #daae84;
         }
 
         .contatos-grid {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
-            gap: 15px; /* Reduzido um pouco o gap */
+            gap: 15px;
             margin-top: 20px;
             text-align: center;
             max-width: 100%;
@@ -222,52 +221,58 @@
         .contato-item {
             padding: 15px;
             border-radius: 10px;
-            background-color: #292929;
+            background-color: #ffffff;
             transition: all 0.3s ease;
-            min-height: 80px; /* Altura mínima fixa */
+            min-height: 80px;
             display: flex;
             flex-direction: column;
             justify-content: center;
             align-items: center;
-            word-break: break-word; /* Quebra palavras longas */
-            max-width: 100%; /* Largura máxima */
+            word-break: break-word;
+            max-width: 100%;
+            border: 1px solid #222424;
         }
 
         .contato-item p {
             margin: 0;
             font-size: 14px;
-            width: 100%; /* Ocupa toda a largura disponível */
-            padding: 0 5px; /* Pequeno padding lateral */
+            width: 100%;
+            padding: 0 5px;
             box-sizing: border-box;
-            overflow-wrap: break-word; /* Quebra palavras longas */
+            overflow-wrap: break-word;
+            color: #222424;
         }
 
         .contato-item:hover {
-            background-color: #692CAB;
-            transform: scale(1.05);
+            background-color: #222424;
+            color: #ffffff;
+        }
+
+        .contato-item:hover p {
+            color: #ffffff;
         }
 
         .contato-item i {
             font-size: 24px;
-            color: #9D71E3;
+            color: #966033;
             margin-bottom: 10px;
         }
 
         .contato-item:hover i {
-            color: white;
+            color: #daae84;
         }
 
         .contato-item a {
-            color: #9D71E3;
+            color: #966033;
             text-decoration: none;
         }
 
         .contato-item:hover a {
-            color: white;
+            color: #daae84;
         }
 
         .popup-content h2 {
-            color: #9D71E3;
+            color: #966033;
             text-align: center;
             margin-bottom: 20px;
         }
@@ -278,14 +283,13 @@
 
         .popup-content p {
             line-height: 1.6;
-            color: #ffffff;
+            color: #222424;
         }
-
     </style>
 </head>
 <body>
 <div class="left-branding">
-    <img th:src="@{/logo.png}" alt="Logo reDoar">
+    <img th:src="@{/logomain.png}" alt="Logo reDoar">
     <h1>
         Associação <br>
         Casa de Davi
@@ -305,7 +309,8 @@
 
 <section class="main-section">
     <div class="logo-container">
-        <img th:src="@{/logo.png}" alt="Logo reDoar" style="width: 500px; margin-bottom: -80px">
+        <img th:src="@{/logomain.png}" alt="Logo reDoar" style="width: 480px; margin-bottom: 10px">
+        <h1 style="font-size: 50px; color: #222424; margin-top: 2px; text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);">reDoar</h1>
     </div>
 
     <div class="cards">
@@ -398,8 +403,6 @@
     </div>
 </div>
 
-
-
 <script>
     function abrirPopupContatos() {
         document.getElementById('popupContatos').style.display = 'block';
@@ -416,14 +419,14 @@
         }
     });
 
-
-
     function abrirPopup(popupId) {
         document.getElementById(popupId).style.display = 'block';
     }
+
     function fecharPopup(popupId) {
         document.getElementById(popupId).style.display = 'none';
     }
+
     window.onclick = function(event) {
         let popups = document.getElementsByClassName('popup');
         for(let popup of popups) {

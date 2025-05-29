@@ -6,16 +6,26 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
   <style>
+    /* CSS Completo com Tema Azul/Bege */
+    :root {
+      --azul-principal: #9cc2d5;
+      --cinza-escuro: #222424;
+      --cinza-claro: #d9d7d2;
+      --marrom: #966033;
+      --bege: #daae84;
+      --branco: #ffffff;
+    }
+
     body {
-      background-color: #000;
-      color: white;
+      background-color: var(--azul-principal);
+      color: var(--branco);
       font-family: 'Poppins', sans-serif;
       margin: 0;
       padding: 0;
     }
 
     .navbar {
-      background-color: #692CAB;
+      background-color: var(--cinza-escuro);
       padding: 8px 40px;
       display: flex;
       justify-content: flex-end;
@@ -31,7 +41,7 @@
     .navbar-button {
       background: none;
       border: none;
-      color: white;
+      color: var(--branco);
       font-weight: 600;
       font-size: 14px;
       font-family: 'Poppins', sans-serif;
@@ -42,7 +52,8 @@
     }
 
     .navbar-button:hover {
-      background-color: rgba(255, 255, 255, 0.1);
+      background-color: var(--bege);
+      color: var(--cinza-escuro);
     }
 
     .left-branding {
@@ -62,6 +73,7 @@
       margin-top: -20px;
       margin-left: 10px;
       line-height: 1.2;
+      color: var(--branco);
     }
 
     .center-logo {
@@ -75,7 +87,7 @@
 
     .center-logo h2 {
       font-size: 40px;
-      color: white;
+      color: var(--branco);
       margin-top: 10px;
       font-weight: 600;
     }
@@ -88,8 +100,8 @@
     }
 
     .menu-options a {
-      background-color: #692CAB    ;
-      color: white;
+      background-color: var(--cinza-escuro);
+      color: var(--branco);
       padding: 15px 25px;
       border-radius: 5px;
       font-weight: 600;
@@ -100,7 +112,8 @@
     }
 
     .menu-options a:hover {
-      background-color: #9D71E3    ;
+      background-color: var(--bege);
+      color: var(--cinza-escuro);
       transform: translateY(-2px);
     }
 
@@ -116,18 +129,19 @@
     }
 
     .modal-content {
-      background-color: #692CAB;
+      background-color: var(--cinza-escuro);
       margin: 15% auto;
       padding: 20px;
       border-radius: 10px;
       width: 300px;
       text-align: center;
       box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+      border: 2px solid var(--azul-principal);
     }
 
     .modal-content h3 {
       margin-top: 0;
-      color: white;
+      color: var(--branco);
     }
 
     .radio-option {
@@ -144,11 +158,12 @@
 
     .radio-option label {
       cursor: pointer;
+      color: var(--branco);
     }
 
     .modal-button {
-      background-color: #9D71E3;
-      color: white;
+      background-color: var(--azul-principal);
+      color: var(--cinza-escuro);
       border: none;
       padding: 8px 20px;
       border-radius: 5px;
@@ -158,7 +173,7 @@
     }
 
     .modal-button:hover {
-      background-color: #7d4bc2;
+      background-color: var(--bege);
     }
 
     .popup {
@@ -173,19 +188,19 @@
     }
 
     .popup-content {
-      background-color: #1a1a1a;
+      background-color: var(--cinza-escuro);
       border-radius: 15px;
       position: relative;
       margin: 15% auto;
       padding: 20px;
       width: 80%;
       max-width: 500px;
-      color: white;
-      border: 2px solid #692CAB;
+      color: var(--branco);
+      border: 2px solid var(--azul-principal);
     }
 
     .fechar-popup {
-      color: #9D71E3;
+      color: var(--azul-principal);
       float: right;
       font-size: 28px;
       font-weight: bold;
@@ -193,7 +208,7 @@
     }
 
     .fechar-popup:hover {
-      color: #692CAB;
+      color: var(--bege);
     }
 
     .contatos-grid {
@@ -208,7 +223,7 @@
     .contato-item {
       padding: 15px;
       border-radius: 10px;
-      background-color: #292929;
+      background-color: var(--branco);
       transition: all 0.3s ease;
       min-height: 80px;
       display: flex;
@@ -217,6 +232,12 @@
       align-items: center;
       word-break: break-word;
       max-width: 100%;
+      border: 1px solid var(--azul-principal);
+    }
+
+    .contato-item:hover {
+      background-color: var(--azul-principal);
+      transform: scale(1.05);
     }
 
     .contato-item p {
@@ -226,34 +247,34 @@
       padding: 0 5px;
       box-sizing: border-box;
       overflow-wrap: break-word;
+      color: var(--cinza-escuro);
     }
 
-    .contato-item:hover {
-      background-color: #692CAB;
-      transform: scale(1.05);
+    .contato-item:hover p {
+      color: var(--branco);
     }
 
     .contato-item i {
       font-size: 24px;
-      color: #9D71E3;
+      color: var(--marrom);
       margin-bottom: 10px;
     }
 
     .contato-item:hover i {
-      color: white;
+      color: var(--bege);
     }
 
     .contato-item a {
-      color: #9D71E3;
+      color: var(--marrom);
       text-decoration: none;
     }
 
     .contato-item:hover a {
-      color: white;
+      color: var(--bege);
     }
 
     .popup-content h2 {
-      color: #9D71E3;
+      color: var(--azul-principal);
       text-align: center;
       margin-bottom: 20px;
     }
@@ -264,14 +285,13 @@
 
     .popup-content p {
       line-height: 1.6;
-      color: #ffffff;
+      color: var(--branco);
     }
+
     .menu-options a i {
-      margin-right: 8px; 
+      margin-right: 8px;
       font-size: 16px;
     }
-
-
   </style>
 </head>
 <body>

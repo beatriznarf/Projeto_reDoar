@@ -7,9 +7,18 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
     <style>
+        :root {
+            --azul-principal: #9cc2d5;
+            --cinza-escuro: #222424;
+            --cinza-claro: #d9d7d2;
+            --marrom: #966033;
+            --bege: #daae84;
+            --branco: #ffffff;
+        }
+
         body {
-            background-color: #000;
-            color: white;
+            background-color: var(--azul-principal);
+            color: var(--branco);
             font-family: 'Poppins', sans-serif;
             margin: 0;
             padding: 0;
@@ -18,7 +27,7 @@
         }
 
         .navbar {
-            background-color: #692CAB;
+            background-color: var(--cinza-escuro);
             padding: 8px 40px;
             display: flex;
             justify-content: flex-end;
@@ -34,7 +43,7 @@
         .navbar-button {
             background: none;
             border: none;
-            color: white;
+            color: var(--branco);
             font-weight: 600;
             font-size: 14px;
             font-family: 'Poppins', sans-serif;
@@ -45,7 +54,12 @@
         }
 
         .navbar-button:hover {
-            background-color: rgba(255, 255, 255, 0.1);
+            background-color: var(--bege);
+            color: var(--cinza-escuro);
+        }
+
+        .navbar-button i {
+            margin-right: 8px;
         }
 
         .container-principal {
@@ -71,12 +85,13 @@
             margin-top: -20px;
             margin-left: 10px;
             line-height: 1.2;
+            color: var(--branco);
         }
 
         .left-panel {
             width: 50%;
-            background-color: #692CAB;
-            color: white;
+            background-color: var(--cinza-escuro);
+            color: var(--branco);
             display: flex;
             flex-direction: column;
             justify-content: center;
@@ -86,6 +101,7 @@
             box-sizing: border-box;
             padding: 40px 20px;
             position: relative;
+            border: 2px solid var(--azul-principal);
         }
 
         .left-panel h2 {
@@ -97,44 +113,60 @@
         .form-group {
             display: flex;
             align-items: center;
-            background-color: transparent;
-            border: 2px solid white;
+            background-color: rgba(255, 255, 255, 0.1);
+            border: 2px solid var(--azul-principal);
             border-radius: 25px;
             padding: 10px 15px;
             margin-bottom: 20px;
             width: 100%;
-            max-width: 42px;
-            min-width: 420px;
+            max-width: 420px;
             box-sizing: border-box;
+            transition: all 0.3s ease;
         }
 
+        .form-group:hover {
+            border-color: var(--bege);
+            background-color: rgba(255, 255, 255, 0.15);
+        }
 
         .form-group i {
             margin-right: 10px;
             font-size: 16px;
+            color: var(--azul-principal);
         }
 
-        .form-group input, .form-group select {
+        .form-group input,
+        .form-group select {
             background: none;
             border: none;
             outline: none;
-            color: white;
+            color: var(--branco);
             font-size: 14px;
             width: 100%;
             font-family: 'Poppins', sans-serif;
             padding: 0 10px;
         }
 
+        .form-group input::placeholder {
+            color: rgba(255, 255, 255, 0.6);
+        }
+
+        .form-group select {
+            appearance: none;
+            background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='white'%3e%3cpath d='M7 10l5 5 5-5z'/%3e%3c/svg%3e");
+            background-repeat: no-repeat;
+            background-position: right 10px center;
+            background-size: 12px;
+        }
 
         .form-group select option {
-            background-color: #692CAB;
-            color: white;
+            background-color: var(--cinza-escuro);
+            color: var(--branco);
         }
 
         .submit-btn {
-            background-color: white;
-            align-items: center;
-            color: #692CAB;
+            background-color: var(--azul-principal);
+            color: var(--cinza-escuro);
             border: none;
             padding: 10px 0;
             width: 100%;
@@ -143,14 +175,15 @@
             font-weight: bold;
             font-size: 16px;
             cursor: pointer;
-            transition: background-color 0.3s ease;
+            transition: all 0.3s ease;
             display: block;
             margin-left: auto;
             margin-right: auto;
         }
 
         .submit-btn:hover {
-            background-color: #e0e0e0;
+            background-color: var(--bege);
+            transform: translateY(-2px);
         }
 
         .dots {
@@ -161,7 +194,7 @@
         .dots span {
             height: 8px;
             width: 8px;
-            background-color: white;
+            background-color: var(--branco);
             border-radius: 50%;
             display: inline-block;
             margin: 0 4px;
@@ -174,7 +207,7 @@
             flex-direction: column;
             align-items: center;
             justify-content: center;
-            color: white;
+            color: var(--branco);
             text-align: center;
         }
 
@@ -193,8 +226,8 @@
             position: fixed;
             bottom: 25px;
             left: 25px;
-            background: linear-gradient(145deg, #7c3aed, #9D71E3);
-            color: white;
+            background: var(--cinza-escuro);
+            color: var(--branco);
             padding: 14px 16px;
             border-radius: 50px;
             font-size: 18px;
@@ -202,28 +235,40 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            box-shadow: 0 6px 12px rgba(0,0,0,0.25);
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.25);
             transition: all 0.3s ease;
             z-index: 1000;
         }
 
         .back-arrow:hover {
-            background: linear-gradient(145deg, #692CAB, #7c3aed);
+            background: var(--bege);
+            color: var(--cinza-escuro);
             transform: translateY(-2px) scale(1.05);
         }
 
-
-
-        .error-message {
-            background-color: rgba(255, 0, 0, 0.1);
-            color: #ff6b6b;
-            border: 1px solid #ff6b6b;
+        .message {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            padding: 15px 25px;
+            border-radius: 8px;
+            font-weight: 500;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+            z-index: 1000;
+            animation: slideIn 0.3s ease;
         }
 
         .success-message {
-            background-color: rgba(0, 255, 0, 0.1);
-            color: #51cf66;
-            border: 1px solid #51cf66;
+            background-color: var(--azul-principal);
+            color: var(--cinza-escuro);
+        }
+
+        .error-message {
+            background-color: #EF4444;
+            color: var(--branco);
         }
 
         .popup {
@@ -238,19 +283,25 @@
         }
 
         .popup-content {
-            background-color: #1a1a1a;
+            background-color: var(--branco);
             border-radius: 15px;
             position: relative;
             margin: 15% auto;
             padding: 20px;
             width: 80%;
             max-width: 500px;
-            color: white;
-            border: 2px solid #692CAB;
+            color: var(--cinza-escuro);
+            border: 2px solid var(--cinza-escuro);
+        }
+
+        .popup-content h2 {
+            color: var(--marrom);
+            text-align: center;
+            margin-bottom: 20px;
         }
 
         .fechar-popup {
-            color: #9D71E3;
+            color: var(--marrom);
             float: right;
             font-size: 28px;
             font-weight: bold;
@@ -258,7 +309,7 @@
         }
 
         .fechar-popup:hover {
-            color: #692CAB;
+            color: var(--bege);
         }
 
         .contatos-grid {
@@ -273,7 +324,7 @@
         .contato-item {
             padding: 15px;
             border-radius: 10px;
-            background-color: #292929;
+            background-color: var(--branco);
             transition: all 0.3s ease;
             min-height: 80px;
             display: flex;
@@ -282,6 +333,12 @@
             align-items: center;
             word-break: break-word;
             max-width: 100%;
+            border: 1px solid var(--cinza-escuro);
+        }
+
+        .contato-item:hover {
+            background-color: var(--cinza-escuro);
+            transform: scale(1.05);
         }
 
         .contato-item p {
@@ -291,61 +348,83 @@
             padding: 0 5px;
             box-sizing: border-box;
             overflow-wrap: break-word;
+            color: var(--cinza-escuro);
         }
 
-        .contato-item:hover {
-            background-color: #692CAB;
-            transform: scale(1.05);
+        .contato-item:hover p {
+            color: var(--branco);
         }
 
         .contato-item i {
             font-size: 24px;
-            color: #9D71E3;
+            color: var(--marrom);
             margin-bottom: 10px;
         }
 
         .contato-item:hover i {
-            color: white;
+            color: var(--bege);
         }
 
         .contato-item a {
-            color: #9D71E3;
+            color: var(--marrom);
             text-decoration: none;
         }
 
         .contato-item:hover a {
-            color: white;
+            color: var(--bege);
         }
 
-        .popup-content h2 {
-            color: #9D71E3;
+        .title-container {
+            width: 100%;
+            max-width: 500px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin-bottom: 30px;
             text-align: center;
-            margin-bottom: 20px;
         }
 
-        .message {
-            position: fixed;
-            top: 20px;
-            right: 20px;
-            padding: 15px 25px;
-            border-radius: 8px;
-            font-weight: 500;
+        .page-title {
+            position: relative;
+            font-size: 32px;
+            font-weight: 600;
+            margin-bottom: 15px;
+            margin-top: 60px;
+            color: var(--branco);
+            text-align: center;
+            padding-bottom: 15px;
+            white-space: nowrap;
             display: flex;
             align-items: center;
-            gap: 10px;
-            box-shadow: 0 4px 12px rgba(0,0,0,0.15);
-            z-index: 1000;
-            animation: slideIn 0.3s ease;
+            justify-content: center;
+            gap: 15px;
         }
 
-        .success-message {
-            background-color: #10B981;
-            color: white;
+        .page-title::after {
+            content: '';
+            position: absolute;
+            left: 50%;
+            bottom: 0;
+            width: 100px;
+            height: 3px;
+            background: linear-gradient(to right, rgba(156, 194, 213, 0.2), var(--azul-principal), rgba(156, 194, 213, 0.2));
+            border-radius: 2px;
+            transform: translateX(-50%);
         }
 
-        .error-message {
-            background-color: #EF4444;
-            color: white;
+        .page-title i {
+            font-size: 28px;
+            color: var(--azul-principal);
+            animation: float 3s ease-in-out infinite;
+        }
+
+        @keyframes float {
+            0%, 100% {
+                transform: translateY(0);
+            }
+            50% {
+                transform: translateY(-5px);
+            }
         }
 
         @keyframes slideIn {
@@ -369,85 +448,6 @@
                 opacity: 0;
             }
         }
-
-
-        .title-container {
-            width: 100%;
-            max-width: 500px;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            margin-bottom: 30px;
-            text-align: center;
-        }
-
-
-        .page-title {
-            position: relative;
-            font-size: 32px;
-            font-weight: 600;
-            margin-bottom: 15px;
-            margin-top: 60px;
-            color: white;
-            text-align: center;
-            padding-bottom: 15px;
-            white-space: nowrap;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 15px;
-        }
-
-
-        .page-title::after {
-            content: '';
-            position: absolute;
-            left: 50%;
-            bottom: 0;
-            width: 100px;
-            height: 3px;
-            background: linear-gradient(to right, rgba(255, 255, 255, 0.2), #ffffff, rgba(255, 255, 255, 0.2));
-            border-radius: 2px;
-            transform: translateX(-50%);
-        }
-
-
-
-        .page-title i {
-            font-size: 28px;
-            color: rgba(255, 255, 255, 0.9);
-            animation: float 3s ease-in-out infinite;
-        }
-
-
-        .page-title i:first-child {
-            animation-delay: 0s;
-        }
-
-
-        .page-title i:last-child {
-            animation-delay: 1.5s;
-        }
-
-
-        @keyframes float {
-            0%, 100% {
-                transform: translateY(0);
-            }
-            50% {
-                transform: translateY(-5px);
-            }
-        }
-        .navbar-button i {
-            margin-right: 8px;
-        }
-
-        .popup-content p {
-            line-height: 1.6;
-            color: #ffffff;
-        }
-
-
     </style>
 </head>
 <body>
@@ -526,7 +526,7 @@
     </div>
 
     <div class="right-panel">
-        <img th:src="@{/logo.png}" alt="Logo reDoar" style="width: 450px; margin-bottom: -50px">
+        <img th:src="@{/logomain.png}" alt="Logo reDoar" style="width: 450px; margin-bottom: -50px">
         <p>
             Os dados cadastrais são de uso restrito e <strong>confidencial</strong>. Como funcionário autorizado, você é responsável pela <strong>segurança</strong> das informações acessadas neste sistema.
         </p>
