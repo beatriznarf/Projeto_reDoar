@@ -15,3 +15,11 @@ O sistema “reDoar” surgiu no contexto da disciplina Projeto Integrador: Proj
 
 O ponto de partida do projeto foi a análise dos projetos de extensão promovidos pela instituição em parceria com diversas instituições da cidade de Araguari. Entre os diversos projetos apresentados, a equipe optou por desenvolver um sistema para o projeto denominado “reComeço”, que tem como foco a Associação Casa de Davi. O reComeço é um projeto de extensão multidisciplinar desenvolvido em parceria com a Casa de Davi — instituição que acolhe homens adultos em situação de rua —, visando promover recuperação social, capacitação profissional e geração de renda para os acolhidos, enquanto proporciona formação prática e humanizada aos alunos do IMEPAC.
 
+***
+Membros do projeto:
+1.Beatriz Narciso Fernandes;
+2.Roberto Campos Neto;
+3.Deric de Carvalho Coelho;
+4.Matheus Luiz de Araujo;
+5.Pedro Miguel de Oliveira;
+6.Willian Douglas de Morais Lopes;
