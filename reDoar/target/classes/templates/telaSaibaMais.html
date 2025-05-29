@@ -7,16 +7,15 @@
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
     <style>
         body {
-            background-color: #000;
-            color: white;
+            background-color: #9cc2d5;
+            color: #222424;
             font-family: 'Poppins', sans-serif;
             margin: 0;
             padding: 0;
             line-height: 1.6;
         }
-
         .navbar {
-            background-color: #692CAB;
+            background-color: #222424;
             padding: 8px 40px;
             display: flex;
             justify-content: flex-end;
@@ -32,7 +31,7 @@
         .navbar-button {
             background: none;
             border: none;
-            color: white;
+            color: #d9d7d2;
             font-weight: 600;
             font-size: 16px;
             font-family: 'Poppins', sans-serif;
@@ -43,7 +42,20 @@
         }
 
         .navbar-button:hover {
-            background-color: rgba(255, 255, 255, 0.1);
+            background-color: #daae84;
+            color: #222424;
+        }
+
+        .main-section {
+            text-align: center;
+            padding: 50px 20px;
+        }
+
+        .logo-container h1 {
+            font-size: 48px;
+            margin-top: 10px;
+            color: #966033;
+            font-weight: 700;
         }
 
         .left-branding {
@@ -60,9 +72,10 @@
         .left-branding h1 {
             font-size: 13px;
             font-weight: 700;
-            margin-top: -20px;
+            margin-top: -5px;
             margin-left: 10px;
             line-height: 1.2;
+            color: #222424;
         }
 
         .content-container {
@@ -79,19 +92,24 @@
             margin: 5px 0;
         }
 
-
-
         .text-box {
-            background-color: #1a1a1a;
-            border-left: 3px solid #692CAB;
-            padding: 15px;
+            background-color: #ffffff;
+            border-left: 3px solid #222424;
+            padding: 20px;
             margin: 5px 0;
-            border-radius: 4px;
+            border-radius: 8px;
             height: auto;
             display: flex;
             flex-direction: column;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
         }
 
+        .text-box:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            border-left: 3px solid #966033;
+        }
 
         .boxes-container {
             display: flex;
@@ -109,20 +127,18 @@
         }
 
         .section-title {
-            color: #692CAB;
+            color: #222424;
             font-size: 20px;
-            margin: 0 0 10px 0;
+            margin: 0 0 15px 0;
             text-align: left;
             font-weight: 600;
         }
-
-
 
         .back-arrow {
             position: fixed;
             bottom: 25px;
             left: 25px;
-            background: linear-gradient(145deg, #7c3aed, #9D71E3);
+            background: #222424;
             color: white;
             padding: 14px 16px;
             border-radius: 50px;
@@ -137,8 +153,9 @@
         }
 
         .back-arrow:hover {
-            background: linear-gradient(145deg, #692CAB, #7c3aed);
+            background: #966033;
             transform: translateY(-2px) scale(1.05);
+            margin-right: 0;
         }
 
         @media (max-width: 768px) {
@@ -159,24 +176,24 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background-color: rgba(0, 0, 0, 0.7);
+            background-color: rgba(34, 36, 36, 0.7);
             z-index: 1000;
         }
 
         .popup-content {
-            background-color: #1a1a1a;
+            background-color: #ffffff;
             border-radius: 15px;
             position: relative;
             margin: 15% auto;
             padding: 20px;
             width: 80%;
             max-width: 500px;
-            color: white;
-            border: 2px solid #692CAB;
+            color: #222424;
+            border: 2px solid #222424;
         }
 
         .fechar-popup {
-            color: #9D71E3;
+            color: #966033;
             float: right;
             font-size: 28px;
             font-weight: bold;
@@ -184,7 +201,7 @@
         }
 
         .fechar-popup:hover {
-            color: #692CAB;
+            color: #daae84;
         }
 
         .contatos-grid {
@@ -199,7 +216,7 @@
         .contato-item {
             padding: 15px;
             border-radius: 10px;
-            background-color: #292929;
+            background-color: #ffffff;
             transition: all 0.3s ease;
             min-height: 80px;
             display: flex;
@@ -208,6 +225,7 @@
             align-items: center;
             word-break: break-word;
             max-width: 100%;
+            border: 1px solid #222424;
         }
 
         .contato-item p {
@@ -217,42 +235,50 @@
             padding: 0 5px;
             box-sizing: border-box;
             overflow-wrap: break-word;
+            color: #222424;
         }
 
         .contato-item:hover {
-            background-color: #692CAB;
-            transform: scale(1.05);
+            background-color: #222424;
+            color: #ffffff;
+        }
+
+        .contato-item:hover p {
+            color: #ffffff;
         }
 
         .contato-item i {
             font-size: 24px;
-            color: #9D71E3;
+            color: #966033;
             margin-bottom: 10px;
         }
 
         .contato-item:hover i {
-            color: white;
+            color: #daae84;
         }
 
-
         .contato-item a {
-            color: #9D71E3;
+            color: #966033;
             text-decoration: none;
         }
 
         .contato-item:hover a {
-            color: white;
+            color: #daae84;
         }
 
         .popup-content h2 {
-            color: #9D71E3;
+            color: #966033;
             text-align: center;
             margin-bottom: 20px;
         }
 
-        .main-section {
-            text-align: center;
-            padding: 20px 20px 0 20px;
+        .navbar-button i {
+            margin-right: 8px;
+        }
+
+        .popup-content p {
+            line-height: 1.6;
+            color: #222424;
         }
 
         .logo-container img {
@@ -267,21 +293,13 @@
                 margin-bottom: -40px;
             }
         }
-        .navbar-button i {
-            margin-right: 8px;
-        }
-
-        .popup-content p {
-            line-height: 1.6;
-            color: #ffffff;
-        }
 
     </style>
 </head>
 <body>
 
 <div class="left-branding">
-    <img th:src="@{/logo.png}" alt="Logo reDoar">
+    <img th:src="@{/logomain.png}" alt="Logo reDoar">
     <h1>Associação <br>Casa de Davi</h1>
 </div>
 
@@ -298,7 +316,7 @@
 
 <section class="main-section">
     <div class="logo-container">
-        <img th:src="@{/logo.png}" alt="Logo reDoar" style="width: 500px; margin-bottom: -80px">
+        <img th:src="@{/logomain.png}" alt="Logo reDoar" style="width: 500px; margin-bottom: -80px">
     </div>
 </section>
 
@@ -402,7 +420,6 @@
     </div>
 </div>
 
-
 <script>
     function abrirPopupContatos() {
         document.getElementById('popupContatos').style.display = 'block';
@@ -422,9 +439,11 @@
     function abrirPopup(popupId) {
         document.getElementById(popupId).style.display = 'block';
     }
+
     function fecharPopup(popupId) {
         document.getElementById(popupId).style.display = 'none';
     }
+
     window.onclick = function(event) {
         let popups = document.getElementsByClassName('popup');
         for(let popup of popups) {
