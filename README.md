@@ -3,8 +3,7 @@
 
 📅 1º Semestre de 2025;
 
-🎓 Instituição beneficiada: Associação Casa de Davi;
-
+🎓 Instituição beneficiada: **Associação Casa de Davi**;
 🎓 Projeto: projeto de extensão "reComeço" - Sistema "reDoar";
 
 ***
