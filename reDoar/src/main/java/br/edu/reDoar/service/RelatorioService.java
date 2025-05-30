@@ -38,7 +38,7 @@ public class RelatorioService {
     private static final Font HEADER_FONT = new Font(Font.FontFamily.HELVETICA, 18, Font.BOLD, BaseColor.BLACK);
     private static final Font TITLE_FONT = new Font(Font.FontFamily.HELVETICA, 12, Font.BOLD, BaseColor.WHITE);
     private static final Font CELL_FONT = new Font(Font.FontFamily.HELVETICA, 10, Font.NORMAL, BaseColor.BLACK);
-    private static final BaseColor HEADER_COLOR = new BaseColor(105, 44, 171); // #692CAB
+    private static final BaseColor HEADER_COLOR = new BaseColor(150, 96, 51);
 
     public List<?> buscarDadosRelatorio(String tipo, LocalDateTime dataInicio, LocalDateTime dataFim) {
         switch (tipo.toLowerCase()) {
