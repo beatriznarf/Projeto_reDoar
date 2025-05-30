@@ -179,24 +179,43 @@
             width: 100%;
             border-collapse: collapse;
             margin-bottom: 20px;
-            background-color: #333333;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            border-radius: 10px;
+            overflow: hidden;
+            border: 2px solid var(--marrom);
+            background-color: var(--branco);
         }
 
         th, td {
             padding: 12px 15px;
             text-align: left;
-            border-bottom: 1px solid #444;
+            border: 1px solid var(--marrom);
+            color: var(--cinza-escuro);
         }
 
         th {
-            background-color: var(--cinza-escuro);
-            color: white;
             position: sticky;
             top: 0;
+            font-weight: 600;
+            text-transform: uppercase;
+            font-size: 14px;
+            background-color: var(--marrom);
+            color: var(--branco);
+        }
+        
+
+        tr:nth-child(even) {
+            background-color: rgba(218, 174, 132, 0.1);
         }
 
         tr:hover {
-            background-color: rgba(255, 255, 255, 0.1);
+            background-color: var(--bege);
+            color: var(--cinza-escuro);
+            transition: all 0.3s ease;
+        }
+
+        tr:hover td {
+            color: var(--cinza-escuro);
         }
 
         .panel-generate-btn {
