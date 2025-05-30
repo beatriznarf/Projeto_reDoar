@@ -7,16 +7,15 @@
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
     <style>
         body {
-            background-color: #000;
-            color: white;
+            background-color: #9cc2d5;
+            color: #222424;
             font-family: 'Poppins', sans-serif;
             margin: 0;
             padding: 0;
             line-height: 1.6;
         }
-
         .navbar {
-            background-color: #692CAB;
+            background-color: #222424;
             padding: 8px 40px;
             display: flex;
             justify-content: flex-end;
@@ -32,7 +31,7 @@
         .navbar-button {
             background: none;
             border: none;
-            color: white;
+            color: #d9d7d2;
             font-weight: 600;
             font-size: 16px;
             font-family: 'Poppins', sans-serif;
@@ -43,7 +42,8 @@
         }
 
         .navbar-button:hover {
-            background-color: rgba(255, 255, 255, 0.1);
+            background-color: #daae84;
+            color: #222424;
         }
 
         .left-branding {
@@ -60,16 +60,17 @@
         .left-branding h1 {
             font-size: 13px;
             font-weight: 700;
-            margin-top: -20px;
+            margin-top: -5px;
             margin-left: 10px;
             line-height: 1.2;
+            color: #222424;
         }
 
         .back-arrow {
             position: fixed;
             bottom: 25px;
             left: 25px;
-            background: linear-gradient(145deg, #7c3aed, #9D71E3);
+            background: #222424;
             color: white;
             padding: 14px 16px;
             border-radius: 50px;
@@ -84,8 +85,9 @@
         }
 
         .back-arrow:hover {
-            background: linear-gradient(145deg, #692CAB, #7c3aed);
+            background: #966033;
             transform: translateY(-2px) scale(1.05);
+            margin-right: 0;
         }
 
         .main-section {
@@ -94,177 +96,97 @@
             max-width: 800px;
             margin: 0 auto;
         }
-
         .donation-container {
-            background-color: #1c1c1c;
+            background-color: #ffffff;
             border-radius: 15px;
             padding: 30px;
-            margin-top: 30px;
-            box-shadow: 0 4px 15px rgba(105, 44, 171, 0.2);
-        }
-
-        .panel-button {
-            background-color: #A370F0;
-            color: white;
-            border: none;
-            border-radius: 12px;
-            padding: 12px 20px;
-            font-weight: bold;
-            font-size: 16px;
-            margin: 10px;
-            cursor: pointer;
-            transition: 0.3s;
-        }
-
-        .panel-button:hover {
-            background-color: #8f5dd9;
+            margin: 30px auto;
+            max-width: 600px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+            border: 2px solid #222424;
         }
 
         .qr-section {
-            display: none;
-            padding: 20px;
-            background-color: #292929;
-            border-radius: 12px;
-            margin-top: 20px;
-        }
-
-        .qr-section.active {
             display: block;
+            text-align: center;
+            background-color: #ffffff;
+            border-radius: 12px;
         }
 
         .qr-section h2 {
-            color: #9D71E3;
-            margin-bottom: 20px;
+            color: #222424;
+            font-size: 28px;
+            font-weight: 600;
+            margin-bottom: 15px;
+        }
+
+        .qr-section p {
+            color: #966033;
+            font-size: 16px;
+            margin-bottom: 30px;
         }
 
         .qr-section img {
-            max-width: 250px;
-            margin: 20px 0;
+            max-width: 220px;
+            margin: 20px auto;
+            display: block;
+            border-radius: 12px;
+            padding: 15px;
+            background-color:  #966033;
+            border: 2px solid #222424;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
         }
 
         .pix-key {
-            background-color: #333;
-            padding: 15px;
-            border-radius: 8px;
-            margin: 20px auto;
+            background-color: #f5f5f5;
+            padding: 20px;
+            border-radius: 10px;
+            margin: 25px auto;
             max-width: 400px;
             word-break: break-all;
+            border-left: 3px solid #966033;
+        }
+        .pix-key p {
+            color: #222424;
+            margin-bottom: 10px;
+            font-size: 16px;
+            font-weight: 600;
+        }
+        .pix-key span {
+            color: #222424;
+            font-size: 18px;
+            display: block;
+            margin-bottom: 15px;
         }
 
+
         .copy-button {
-            background-color: #692CAB;
-            color: white;
+            background-color: #966033;
+            color: #ffffff;
             border: none;
-            padding: 10px 20px;
+            padding: 12px 25px;
             border-radius: 8px;
-            font-weight: bold;
+            font-weight: 600;
+            font-size: 14px;
             cursor: pointer;
-            transition: 0.3s;
-            margin-top: 10px;
+            transition: all 0.3s ease;
+            font-family: 'Poppins', sans-serif;
         }
 
         .copy-button:hover {
-            background-color: #5A2493;
+            background-color: #daae84;
+            color: #222424;
+            transform: translateY(-2px);
         }
 
-        .popup {
-            display: none;
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background-color: rgba(0, 0, 0, 0.7);
-            z-index: 1000;
-        }
-
-        .popup-content {
-            background-color: #1a1a1a;
-            border-radius: 15px;
-            position: relative;
-            margin: 15% auto;
-            padding: 20px;
-            width: 80%;
-            max-width: 500px;
-            color: white;
-            border: 2px solid #692CAB;
-        }
-
-        .fechar-popup {
-            color: #9D71E3;
-            float: right;
-            font-size: 28px;
-            font-weight: bold;
-            cursor: pointer;
-        }
-
-        .contatos-grid {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 15px;
-            margin-top: 20px;
-            text-align: center;
-            max-width: 100%;
-        }
-
-        .contato-item {
-            padding: 15px;
-            border-radius: 10px;
-            background-color: #292929;
-            transition: all 0.3s ease;
-            min-height: 80px;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            word-break: break-word;
-            max-width: 100%;
-        }
-
-        .contato-item:hover {
-            background-color: #692CAB;
-            transform: scale(1.05);
-        }
-
-        .contato-item i {
-            font-size: 24px;
-            color: #9D71E3;
-            margin-bottom: 10px;
-        }
-
-        .contato-item:hover i {
-            color: white;
-        }
-
-        .contato-item p {
-            margin: 0;
-            font-size: 14px;
-            width: 100%;
-            padding: 0 5px;
-            box-sizing: border-box;
-            overflow-wrap: break-word;
-        }
-
-        .contato-item a {
-            color: #9D71E3;
-            text-decoration: none;
-        }
-
-        .contato-item:hover a {
-            color: white;
-        }
-        .navbar-button i {
-            margin-right: 8px;
-        }
-
-        .popup-content p {
-            line-height: 1.6;
-            color: #ffffff;
+        .copy-button:active {
+            transform: translateY(0);
         }
 
         .copy-button.copied {
             background-color: #4CAF50;
         }
+
         .copy-button.copied::after {
             content: "Copiado!";
             position: absolute;
@@ -273,6 +195,8 @@
             width: 100%;
             height: 100%;
         }
+
+
         .popup {
             display: none;
             position: fixed;
@@ -280,24 +204,24 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background-color: rgba(0, 0, 0, 0.7);
+            background-color: rgba(34, 36, 36, 0.7);
             z-index: 1000;
         }
 
         .popup-content {
-            background-color: #1a1a1a;
+            background-color: #ffffff;
             border-radius: 15px;
             position: relative;
             margin: 15% auto;
             padding: 20px;
             width: 80%;
             max-width: 500px;
-            color: white;
-            border: 2px solid #692CAB;
+            color: #222424;
+            border: 2px solid #222424;
         }
 
         .fechar-popup {
-            color: #9D71E3;
+            color: #966033;
             float: right;
             font-size: 28px;
             font-weight: bold;
@@ -305,7 +229,7 @@
         }
 
         .fechar-popup:hover {
-            color: #692CAB;
+            color: #daae84;
         }
 
         .contatos-grid {
@@ -320,7 +244,7 @@
         .contato-item {
             padding: 15px;
             border-radius: 10px;
-            background-color: #292929;
+            background-color: #ffffff;
             transition: all 0.3s ease;
             min-height: 80px;
             display: flex;
@@ -329,21 +253,7 @@
             align-items: center;
             word-break: break-word;
             max-width: 100%;
-        }
-
-        .contato-item:hover {
-            background-color: #692CAB;
-            transform: scale(1.05);
-        }
-
-        .contato-item i {
-            font-size: 24px;
-            color: #9D71E3;
-            margin-bottom: 10px;
-        }
-
-        .contato-item:hover i {
-            color: white;
+            border: 1px solid #222424;
         }
 
         .contato-item p {
@@ -353,36 +263,64 @@
             padding: 0 5px;
             box-sizing: border-box;
             overflow-wrap: break-word;
+            color: #222424;
+        }
+
+        .contato-item:hover {
+            background-color: #222424;
+            color: #ffffff;
+        }
+
+        .contato-item:hover p {
+            color: #ffffff;
+        }
+
+        .contato-item i {
+            font-size: 24px;
+            color: #966033;
+            margin-bottom: 10px;
+        }
+
+        .contato-item:hover i {
+            color: #daae84;
         }
 
         .contato-item a {
-            color: #9D71E3;
+            color: #966033;
             text-decoration: none;
         }
 
         .contato-item:hover a {
-            color: white;
+            color: #daae84;
         }
 
         .popup-content h2 {
-            color: #9D71E3;
+            color: #966033;
             text-align: center;
             margin-bottom: 20px;
         }
+
         .navbar-button i {
             margin-right: 8px;
         }
 
         .popup-content p {
             line-height: 1.6;
-            color: #ffffff;
+            color: #222424;
         }
+
+        .logo-container img {
+            max-width: 500px;
+            width: 100%;
+            height: auto;
+        }
+
 
     </style>
 </head>
 <body>
 <div class="left-branding">
-    <img th:src="@{/logo.png}" alt="Logo reDoar">
+    <img th:src="@{/logomain.png}" alt="Logo reDoar">
     <h1>
         Associação <br>
         Casa de Davi
@@ -404,7 +342,7 @@
             <div class="donation-container">
                 <div class="qr-section" style="display: block;">
                     <h2>Fazer uma Doação</h2>
-                    <p style="color: #9D71E3; margin-bottom: 20px;">Sua contribuição ajuda a manter todos os nossos projetos sociais</p>
+                    <p style="color: #222424; margin-bottom: 20px;">Sua contribuição ajuda a manter todos os nossos projetos sociais</p>
                     <img src="qrcode.png" alt="QR Code PIX">
                     <div class="pix-key">
                         <p>Chave PIX (CNPJ):</p>
