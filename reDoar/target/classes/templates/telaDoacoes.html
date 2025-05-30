@@ -7,15 +7,16 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <style>
         :root {
-            --roxo-principal: #692CAB;
-            --roxo-claro: #9D71E3;
-            --branco: #FFFFFF;
-            --preto: #000000;
-            --cinza-claro: rgba(255, 255, 255, 0.8);
+            --azul-principal: #9cc2d5;
+            --cinza-escuro: #222424;
+            --cinza-claro: #d9d7d2;
+            --marrom: #966033;
+            --bege: #daae84;
+            --branco: #ffffff;
         }
 
         body {
-            background-color: var(--preto);
+            background-color: var(--azul-principal);
             color: var(--branco);
             font-family: 'Poppins', sans-serif;
             margin: 0;
@@ -25,7 +26,7 @@
         }
 
         .navbar {
-            background-color: var(--roxo-principal);
+            background-color: var(--cinza-escuro);
             padding: 12px 50px;
             display: flex;
             justify-content: flex-end;
@@ -41,7 +42,7 @@
         .navbar-button {
             background: none;
             border: none;
-            color: var(--branco);
+            color: var(--cinza-claro);
             font-weight: 600;
             font-size: 15px;
             font-family: 'Poppins', sans-serif;
@@ -53,7 +54,8 @@
         }
 
         .navbar-button:hover {
-            background-color: rgba(255, 255, 255, 0.15);
+            background-color: var(--bege);
+            color: var(--cinza-escuro);
             transform: translateY(-2px);
         }
 
@@ -81,14 +83,15 @@
         .left-branding h1 {
             font-size: 13px;
             font-weight: 700;
-            margin-top: -15px;
+            margin-top: 5px;
             margin-left: 10px;
             line-height: 1.2;
+            color: var(--branco);
         }
 
         .left-panel {
             width: 60%;
-            background-color: var(--roxo-principal);
+            background-color: var(--cinza-escuro);
             color: var(--branco);
             display: flex;
             flex-direction: column;
@@ -125,7 +128,7 @@
             display: flex;
             align-items: center;
             background-color: rgba(255, 255, 255, 0.1);
-            border: 2px solid rgba(255, 255, 255, 0.3);
+            border: 2px solid var(--azul-principal);
             border-radius: 30px;
             padding: 14px 20px;
             margin-bottom: 0;
@@ -134,14 +137,14 @@
         }
 
         .form-group:hover {
-            border-color: var(--branco);
+            border-color: var(--bege);
             background-color: rgba(255, 255, 255, 0.15);
         }
 
         .form-group:focus-within {
-            border-color: var(--branco);
+            border-color: var(--bege);
             background-color: rgba(255, 255, 255, 0.2);
-            box-shadow: 0 0 0 3px rgba(157, 113, 227, 0.3);
+            box-shadow: 0 0 0 3px rgba(156, 194, 213, 0.3);
         }
 
         .form-group.full-width {
@@ -151,7 +154,7 @@
         .form-group i {
             margin-right: 12px;
             font-size: 18px;
-            color: var(--cinza-claro);
+            color: var(--azul-principal);
             min-width: 20px;
             text-align: center;
         }
@@ -181,14 +184,14 @@
         }
 
         .form-group select option {
-            background-color: var(--roxo-principal);
+            background-color: var(--cinza-escuro);
             color: var(--branco);
             padding: 10px;
         }
 
         .submit-btn {
-            background-color: var(--branco);
-            color: var(--roxo-principal);
+            background-color: var(--azul-principal);
+            color: var(--cinza-escuro);
             border: none;
             padding: 15px 0;
             width: 100%;
@@ -205,7 +208,7 @@
         }
 
         .submit-btn:hover {
-            background-color: #f0f0f0;
+            background-color: var(--bege);
             transform: translateY(-3px);
             box-shadow: 0 6px 20px rgba(0,0,0,0.3);
         }
@@ -221,7 +224,7 @@
             flex-direction: column;
             align-items: center;
             justify-content: center;
-            color: var(--branco);
+            color: var(--cinza-escuro);
             text-align: center;
         }
 
@@ -238,7 +241,7 @@
         .right-panel p {
             font-size: 15px;
             line-height: 1.7;
-            color: rgba(255, 255, 255, 0.9);
+            color: var(--cinza-escuro);
             margin-top: -15px;
         }
 
@@ -246,8 +249,8 @@
             position: fixed;
             bottom: 25px;
             left: 25px;
-            background: linear-gradient(145deg, #7c3aed, #9D71E3);
-            color: white;
+            background: var(--cinza-escuro);
+            color: var(--branco);
             padding: 14px 16px;
             border-radius: 50px;
             font-size: 18px;
@@ -261,7 +264,8 @@
         }
 
         .back-arrow:hover {
-            background: linear-gradient(145deg, #692CAB, #7c3aed);
+            background: var(--bege);
+            color: var(--cinza-escuro);
             transform: translateY(-2px) scale(1.05);
         }
 
@@ -281,8 +285,8 @@
         }
 
         .success-message {
-            background-color: #10B981;
-            color: white;
+            background-color: var(--azul-principal);
+            color: var(--cinza-escuro);
         }
 
         .error-message {
@@ -324,19 +328,19 @@
         }
 
         .popup-content {
-            background-color: #1a1a1a;
+            background-color: var(--branco);
             border-radius: 15px;
             position: relative;
             margin: 15% auto;
             padding: 20px;
             width: 80%;
             max-width: 500px;
-            color: white;
-            border: 2px solid #692CAB;
+            color: var(--cinza-escuro);
+            border: 2px solid var(--cinza-escuro);
         }
 
         .fechar-popup {
-            color: #9D71E3;
+            color: var(--marrom);
             float: right;
             font-size: 28px;
             font-weight: bold;
@@ -344,7 +348,7 @@
         }
 
         .fechar-popup:hover {
-            color: #692CAB;
+            color: var(--bege);
         }
 
         .contatos-grid {
@@ -359,7 +363,7 @@
         .contato-item {
             padding: 15px;
             border-radius: 10px;
-            background-color: #292929;
+            background-color: var(--branco);
             transition: all 0.3s ease;
             min-height: 80px;
             display: flex;
@@ -368,6 +372,7 @@
             align-items: center;
             word-break: break-word;
             max-width: 100%;
+            border: 1px solid var(--cinza-escuro);
         }
 
         .contato-item p {
@@ -377,34 +382,39 @@
             padding: 0 5px;
             box-sizing: border-box;
             overflow-wrap: break-word;
+            color: var(--cinza-escuro);
         }
 
         .contato-item:hover {
-            background-color: #692CAB;
+            background-color: var(--cinza-escuro);
             transform: scale(1.05);
+        }
+
+        .contato-item:hover p {
+            color: var(--branco);
         }
 
         .contato-item i {
             font-size: 24px;
-            color: #9D71E3;
+            color: var(--marrom);
             margin-bottom: 10px;
         }
 
         .contato-item:hover i {
-            color: white;
+            color: var(--bege);
         }
 
         .contato-item a {
-            color: #9D71E3;
+            color: var(--marrom);
             text-decoration: none;
         }
 
         .contato-item:hover a {
-            color: white;
+            color: var(--bege);
         }
 
         .popup-content h2 {
-            color: #9D71E3;
+            color: var(--marrom);
             text-align: center;
             margin-bottom: 20px;
         }
@@ -423,7 +433,7 @@
             font-size: 32px;
             font-weight: 600;
             margin-bottom: 15px;
-            color: white;
+            color: var(--branco);
             text-align: center;
             padding-bottom: 15px;
             white-space: nowrap;
@@ -441,14 +451,14 @@
             bottom: 0;
             width: 100px;
             height: 3px;
-            background: linear-gradient(to right, rgba(255, 255, 255, 0.2), #ffffff, rgba(255, 255, 255, 0.2));
+            background: linear-gradient(to right, rgba(156, 194, 213, 0.2), var(--azul-principal), rgba(156, 194, 213, 0.2));
             border-radius: 2px;
             transform: translateX(-50%);
         }
 
         .page-title i {
             font-size: 28px;
-            color: rgba(255, 255, 255, 0.9);
+            color: var(--azul-principal);
             animation: float 3s ease-in-out infinite;
         }
 
@@ -468,13 +478,32 @@
                 transform: translateY(-5px);
             }
         }
+
         .navbar-button i {
             margin-right: 8px;
         }
 
         .popup-content p {
             line-height: 1.6;
-            color: #ffffff;
+            color: var(--cinza-escuro);
+        }
+
+        /* Responsividade para telas menores */
+        @media (max-width: 768px) {
+            .contatos-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .popup-content {
+                width: 90%;
+                margin: 10% auto;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .contatos-grid {
+                grid-template-columns: 1fr;
+            }
         }
     </style>
 </head>
@@ -507,7 +536,7 @@
 <div class="container-principal">
     <div class="left-panel">
         <div class="left-branding">
-            <img src="logo-02.png" alt="Logo reDoar">
+            <img src="logomain.png" alt="Logo reDoar">
             <h1>Associação<br>Casa de Davi</h1>
         </div>
 
@@ -567,7 +596,7 @@
 
     <div class="right-panel">
         <div class="right-panel-content">
-            <img src="logo.png" alt="Logo reDoar" style="width: 450px; margin-bottom: -50px">
+            <img src="logomain.png" alt="Logo reDoar" style="width: 450px; margin-bottom: 40px">
             <p>
                 Registre todas as doações recebidas para manter um histórico completo e transparente.
                 Esses dados são essenciais para nossa prestação de contas e relatórios financeiros.

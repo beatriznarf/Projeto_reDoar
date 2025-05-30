@@ -7,15 +7,16 @@
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
     <style>
         :root {
-            --roxo-principal: #692CAB;
-            --roxo-claro: #9D71E3;
-            --branco: #FFFFFF;
-            --preto: #000000;
-            --cinza-claro: rgba(255, 255, 255, 0.8);
+            --azul-principal: #9cc2d5;
+            --cinza-escuro: #222424;
+            --cinza-claro: #d9d7d2;
+            --marrom: #966033;
+            --bege: #daae84;
+            --branco: #ffffff;
         }
 
         body {
-            background-color: var(--preto);
+            background-color: var(--azul-principal);
             color: var(--branco);
             font-family: 'Poppins', sans-serif;
             margin: 0;
@@ -25,7 +26,7 @@
         }
 
         .navbar {
-            background-color: var(--roxo-principal);
+            background-color: var(--cinza-escuro);
             padding: 12px 50px;
             display: flex;
             justify-content: flex-end;
@@ -41,7 +42,7 @@
         .navbar-button {
             background: none;
             border: none;
-            color: var(--branco);
+            color: var(--cinza-claro);
             font-weight: 600;
             font-size: 15px;
             font-family: 'Poppins', sans-serif;
@@ -53,7 +54,8 @@
         }
 
         .navbar-button:hover {
-            background-color: rgba(255, 255, 255, 0.15);
+            background-color: var(--bege);
+            color: var(--cinza-escuro);;
             transform: translateY(-2px);
         }
 
@@ -81,14 +83,15 @@
         .left-branding h1 {
             font-size: 13px;
             font-weight: 700;
-            margin-top: -15px;
+            margin-top: 5px;
             margin-left: 10px;
             line-height: 1.2;
+            color: var(--branco);
         }
 
         .left-panel {
             width: 70%;
-            background-color: var(--roxo-principal);
+            background-color: var(--cinza-escuro);
             color: var(--branco);
             display: flex;
             flex-direction: column;
@@ -115,7 +118,7 @@
         .form-group i {
             margin-right: 12px;
             font-size: 18px;
-            color: var(--cinza-claro);
+            color: var(--azul-principal);
             min-width: 20px;
             text-align: center;
         }
@@ -148,7 +151,7 @@
         }
 
         .form-group select option {
-            background-color: var(--roxo-principal);
+            background-color: var(--cinza-escuro);
             color: var(--branco);
             padding: 10px;
         }
@@ -170,8 +173,8 @@
             position: fixed;
             bottom: 25px;
             left: 25px;
-            background: linear-gradient(145deg, #7c3aed, #9D71E3);
-            color: white;
+            background: var(--cinza-escuro);
+            color: var(--branco);
             padding: 14px 16px;
             border-radius: 50px;
             font-size: 18px;
@@ -185,8 +188,9 @@
         }
 
         .back-arrow:hover {
-            background: linear-gradient(145deg, #692CAB, #7c3aed);
+            background: var(--bege);
             transform: translateY(-2px) scale(1.05);
+            color: var(--cinza-escuro);
         }
 
 
@@ -224,19 +228,19 @@
         }
 
         .popup-content {
-            background-color: #1a1a1a;
+            background-color: var(--branco);
             border-radius: 15px;
             position: relative;
             margin: 15% auto;
             padding: 20px;
             width: 80%;
             max-width: 500px;
-            color: white;
-            border: 2px solid #692CAB;
+            color: var(--cinza-escuro);
+            border: 2px solid var(--cinza-escuro);
         }
 
         .fechar-popup {
-            color: #9D71E3;
+            color: var(--marrom);
             float: right;
             font-size: 28px;
             font-weight: bold;
@@ -244,7 +248,7 @@
         }
 
         .fechar-popup:hover {
-            color: #692CAB;
+            color: var(--bege);
         }
 
         .contatos-grid {
@@ -259,7 +263,7 @@
         .contato-item {
             padding: 15px;
             border-radius: 10px;
-            background-color: #292929;
+            background-color: var(--branco);
             transition: all 0.3s ease;
             min-height: 80px;
             display: flex;
@@ -268,6 +272,7 @@
             align-items: center;
             word-break: break-word;
             max-width: 100%;
+            border: 1px solid var(--cinza-escuro);
         }
 
         .contato-item p {
@@ -277,34 +282,35 @@
             padding: 0 5px;
             box-sizing: border-box;
             overflow-wrap: break-word;
+            color: var(--cinza-escuro);
         }
 
         .contato-item:hover {
-            background-color: #692CAB;
+            background-color: var(--cinza-escuro);
             transform: scale(1.05);
         }
 
         .contato-item i {
             font-size: 24px;
-            color: #9D71E3;
+            color: var(--marrom);
             margin-bottom: 10px;
         }
 
         .contato-item:hover i {
-            color: white;
+            color: var(--bege);
         }
 
         .contato-item a {
-            color: #9D71E3;
+            color: var(--marrom);
             text-decoration: none;
         }
 
         .contato-item:hover a {
-            color: white;
+            color: var(--bege);
         }
 
         .popup-content h2 {
-            color: #9D71E3;
+            color: var(--marrom);
             text-align: center;
             margin-bottom: 20px;
         }
@@ -312,7 +318,7 @@
 
         .page-title i {
             font-size: 28px;
-            color: rgba(255, 255, 255, 0.9);
+            color: var(--azul-principal);
             animation: float 3s ease-in-out infinite;
         }
 
@@ -338,7 +344,7 @@
 
         .popup-content p {
             line-height: 1.6;
-            color: #ffffff;
+            color: var(--cinza-escuro);
         }
         .nav-tabs {
             border-bottom: 2px solid rgba(255, 255, 255, 0.2);
@@ -382,8 +388,8 @@
 
         .submit-btn {
             grid-column: span 2;
-            background-color: var(--branco);
-            color: var(--roxo-principal);
+            background-color: var(--azul-principal);
+            color: var(--cinza-escuro);
             border: none;
             padding: 12px;
             border-radius: 25px;
@@ -395,6 +401,7 @@
         .submit-btn:hover {
             transform: translateY(-2px);
             box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+            background-color: var(--bege);
         }
         .checkbox-group {
             display: flex;
@@ -414,6 +421,7 @@
             width: 18px;
             height: 18px;
             cursor: pointer;
+            accent-color: var(--azul-principal);
         }
 
         .checkbox-group span {
@@ -422,7 +430,7 @@
         }
 
         .select-funcionario option {
-            background-color: var(--roxo-principal);
+            background-color: var(--cinza-escuro);
             color: var(--branco);
             padding: 12px;
             font-size: 14px;
@@ -453,8 +461,8 @@
         }
 
         .success-message {
-            background-color: #10B981;
-            color: white;
+            background-color: var(--azul-principal);
+            color: var(--cinza-escuro);
         }
 
         .error-message {
@@ -500,7 +508,7 @@
         }
 
         .form-group select option {
-            background-color: #692CAB;
+            background-color: var(--cinza-escuro);
             color: white;
             padding: 10px;
         }
@@ -513,7 +521,7 @@
             display: flex;
             align-items: center;
             background-color: transparent;
-            border: 2px solid white;
+            border: 2px solid var(--azul-principal);
             border-radius: 25px;
             padding: 10px 15px;
             margin-bottom: 20px;
@@ -539,7 +547,7 @@
         }
 
         .form-group select option {
-            background-color: #692CAB;
+            background-color: var(--cinza-escuro);
             color: white;
             padding: 10px;
         }
@@ -624,7 +632,7 @@
 <div class="container-principal">
     <div class="left-panel">
         <div class="left-branding">
-            <img src="logo-02.png" alt="Logo reDoar">
+            <img src="logomain.png" alt="Logo reDoar">
             <h1>Associação<br>Casa de Davi</h1>
         </div>
         <div class="form-container">

@@ -5,8 +5,17 @@
     <title>reDoar - Consultas</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <style>
+        :root {
+            --azul-principal: #9cc2d5;
+            --cinza-escuro: #222424;
+            --cinza-claro: #d9d7d2;
+            --marrom: #966033;
+            --bege: #daae84;
+            --branco: #ffffff;
+        }
+
         body {
-            background-color: #000;
+            background-color: var(--azul-principal);
             color: white;
             font-family: 'Poppins', sans-serif;
             margin: 0;
@@ -16,7 +25,7 @@
         }
 
         .navbar {
-            background-color: #692CAB;
+            background-color: var(--cinza-escuro);
             padding: 8px 40px;
             display: flex;
             justify-content: flex-end;
@@ -32,7 +41,7 @@
         .navbar-button {
             background: none;
             border: none;
-            color: white;
+            color: var(--cinza-claro);
             font-weight: 600;
             font-size: 14px;
             font-family: 'Poppins', sans-serif;
@@ -43,7 +52,8 @@
         }
 
         .navbar-button:hover {
-            background-color: rgba(255, 255, 255, 0.1);
+            background-color: var(--bege);
+            color: var(--cinza-escuro);
         }
 
         .main-container {
@@ -53,7 +63,7 @@
 
         .left-panel {
             width: 300px;
-            background-color: #692CAB;
+            background-color: var(--cinza-escuro);
             padding: 30px 20px;
             border-top-right-radius: 40px;
             border-bottom-right-radius: 40px;
@@ -76,6 +86,7 @@
             font-weight: bold;
             line-height: 1.2;
             margin: 0;
+            color: var(--branco);
         }
 
         .panel-inputs {
@@ -88,13 +99,13 @@
         .panel-inputs .input-wrapper {
             display: flex;
             align-items: center;
-            background-color: white;
+            background-color: var(--branco);
             border-radius: 10px;
             padding: 6px 10px;
         }
 
         .panel-inputs .input-wrapper i {
-            color: #692CAB;
+            color: var(--azul-principal);
             margin-right: 10px;
         }
 
@@ -105,11 +116,12 @@
             padding: 6px;
             outline: none;
             width: 100%;
+            color: #333;
         }
 
         .panel-button {
-            background-color: #A370F0;
-            color: white;
+            background-color: var(--azul-principal);
+            color: var(--cinza-escuro);
             border: none;
             border-radius: 12px;
             padding: 12px;
@@ -122,7 +134,7 @@
         }
 
         .panel-button:hover {
-            background-color: #8f5dd9;
+            background-color: var(--bege);
         }
 
         .panel-dots {
@@ -136,7 +148,7 @@
             display: inline-block;
             height: 8px;
             width: 8px;
-            background-color: white;
+            background-color: var(--branco);
             border-radius: 50%;
             margin: 0 3px;
         }
@@ -148,6 +160,7 @@
             flex-direction: column;
             padding: 40px;
             overflow-y: auto;
+            background-color: var(--azul-principal);
         }
 
         .result-container {
@@ -159,13 +172,14 @@
             text-align: center;
             font-style: italic;
             margin-top: 50px;
-            color: #ccc;
+            color: white;
         }
 
         table {
             width: 100%;
             border-collapse: collapse;
             margin-bottom: 20px;
+            background-color: #333333;
         }
 
         th, td {
@@ -175,22 +189,22 @@
         }
 
         th {
-            background-color: #692CAB;
+            background-color: var(--cinza-escuro);
             color: white;
             position: sticky;
             top: 0;
         }
 
         tr:hover {
-            background-color: rgba(105, 44, 171, 0.1);
+            background-color: rgba(255, 255, 255, 0.1);
         }
 
         .panel-generate-btn {
             position: fixed;
             bottom: 20px;
             right: 20px;
-            background-color: white;
-            color: #000;
+            background-color: var(--branco);
+            color: var(--cinza-escuro);
             font-weight: bold;
             font-size: 14px;
             border-radius: 10px;
@@ -200,15 +214,15 @@
         }
 
         .panel-generate-btn:hover {
-            background-color: #ddd;
+            background-color: var(--cinza-claro);
         }
 
         .back-arrow {
             position: fixed;
             bottom: 25px;
             left: 25px;
-            background: linear-gradient(145deg, #7c3aed, #9D71E3);
-            color: white;
+            background: var(--cinza-escuro);
+            color: var(--branco);
             padding: 14px 16px;
             border-radius: 50px;
             font-size: 18px;
@@ -222,14 +236,15 @@
         }
 
         .back-arrow:hover {
-            background: linear-gradient(145deg, #692CAB, #7c3aed);
+            background: var(--bege);
+            color: var(--cinza-escuro);
             transform: translateY(-2px) scale(1.05);
         }
 
         .periodo-consulta {
             margin-bottom: 20px;
             font-size: 18px;
-            color: #A370F0;
+            color: var(--cinza-escuro);
         }
 
         .popup {
@@ -244,19 +259,19 @@
         }
 
         .popup-content {
-            background-color: #1a1a1a;
+            background-color: var(--branco);
             border-radius: 15px;
             position: relative;
             margin: 15% auto;
             padding: 20px;
             width: 80%;
             max-width: 500px;
-            color: white;
-            border: 2px solid #692CAB;
+            color: var(--cinza-escuro);
+            border: 2px solid var(--cinza-escuro);
         }
 
         .fechar-popup {
-            color: #9D71E3;
+            color: var(--marrom);
             float: right;
             font-size: 28px;
             font-weight: bold;
@@ -264,7 +279,7 @@
         }
 
         .fechar-popup:hover {
-            color: #692CAB;
+            color: var(--bege);
         }
 
         .contatos-grid {
@@ -279,7 +294,7 @@
         .contato-item {
             padding: 15px;
             border-radius: 10px;
-            background-color: #292929;
+            background-color: var(--branco);
             transition: all 0.3s ease;
             min-height: 80px;
             display: flex;
@@ -288,6 +303,7 @@
             align-items: center;
             word-break: break-word;
             max-width: 100%;
+            border: 1px solid var(--cinza-escuro);
         }
 
         .contato-item p {
@@ -297,35 +313,39 @@
             padding: 0 5px;
             box-sizing: border-box;
             overflow-wrap: break-word;
+            color: var(--cinza-escuro);
         }
 
-
         .contato-item:hover {
-            background-color: #692CAB;
+            background-color: var(--cinza-escuro);
             transform: scale(1.05);
+        }
+
+        .contato-item:hover p {
+            color: var(--branco);
         }
 
         .contato-item i {
             font-size: 24px;
-            color: #9D71E3;
+            color: var(--marrom);
             margin-bottom: 10px;
         }
 
         .contato-item:hover i {
-            color: white;
+            color: var(--bege);
         }
 
         .contato-item a {
-            color: #9D71E3;
+            color: var(--marrom);
             text-decoration: none;
         }
 
         .contato-item:hover a {
-            color: white;
+            color: var(--bege);
         }
 
         .popup-content h2 {
-            color: #9D71E3;
+            color: var(--marrom);
             text-align: center;
             margin-bottom: 20px;
         }
@@ -336,7 +356,7 @@
         }
 
         .panel-inputs select {
-            background-color: white;
+            background-color: var(--branco);
             border-radius: 10px;
             color: #333;
         }
@@ -352,8 +372,8 @@
         }
 
         .filtro-select option {
-            background-color: #1a1a1a;
-            color: white;
+            background-color: var(--branco);
+            color: var(--cinza-escuro);
         }
 
         .filtro-container {
@@ -364,8 +384,8 @@
         }
 
         .filtro-btn {
-            background-color: #A370F0;
-            color: white;
+            background-color: var(--azul-principal);
+            color: var(--cinza-escuro);
             border: none;
             border-radius: 12px;
             padding: 8px 16px;
@@ -377,13 +397,14 @@
         }
 
         .filtro-btn:hover {
-            background-color: #8f5dd9;
+            background-color: var(--bege);
             transform: translateY(-2px);
         }
 
         .filtro-btn.active {
-            background-color: #692CAB;
-            box-shadow: 0 4px 8px rgba(105, 44, 171, 0.3);
+            background-color: var(--cinza-escuro);
+            color: var(--branco);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
         }
 
         .navbar-button i {
@@ -392,7 +413,18 @@
 
         .popup-content p {
             line-height: 1.6;
-            color: #ffffff;
+            color: var(--cinza-escuro);
+        }
+
+        .panel-generate-btn {
+            background-color: var(--bege);
+            color: var(--cinza-escuro);
+            transition: all 0.3s ease;
+        }
+
+        .panel-generate-btn:hover {
+            background-color: var(--marrom);
+            color: var(--branco);
         }
     </style>
 </head>
@@ -413,7 +445,7 @@
     <input type="hidden" id="tipoConsultaAtual" th:value="${tipoConsulta}">
     <div class="left-panel">
         <div class="panel-logo">
-            <img th:src="@{/logo-02.png}" alt="Logo reDoar" style="width: 150px;">
+            <img th:src="@{/logomain.png}" alt="Logo reDoar" style="width: 150px;">
             <h2>Associação<br>Casa de Davi</h2>
         </div>
 
@@ -569,7 +601,7 @@
                     </tbody>
                 </table>
                 <div th:if="${doacoes != null and !doacoes.isEmpty()}"
-                     style="text-align: right; margin-top: 20px; padding: 15px; background-color: #692CAB; border-radius: 10px;">
+                     style="text-align: right; margin-top: 20px; padding: 15px; background-color: var(--bege); border-radius: 10px;">
                     <strong style="font-size: 18px;">
                         Total do Período:
                         <span th:text="${'R$ ' + #numbers.formatDecimal(totalDoacoes, 1, 2, 'POINT')}">
