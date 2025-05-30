@@ -6,7 +6,6 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
   <style>
-    /* CSS Completo com Tema Azul/Bege */
     :root {
       --azul-principal: #9cc2d5;
       --cinza-escuro: #222424;
@@ -63,6 +62,7 @@
       text-align: left;
     }
 
+
     .left-branding img {
       width: 100px;
     }
@@ -70,25 +70,27 @@
     .left-branding h1 {
       font-size: 13px;
       font-weight: 700;
-      margin-top: -20px;
+      margin-top: -5px;
       margin-left: 10px;
       line-height: 1.2;
-      color: var(--branco);
+      color: #222424;
     }
 
     .center-logo {
       text-align: center;
-      margin-top: 100px;
+      margin-top: 80px;
+      margin-bottom: 60px;
     }
 
     .center-logo img {
-      width: 120px;
+      width: 450px;
+      margin-bottom: 0;
     }
 
     .center-logo h2 {
       font-size: 40px;
       color: var(--branco);
-      margin-top: 10px;
+      margin-top: 30px;
       font-weight: 600;
     }
 
@@ -96,11 +98,17 @@
       display: flex;
       justify-content: center;
       gap: 40px;
-      margin-top: 60px;
+      margin-top: 30px;
+      padding-top: 80px;
+    }
+
+    .menu-options a i {
+      margin-right: 10px;
     }
 
     .menu-options a {
       background-color: var(--cinza-escuro);
+      margin: 10px;
       color: var(--branco);
       padding: 15px 25px;
       border-radius: 5px;
@@ -109,12 +117,17 @@
       font-size: 16px;
       transition: background-color 0.3s ease, transform 0.2s ease;
       cursor: pointer;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+      border: 2px solid var(--bege);
+      position: relative;
     }
 
     .menu-options a:hover {
       background-color: var(--bege);
       color: var(--cinza-escuro);
-      transform: translateY(-2px);
+      transform: translateY(-5px);
+      box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
+      border-color: var(--cinza-escuro);
     }
 
     .modal {
@@ -183,24 +196,24 @@
       left: 0;
       width: 100%;
       height: 100%;
-      background-color: rgba(0, 0, 0, 0.7);
+      background-color: rgba(34, 36, 36, 0.7);
       z-index: 1000;
     }
 
     .popup-content {
-      background-color: var(--cinza-escuro);
+      background-color: #ffffff;
       border-radius: 15px;
       position: relative;
       margin: 15% auto;
       padding: 20px;
       width: 80%;
       max-width: 500px;
-      color: var(--branco);
-      border: 2px solid var(--azul-principal);
+      color: #222424;
+      border: 2px solid #222424;
     }
 
     .fechar-popup {
-      color: var(--azul-principal);
+      color: #966033;
       float: right;
       font-size: 28px;
       font-weight: bold;
@@ -208,7 +221,7 @@
     }
 
     .fechar-popup:hover {
-      color: var(--bege);
+      color: #daae84;
     }
 
     .contatos-grid {
@@ -223,7 +236,7 @@
     .contato-item {
       padding: 15px;
       border-radius: 10px;
-      background-color: var(--branco);
+      background-color: #ffffff;
       transition: all 0.3s ease;
       min-height: 80px;
       display: flex;
@@ -232,12 +245,7 @@
       align-items: center;
       word-break: break-word;
       max-width: 100%;
-      border: 1px solid var(--azul-principal);
-    }
-
-    .contato-item:hover {
-      background-color: var(--azul-principal);
-      transform: scale(1.05);
+      border: 1px solid #222424;
     }
 
     .contato-item p {
@@ -247,34 +255,39 @@
       padding: 0 5px;
       box-sizing: border-box;
       overflow-wrap: break-word;
-      color: var(--cinza-escuro);
+      color: #222424;
+    }
+
+    .contato-item:hover {
+      background-color: #222424;
+      color: #ffffff;
     }
 
     .contato-item:hover p {
-      color: var(--branco);
+      color: #ffffff;
     }
 
     .contato-item i {
       font-size: 24px;
-      color: var(--marrom);
+      color: #966033;
       margin-bottom: 10px;
     }
 
     .contato-item:hover i {
-      color: var(--bege);
+      color: #daae84;
     }
 
     .contato-item a {
-      color: var(--marrom);
+      color: #966033;
       text-decoration: none;
     }
 
     .contato-item:hover a {
-      color: var(--bege);
+      color: #daae84;
     }
 
     .popup-content h2 {
-      color: var(--azul-principal);
+      color: #966033;
       text-align: center;
       margin-bottom: 20px;
     }
@@ -285,19 +298,14 @@
 
     .popup-content p {
       line-height: 1.6;
-      color: var(--branco);
-    }
-
-    .menu-options a i {
-      margin-right: 8px;
-      font-size: 16px;
+      color: #222424;
     }
   </style>
 </head>
 <body>
 
 <div class="left-branding">
-  <img src="/logo.png" alt="Logo reDoar">
+  <img src="/logomain.png" alt="Logo reDoar">
   <h1>
     Associação <br>
     Casa de Davi
@@ -317,7 +325,7 @@
 
 
 <div class="center-logo">
-  <img th:src="@{/logo.png}" alt="Logo reDoar" style="width: 450px; margin-bottom: -80px">
+  <img th:src="@{/logomain.png}" alt="Logo reDoar" style="width: 450px; margin-bottom: -80px">
 </div>
 
 <div class="menu-options">
