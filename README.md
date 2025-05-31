@@ -71,4 +71,49 @@ Doe e faça a diferença!: convite à ação para quem deseja contribuir com a c
 O menu superior permite explorar outras casas de acolhimento mantidas pela associação, conhecer projetos sociais e entrar em contato.
 <br> <br>
 
-![Image](https://github.com/user-attachments/assets/7024d1f5-bf48-4191-8040-dae0d023d121)
+## ***🔐 Tela de Login – Acesso Restrito***
+
+![Image](https://github.com/user-attachments/assets/8cce0964-381b-40de-a000-366ee44cbc4f)
+
+Esta é a tela de login do sistema reDoar, destinada exclusivamente a funcionários e administradores da Associação Casa de Davi.
+
+## *Acesso*
+
+Ao iniciar vai acontecer um Insert de admin com os dados por conta do arquivo sql. <br>
+email: admin@gmail.com <br>
+senha: admin 
+<br> <br>
+
+## *🛡️ Acesso restrito:*
+Usuários comuns não possuem credenciais para acesso. O login é reservado para membros autorizados da instituição que realizam atividades internas, como:
+
+Gerenciamento de doações
+
+Cadastro e controle de beneficiários
+
+Administração de dados institucionais
+<br> <br>
+
+## ***🛠️ Painel Administrativo – Área Restrita***
+
+![Image](https://github.com/user-attachments/assets/0fb3416a-7ab5-41d5-9ab2-fc9d2692bbd1)
+
+Após o login, funcionários e administradores têm acesso a esta tela exclusiva, que funciona como painel principal de gerenciamento do sistema reDoar.
+
+## *🧑‍💼 Destinado a:*
+
+Usuários com credenciais válidas, como membros da equipe da Associação Casa de Davi, responsáveis pelo controle e manutenção dos dados internos do sistema.
+<br> <br>
+
+## ***📋 Funcionalidades Disponíveis:***
+A tela exibe cinco botões centrais, cada um direcionando a uma funcionalidade específica:
+
+👥 Cadastros: registro de novos beneficiários, colaboradores ou usuários do sistema.
+
+✏️ Editar: edição de dados já cadastrados.
+
+🎁 Doações: registro de novas doações recebidas.
+
+🔁 Gerenciar Doações: visualização, controle e atualização do status das doações.
+
+🔍 Consultas: busca e filtragem de registros no banco de dados.
