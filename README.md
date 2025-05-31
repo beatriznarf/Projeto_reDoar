@@ -51,3 +51,21 @@ Membros do projeto:
 
  ## ***Tela Inicial do Projeto reDoar***
  
+![Image](https://github.com/user-attachments/assets/7024d1f5-bf48-4191-8040-dae0d023d121)
+
+A tela inicial do sistema reDoar é o ponto de acesso público para usuários comuns. Ela foi desenvolvida com foco em clareza, acessibilidade e propósito social, apresentando as informações essenciais sobre o projeto e a atuação da Associação Casa de Davi. <br>
+
+## *🔹 Acesso ao Público:*
+Esta é a única área acessível ao público geral. Visitantes podem conhecer o projeto, entender a missão da associação e descobrir como contribuir. <br> <br>
+🔐 O login é restrito exclusivamente a funcionários e administradores da instituição, que têm acesso às funcionalidades internas do sistema (como gerenciamento de doações e usuários). <br> <br>
+
+## *🔹 Conteúdo Apresentado:*
+
+Projeto "reDoar": explicação sobre o sistema criado por alunos do IMEPAC para apoiar a associação na organização das doações.
+
+Associação Casa de Davi: apresentação institucional destacando o trabalho com acolhimento e reintegração social.
+
+Doe e faça a diferença!: convite à ação para quem deseja contribuir com a causa. <br> <br>
+
+## *🔹 Menu de Navegação:*
+O menu superior permite explorar outras casas de acolhimento mantidas pela associação, conhecer projetos sociais e entrar em contato.
