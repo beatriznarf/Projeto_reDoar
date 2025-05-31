@@ -44,6 +44,9 @@ Membros do projeto:
    <img width="12" />
    <img src="https://skillicons.dev/icons?i=spring" height="40" alt="spring"  />
    <img width="12" />
+   <img src="https://th.bing.com/th/id/R.98865e06d77faca32b3e118df119049e?rik=AU0%2bE0ROLAbnog&riu=http%3a%2f%2flogonoid.com%2fimages%2fintellij-idea-logo.png&ehk=CapqYnZAeX0cbsUWxFNWr913YwdQDC7OFt%2ftIAEb%2fBU%3d&risl=&pid=ImgRaw&r=0" height="40" alt="intellij"  />
+   <img width="12" />
  </div>
- 
  <hr>
+
+ 
