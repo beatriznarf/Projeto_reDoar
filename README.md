@@ -23,3 +23,27 @@ Membros do projeto:
 4.Matheus Luiz de Araujo;
 5.Pedro Miguel de Oliveira;
 6.Willian Douglas de Morais Lopes;
+
+
+## ***Técnologias Usadas***
+   <br>
+ <div align="left">
+   <img src="https://skillicons.dev/icons?i=java" height="40" alt="java logo"  />
+   <img width="12" />
+   <img src="https://skillicons.dev/icons?i=git" height="40" alt="git logo"  />
+   <img width="12" />
+   <img src="https://skillicons.dev/icons?i=figma" height="40" alt="figma logo"  />
+   <img width="12" />
+   <img src="https://skillicons.dev/icons?i=html" height="40" alt="html5 logo"  />
+   <img width="12" />
+   <img src="https://skillicons.dev/icons?i=css" height="40" alt="css3 logo"  />
+   <img width="12" />
+   <img src="https://skillicons.dev/icons?i=js" height="40" alt="javascript logo"  />
+   <img width="12" />
+   <img src="https://skillicons.dev/icons?i=postgres" height="40" alt="postgres"  />
+   <img width="12" />
+   <img src="https://skillicons.dev/icons?i=spring" height="40" alt="spring"  />
+   <img width="12" />
+ </div>
+ 
+ <hr>
