@@ -69,3 +69,6 @@ Doe e faça a diferença!: convite à ação para quem deseja contribuir com a c
 
 ## *🔹 Menu de Navegação:*
 O menu superior permite explorar outras casas de acolhimento mantidas pela associação, conhecer projetos sociais e entrar em contato.
+<br> <br>
+
+![Image](https://github.com/user-attachments/assets/7024d1f5-bf48-4191-8040-dae0d023d121)
