@@ -8,7 +8,7 @@ public class TelaInicialController {
 
     @GetMapping({"/", "/telainicial"})
     public String telaInicial() {
-        return "telainicial";
+        return "telaInicial";
     }
 
 }
