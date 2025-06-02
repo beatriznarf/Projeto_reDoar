@@ -116,4 +116,4 @@ A tela exibe cinco botões centrais, cada um direcionando a uma funcionalidade e
 
 🔁 Gerenciar Doações: visualização, controle e atualização do status das doações.
 
-🔍 Consultas: busca e filtragem de registros no banco de dados.
+🔍 Consultas: busca e filtragem de registros no banco de dados
