@@ -6,7 +6,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 @Controller
 public class TelaInicialController {
 
-    @GetMapping({"/", "/telainicial"})
+    @GetMapping({"/", "/telaInicial"})
     public String telaInicial() {
         return "telaInicial";
     }
