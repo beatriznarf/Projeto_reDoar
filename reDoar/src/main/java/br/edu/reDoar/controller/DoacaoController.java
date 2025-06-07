@@ -3,6 +3,7 @@ package br.edu.reDoar.controller;
 import java.time.LocalDate;
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
+import java.time.LocalTime;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -53,6 +54,7 @@ public class DoacaoController {
             doacao.setMetodoPagamento(metodoPagamento);
             doacao.setData(data.atStartOfDay());
             doacao.setObservacao(observacoes);
+            doacao.setData(LocalDateTime.of(data, LocalTime.now()));
 
             doacaoRepository.save(doacao);
 
