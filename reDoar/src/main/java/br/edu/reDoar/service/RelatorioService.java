@@ -63,6 +63,11 @@ public class RelatorioService {
         document.open();
         adicionarCabecalho(document, tipoRelatorio, dataInicio, dataFim);
 
+        Paragraph contagem = new Paragraph("Total de registros: " + dados.size(), CELL_FONT);
+        contagem.setAlignment(Element.ALIGN_RIGHT);
+        contagem.setSpacingAfter(10);
+        document.add(contagem);
+
         PdfPTable table = criarTabelaBaseadoNoTipo(tipoRelatorio, dados);
         document.add(table);
 
