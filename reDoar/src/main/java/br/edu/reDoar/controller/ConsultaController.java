@@ -49,12 +49,14 @@ public class ConsultaController {
 
         List<Usuario> funcionarios = usuarioRepository.findByDataCadastroBetween(inicio, fim);
 
+        int totalFuncionarios = funcionarios.size();
 
         session.setAttribute("funcionarios", funcionarios);
         model.addAttribute("funcionarios", funcionarios);
         model.addAttribute("tipoConsulta", "funcionarios");
         model.addAttribute("dataInicio", dataInicio);
         model.addAttribute("dataFim", dataFim);
+        model.addAttribute("totalRegistros", totalFuncionarios);
 
         return "telaConsultas";
     }
@@ -70,13 +72,14 @@ public class ConsultaController {
         LocalDateTime fim = parseDate(dataFim).atTime(LocalTime.MAX);
 
         List<Doador> doadores = doadorRepository.findByDataCadastroBetween(inicio, fim);
-
+        int totalDoadores = doadores.size();
 
         session.setAttribute("doadores", doadores);
         model.addAttribute("doadores", doadores);
         model.addAttribute("tipoConsulta", "doadores");
         model.addAttribute("dataInicio", dataInicio);
         model.addAttribute("dataFim", dataFim);
+        model.addAttribute("totalRegistros", totalDoadores);
 
         return "telaConsultas";
     }
@@ -92,20 +95,20 @@ public class ConsultaController {
         LocalDateTime fim = parseDate(dataFim).atTime(LocalTime.MAX);
 
         List<Doacao> doacoes = doacaoRepository.findByDataBetween(inicio, fim);
+        int totalDoacoes = doacoes.size();
 
-
-        BigDecimal totalDoacoes = doacoes.stream()
+        BigDecimal totalValorDoacoes = doacoes.stream()
                 .map(Doacao::getValor)
                 .reduce(BigDecimal.ZERO, BigDecimal::add);
 
-
         session.setAttribute("doacoes", doacoes);
-        session.setAttribute("totalDoacoes", totalDoacoes);
+        session.setAttribute("totalDoacoes", totalValorDoacoes);
         model.addAttribute("doacoes", doacoes);
-        model.addAttribute("totalDoacoes", totalDoacoes);
+        model.addAttribute("totalDoacoes", totalValorDoacoes);
         model.addAttribute("tipoConsulta", "doacoes");
         model.addAttribute("dataInicio", dataInicio);
         model.addAttribute("dataFim", dataFim);
+        model.addAttribute("totalRegistros", totalDoacoes);
 
         return "telaConsultas";
     }
@@ -122,12 +125,14 @@ public class ConsultaController {
 
         List<Doador> parceiros = doadorRepository.findByParceiroAndDataCadastroBetween(true, inicio, fim);
 
+        int totalParceiros = parceiros.size();
 
         session.setAttribute("parceiros", parceiros);
         model.addAttribute("parceiros", parceiros);
         model.addAttribute("tipoConsulta", "parceiros");
         model.addAttribute("dataInicio", dataInicio);
         model.addAttribute("dataFim", dataFim);
+        model.addAttribute("totalRegistros", totalParceiros);
 
         return "telaConsultas";
     }
