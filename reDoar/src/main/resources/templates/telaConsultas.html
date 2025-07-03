@@ -445,6 +445,14 @@
             background-color: var(--marrom);
             color: var(--branco);
         }
+
+        .contador-registros {
+            font-size: 14px;
+            color: var(--cinza-escuro);
+            text-align: right;
+            margin-top: 5px;
+            padding-right: 10px;
+        }
     </style>
 </head>
 <body>
@@ -530,6 +538,9 @@
                     </tr>
                     </tbody>
                 </table>
+                <div th:if="${funcionarios != null and !funcionarios.isEmpty()}" class="contador-registros">
+                   <strong> Total: <span th:text="${funcionarios.size()}"></span> registro(s) encontrado(s). </strong>
+                </div>
             </div>
 
 
@@ -546,8 +557,6 @@
                     <button type="button" class="filtro-btn" data-tipo="PF">Pessoa Física</button>
                     <button type="button" class="filtro-btn" data-tipo="PJ">Pessoa Jurídica</button>
                 </div>
-
-
 
 
                 <div th:if="${doadores == null or doadores.isEmpty()}" class="no-results">
@@ -575,7 +584,12 @@
                     </tr>
                     </tbody>
                 </table>
+                <div th:if="${doadores != null and !doadores.isEmpty()}" class="contador-registros">
+                   <strong> Total: <span th:text="${doadores.size()}"></span> registro(s) encontrado(s). </strong>
+                </div>
             </div>
+
+
 
             <!-- Resultados de Doações (única seção) -->
             <div th:if="${tipoConsulta == 'doacoes'}">
@@ -626,6 +640,10 @@
                         <span th:text="${'R$ ' + #numbers.formatDecimal(totalDoacoes, 1, 2, 'POINT')}">
         </span>
                     </strong>
+
+                    <div th:if="${doacoes != null and !doacoes.isEmpty()}" class="contador-registros">
+                       <strong> Total: <span th:text="${doacoes.size()}"></span> registro(s) encontrado(s). </strong>
+                    </div>
                 </div>
             </div>
 
@@ -664,6 +682,9 @@
                     </tr>
                     </tbody>
                 </table>
+                <div th:if="${parceiros != null and !parceiros.isEmpty()}" class="contador-registros">
+                   <strong>  Total: <span th:text="${parceiros.size()}"></span> registro(s) encontrado(s). </strong>
+                </div>
             </div>
         </div>
 
