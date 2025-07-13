@@ -11,7 +11,7 @@ import org.springframework.data.jpa.repository.JpaRepository;
 public interface ParceiroRepository extends JpaRepository<Parceiro, Long> {
 
     boolean existsByEmail(String email);
-    boolean existsByCnpj(String cnpj);  // Adicionar este método
+    boolean existsByCnpj(String cnpj);
 
     @Query("SELECT p FROM Parceiro p WHERE p.dataCadastro BETWEEN :dataInicio AND :dataFim")
     List<Parceiro> findByDataCadastroBetween(@Param("dataInicio") LocalDateTime dataInicio,
