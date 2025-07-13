@@ -202,7 +202,7 @@
             background-color: var(--marrom);
             color: var(--branco);
         }
-        
+
 
         tr:nth-child(even) {
             background-color: rgba(218, 174, 132, 0.1);
@@ -510,12 +510,17 @@
             <!-- Resultados de Funcionários -->
             <div th:if="${tipoConsulta == 'funcionarios'}">
                 <h3 class="periodo-consulta">Funcionários cadastrados:
-                    <span th:text="${dataInicio}"></span>  <span th:text="${dataFim}"></span>
+                    <span th:text="${dataInicio}"></span> a  <span th:text="${dataFim}"></span>
                 </h3>
 
                 <div th:if="${funcionarios == null or funcionarios.isEmpty()}" class="no-results">
                     <i class="fas fa-info-circle" style="font-size: 24px; margin-bottom: 10px;"></i>
                     <p>Nenhum funcionário encontrado no período especificado.</p>
+                </div>
+
+                <!-- Contador de registros ACIMA da tabela -->
+                <div th:if="${funcionarios != null and !funcionarios.isEmpty()}" class="contador-registros" style="margin-bottom: 15px;">
+                    <strong>Total: <span id="contador-funcionarios" th:text="${funcionarios.size()}"></span> registro(s) encontrado(s).</strong>
                 </div>
 
                 <table th:if="${funcionarios != null and !funcionarios.isEmpty()}" border="1">
@@ -538,18 +543,12 @@
                     </tr>
                     </tbody>
                 </table>
-                <div th:if="${funcionarios != null and !funcionarios.isEmpty()}" class="contador-registros">
-                   <strong> Total: <span th:text="${funcionarios.size()}"></span> registro(s) encontrado(s). </strong>
-                </div>
             </div>
-
-
-
 
             <!-- Resultados de Doadores -->
             <div th:if="${tipoConsulta == 'doadores'}">
                 <h3 class="periodo-consulta">Doadores cadastrados:
-                    <span th:text="${dataInicio}"></span>  <span th:text="${dataFim}"></span>
+                    <span th:text="${dataInicio}"></span>  a <span th:text="${dataFim}"></span>
                 </h3>
 
                 <div class="filtro-container" style="margin-bottom: 20px;">
@@ -558,10 +557,14 @@
                     <button type="button" class="filtro-btn" data-tipo="PJ">Pessoa Jurídica</button>
                 </div>
 
-
                 <div th:if="${doadores == null or doadores.isEmpty()}" class="no-results">
                     <i class="fas fa-info-circle" style="font-size: 24px; margin-bottom: 10px;"></i>
                     <p>Nenhum doador encontrado no período especificado.</p>
+                </div>
+
+                <!-- Contador de registros ACIMA da tabela -->
+                <div th:if="${doadores != null and !doadores.isEmpty()}" class="contador-registros" style="margin-bottom: 15px;">
+                    <strong>Total: <span id="contador-doadores" th:text="${doadores.size()}"></span> registro(s) encontrado(s).</strong>
                 </div>
 
                 <table th:if="${doadores != null and !doadores.isEmpty()}" border="1">
@@ -584,33 +587,31 @@
                     </tr>
                     </tbody>
                 </table>
-                <div th:if="${doadores != null and !doadores.isEmpty()}" class="contador-registros">
-                   <strong> Total: <span th:text="${doadores.size()}"></span> registro(s) encontrado(s). </strong>
-                </div>
             </div>
 
 
-
-            <!-- Resultados de Doações (única seção) -->
+            <!-- Resultados de Doações -->
             <div th:if="${tipoConsulta == 'doacoes'}">
                 <h3 class="periodo-consulta">Doações cadastradas:
-                    <span th:text="${dataInicio}"></span> <span th:text="${dataFim}"></span>
+                    <span th:text="${dataInicio}"></span> a <span th:text="${dataFim}"></span>
                 </h3>
 
                 <div class="filtro-container" style="margin-bottom: 20px;">
                     <button type="button" class="filtro-btn active" data-pagamento="">Todos</button>
                     <button type="button" class="filtro-btn" data-pagamento="dinheiro">Dinheiro</button>
-                    <button type="button" class="filtro-btn" data-pagamento="pix">PIX</button>
+                    <button type="button" class="filtro-btn" data-pagamento="pix">Pix</button>
                     <button type="button" class="filtro-btn" data-pagamento="cartao_credito">Cartão de Crédito</button>
                     <button type="button" class="filtro-btn" data-pagamento="cartao_debito">Cartão de Débito</button>
                     <button type="button" class="filtro-btn" data-pagamento="transferencia">Transferência</button>
                     <button type="button" class="filtro-btn" data-pagamento="cheque">Cheque</button>
                 </div>
 
-
                 <div th:if="${doacoes == null or doacoes.isEmpty()}" class="no-results">
                     <i class="fas fa-info-circle" style="font-size: 24px; margin-bottom: 10px;"></i>
                     <p>Nenhuma doação encontrada no período especificado.</p>
+                </div>
+                <div th:if="${doacoes != null and !doacoes.isEmpty()}" class="contador-registros" style="margin-bottom: 15px;">
+                    <strong>Total: <span id="contador-doacoes" th:text="${doacoes.size()}"></span> registro(s) encontrado(s).</strong>
                 </div>
 
                 <table th:if="${doacoes != null and !doacoes.isEmpty()}" border="1">
@@ -625,7 +626,7 @@
                     </thead>
                     <tbody>
                     <tr th:each="doacao : ${doacoes}">
-                        <td th:text="${'R$ ' + #numbers.formatDecimal(doacao.valor, 1, 2, 'POINT')}"></td>
+                        <td th:text="${'R$ ' + #numbers.formatDecimal(doacao.valor, 1, 'POINT', 2, 'COMMA')}"></td>
                         <td th:text="${#temporals.format(doacao.data, 'dd/MM/yyyy HH:mm')}"></td>
                         <td th:text="${doacao.doador.tipo == 'PF' ? doacao.doador.nomeCompleto : doacao.doador.razaoSocial}"></td>
                         <td th:text="${doacao.metodoPagamento}"></td>
@@ -637,25 +638,26 @@
                      style="text-align: right; margin-top: 20px; padding: 15px; background-color: var(--bege); border-radius: 10px;">
                     <strong style="font-size: 18px;">
                         Total do Período:
-                        <span th:text="${'R$ ' + #numbers.formatDecimal(totalDoacoes, 1, 2, 'POINT')}">
-        </span>
+                        <span id="total-monetario" th:text="${'R$ ' + #numbers.formatDecimal(totalDoacoes, 1, 2, 'POINT')}"></span>
                     </strong>
-
-                    <div th:if="${doacoes != null and !doacoes.isEmpty()}" class="contador-registros">
-                       <strong> Total: <span th:text="${doacoes.size()}"></span> registro(s) encontrado(s). </strong>
-                    </div>
                 </div>
             </div>
+
 
             <!-- Resultados de Parceiros -->
             <div th:if="${tipoConsulta == 'parceiros'}">
                 <h3 class="periodo-consulta">Parceiros cadastrados:
-                    <span th:text="${dataInicio}"></span> <span th:text="${dataFim}"></span>
+                    <span th:text="${dataInicio}"></span> a  <span th:text="${dataFim}"></span>
                 </h3>
 
                 <div th:if="${parceiros == null or parceiros.isEmpty()}" class="no-results">
                     <i class="fas fa-info-circle" style="font-size: 24px; margin-bottom: 10px;"></i>
                     <p>Nenhum parceiro encontrado no período especificado.</p>
+                </div>
+
+                <!-- Contador de registros ACIMA da tabela -->
+                <div th:if="${parceiros != null and !parceiros.isEmpty()}" class="contador-registros" style="margin-bottom: 15px;">
+                    <strong>Total: <span id="contador-parceiros" th:text="${parceiros.size()}"></span> registro(s) encontrado(s).</strong>
                 </div>
 
                 <table th:if="${parceiros != null and !parceiros.isEmpty()}" border="1">
@@ -682,23 +684,19 @@
                     </tr>
                     </tbody>
                 </table>
-                <div th:if="${parceiros != null and !parceiros.isEmpty()}" class="contador-registros">
-                   <strong>  Total: <span th:text="${parceiros.size()}"></span> registro(s) encontrado(s). </strong>
-                </div>
             </div>
-        </div>
 
-        <button type="button" class="panel-generate-btn"
-                th:data-tipo="${tipoConsulta}"
-                th:if="${tipoConsulta != null and
+            <button type="button" class="panel-generate-btn"
+                    th:data-tipo="${tipoConsulta}"
+                    th:if="${tipoConsulta != null and
                 ((tipoConsulta == 'funcionarios' and funcionarios != null and !funcionarios.isEmpty()) or
                  (tipoConsulta == 'doadores' and doadores != null and !doadores.isEmpty()) or
                  (tipoConsulta == 'doacoes' and doacoes != null and !doacoes.isEmpty()) or
                  (tipoConsulta == 'parceiros' and parceiros != null and !parceiros.isEmpty()))}">
-            <i class="fas fa-file-export"></i> Gerar Relatório
-        </button>
+                <i class="fas fa-file-export"></i> Gerar Relatório
+            </button>
 
-
+        </div>
     </div>
 </div>
 
@@ -815,80 +813,6 @@
     });
 
 
-    document.addEventListener('DOMContentLoaded', function() {
-        let tipoDoadorAtivo = '';
-        let metodoPagamentoAtivo = '';
-
-        const filtroTipoButtons = document.querySelectorAll('.filtro-container .filtro-btn[data-tipo]');
-        if (filtroTipoButtons.length > 0) {
-            filtroTipoButtons.forEach(button => {
-                button.addEventListener('click', function () {
-                    filtroTipoButtons.forEach(btn => btn.classList.remove('active'));
-                    this.classList.add('active');
-
-                    tipoDoadorAtivo = this.getAttribute('data-tipo');
-                    aplicarFiltros();
-                });
-            });
-        }
-
-        const filtroPagamentoButtons = document.querySelectorAll('.filtro-container .filtro-btn[data-pagamento]');
-        if (filtroPagamentoButtons.length > 0) {
-            filtroPagamentoButtons.forEach(button => {
-                button.addEventListener('click', function () {
-                    filtroPagamentoButtons.forEach(btn => btn.classList.remove('active'));
-                    this.classList.add('active');
-
-                    metodoPagamentoAtivo = this.getAttribute('data-pagamento');
-
-                    aplicarFiltros();
-                });
-            });
-        }
-
-        function aplicarFiltros() {
-            const rows = document.querySelectorAll('table tbody tr');
-            let total = 0;
-
-            rows.forEach(row => {
-                const tipoCell = row.cells[0].textContent;
-                const pagamentoCell = row.cells[3].textContent.toLowerCase();
-                let mostrarLinha = true;
-
-
-                if (tipoDoadorAtivo !== '') {
-                    if (tipoDoadorAtivo === 'PF' && tipoCell !== 'Pessoa Física') {
-                        mostrarLinha = false;
-                    } else if (tipoDoadorAtivo === 'PJ' && tipoCell !== 'Pessoa Jurídica') {
-                        mostrarLinha = false;
-                    }
-                }
-
-
-                if (metodoPagamentoAtivo !== '' && mostrarLinha) {
-                    if (pagamentoCell !== metodoPagamentoAtivo) {
-                        mostrarLinha = false;
-                    }
-                }
-
-
-                row.style.display = mostrarLinha ? '' : 'none';
-
-
-                if (mostrarLinha) {
-                    const valorStr = row.cells[0].textContent.replace('R$ ', '').replace(',', '.');
-                    total += parseFloat(valorStr);
-                }
-            });
-
-            const totalElement = document.querySelector('.result-container strong span');
-            if (totalElement) {
-                totalElement.textContent = 'R$ ' + total.toFixed(2).replace('.', ',');
-            }
-        }
-    });
-
-
     document.querySelector('.panel-generate-btn').addEventListener('click', function() {
         const tipoConsulta = document.getElementById('tipoConsultaAtual').value;
         const dataInicio = document.querySelector('input[name="dataInicio"]').value;
@@ -918,20 +842,14 @@
 
         addHiddenInput('dataInicio', dataInicio);
         addHiddenInput('dataFim', dataFim);
-
-        // Adiciona o filtro ativo de tipo de doador
         if (tipoConsulta === 'doadores') {
             const tipoDoadorAtivo = document.querySelector('.filtro-container .filtro-btn[data-tipo].active').getAttribute('data-tipo');
             addHiddenInput('filtroTipo', tipoDoadorAtivo);
         }
-
-        // Adiciona o filtro ativo de método de pagamento
         if (tipoConsulta === 'doacoes') {
             const metodoPagamentoAtivo = document.querySelector('.filtro-container .filtro-btn[data-pagamento].active').getAttribute('data-pagamento');
             addHiddenInput('filtroPagamento', metodoPagamentoAtivo);
         }
-
-        // Adiciona o filtro específico para parceiros
         if (tipoConsulta === 'parceiros') {
             addHiddenInput('filtro', 'PJ');
         }
@@ -955,6 +873,184 @@
             }
         }
     }
+</script>
+
+
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const filtroButtons = document.querySelectorAll('.filtro-btn[data-tipo]');
+        const tbody = document.querySelector('table tbody');
+        const contadorElement = document.getElementById('contador-doadores');
+
+        filtroButtons.forEach(button => {
+            button.addEventListener('click', function() {
+                const tipo = this.getAttribute('data-tipo');
+                filtroButtons.forEach(btn => btn.classList.remove('active'));
+                this.classList.add('active');
+
+                let linhasVisiveis = 0;
+                if (tbody) {
+                    const linhas = tbody.querySelectorAll('tr');
+                    linhas.forEach(linha => {
+                        const tipoLinha = linha.querySelector('td:first-child').textContent;
+                        if (!tipo ||
+                            (tipo === 'PF' && tipoLinha === 'Pessoa Física') ||
+                            (tipo === 'PJ' && tipoLinha === 'Pessoa Jurídica')) {
+                            linha.style.display = '';
+                            linhasVisiveis++;
+                        } else {
+                            linha.style.display = 'none';
+                        }
+                    });
+                }
+                if (contadorElement) {
+                    contadorElement.textContent = linhasVisiveis;
+                }
+            });
+        });
+    });
+
+    document.addEventListener('DOMContentLoaded', function() {
+        const filtroButtons = document.querySelectorAll('.filtro-btn[data-tipo]');
+        const tbody = document.querySelector('table tbody');
+        const contadorElement = document.getElementById('contador-doadores');
+
+        filtroButtons.forEach(button => {
+            button.addEventListener('click', function () {
+                const tipo = this.getAttribute('data-tipo');
+                filtroButtons.forEach(btn => btn.classList.remove('active'));
+                this.classList.add('active');
+
+                let linhasVisiveis = 0;
+                if (tbody) {
+                    const linhas = tbody.querySelectorAll('tr');
+                    linhas.forEach(linha => {
+                        const tipoLinha = linha.querySelector('td:first-child').textContent;
+                        if (!tipo ||
+                            (tipo === 'PF' && tipoLinha === 'Pessoa Física') ||
+                            (tipo === 'PJ' && tipoLinha === 'Pessoa Jurídica')) {
+                            linha.style.display = '';
+                            linhasVisiveis++;
+                        } else {
+                            linha.style.display = 'none';
+                        }
+                    });
+                }
+                if (contadorElement) {
+                    contadorElement.textContent = linhasVisiveis;
+                }
+            });
+        });
+
+
+        document.addEventListener('DOMContentLoaded', function () {
+            const filtroButtons = document.querySelectorAll('.filtro-btn[data-pagamento]');
+            const tabelaDoacoes = document.querySelector('table');
+
+            if (filtroButtons && tabelaDoacoes) {
+                filtroButtons.forEach(button => {
+                    button.addEventListener('click', function () {
+                        filtroButtons.forEach(btn => btn.classList.remove('active'));
+                        this.classList.add('active');
+
+                        const metodo = this.getAttribute('data-pagamento');
+                        const linhas = tabelaDoacoes.querySelectorAll('tbody tr');
+                        let total = 0;
+                        let visiveis = 0;
+
+                        linhas.forEach(linha => {
+                            const metodoLinha = linha.querySelector('td:nth-child(4)').textContent.toLowerCase();
+
+                            if (metodo === "" || metodoLinha.includes(metodo.toLowerCase())) {
+                                linha.style.display = '';
+                                visiveis++;
+                                const valorCell = linha.querySelector('td:nth-child(1)').textContent;
+                                const valorNumerico = parseFloat(
+                                    valorCell.replace('R$', '')
+                                        .replace(/\./g, '')
+                                        .replace(',', '.')
+                                ) || 0;
+
+                                total += valorNumerico;
+                            } else {
+                                linha.style.display = 'none';
+                            }
+                        });
+                        if (document.getElementById('contador-doacoes')) {
+                            document.getElementById('contador-doacoes').textContent = visiveis;
+                        }
+
+                        if (document.getElementById('total-monetario')) {
+                            document.getElementById('total-monetario').textContent =
+                                'R$ ' + total.toLocaleString('pt-BR', {
+                                    minimumFractionDigits: 2,
+                                    maximumFractionDigits: 2
+                                });
+                        }
+                    });
+                });
+                const btnTodos = document.querySelector('.filtro-btn[data-pagamento=""]');
+                if (btnTodos) {
+                    btnTodos.click();
+                }
+            }
+        });
+    });
+</script>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const filtroPagamentoButtons = document.querySelectorAll('.filtro-btn[data-pagamento]');
+            const tbodyDoacoes = document.querySelector('table tbody');
+            const contadorDoacoes = document.getElementById('contador-doacoes');
+            const totalMonetarioSpan = document.getElementById('total-monetario');
+
+                if (filtroPagamentoButtons.length > 0 && tbodyDoacoes) {
+                    filtroPagamentoButtons.forEach(button => {
+                    button.addEventListener('click', function() {
+                const metodoPagamento = this.getAttribute('data-pagamento');
+
+                filtroPagamentoButtons.forEach(btn => btn.classList.remove('active'));
+                    this.classList.add('active');
+                        let linhasVisiveis = 0;
+                        let totalFiltrado = 0;
+                    const linhas = tbodyDoacoes.querySelectorAll('tr');
+
+                linhas.forEach(linha => {
+                    const pagamentoCell = linha.querySelector('td:nth-child(4)').textContent.toLowerCase();
+                    const valorCell = linha.querySelector('td:nth-child(1)').textContent;
+                    const mostrarLinha = !metodoPagamento ||
+                pagamentoCell.toLowerCase().includes(metodoPagamento.toLowerCase());
+
+                if (mostrarLinha) {
+                    linha.style.display = '';
+                    linhasVisiveis++;
+
+                const valorLimpo = valorCell
+                    .replace('R$ ', '')
+                    .replace(/\./g, '')
+                    .replace(',', '.');
+                    totalFiltrado += parseFloat(valorLimpo);
+                } else {
+                    linha.style.display = 'none';
+                }});
+
+                if (contadorDoacoes) {
+                    contadorDoacoes.textContent = linhasVisiveis;}
+
+                if (totalMonetarioSpan) {
+                    const totalFormatado = totalFiltrado.toLocaleString('pt-BR', {
+                    style: 'currency',
+                    currency: 'BRL',
+                    minimumFractionDigits: 2,
+                    maximumFractionDigits: 2
+    });
+                totalMonetarioSpan.textContent = totalFormatado;
+                   }
+                 });
+             });
+          }
+    });
 </script>
 </body>
 </html>
