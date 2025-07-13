@@ -11,14 +11,8 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public interface DoacaoRepository extends JpaRepository<Doacao, Long> {
-
-   // @Query("SELECT d FROM Doacao d WHERE d.data BETWEEN :dataInicio AND :dataFim")
-    //List<Doacao> findByDataBetween(@Param("dataInicio") LocalDateTime dataInicio,
-      //                             @Param("dataFim") LocalDateTime dataFim);
-
+   
     @Query("SELECT d FROM Doacao d LEFT JOIN FETCH d.doador WHERE d.data BETWEEN :dataInicio AND :dataFim")
     List<Doacao> findByDataBetween(@Param("dataInicio") LocalDateTime dataInicio,
                                    @Param("dataFim") LocalDateTime dataFim);
 }
-
-
